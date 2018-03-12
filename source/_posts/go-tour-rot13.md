@@ -18,6 +18,7 @@ tags:
 
 `rot13Reader` 类型已经提供。实现 `Read` 方法以满足 `io.Reader` 。
 
+<!-- more -->
 
 ```go
 package main

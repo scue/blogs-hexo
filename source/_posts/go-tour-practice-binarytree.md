@@ -23,6 +23,8 @@ tags:
 
 4. 测试 `Same` 函数。
 
+<!-- more -->
+
 `Same(tree.New(1), tree.New(1))` 应当返回 `true` ，而 `Same(tree.New(1), tree.New(2))` 应当返回 `false` 。
 
 Tree 的文档可在这里找到。
