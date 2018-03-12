@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.5">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.5" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.5',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="课程," />
+
+
+<meta name="description" content="Android系统知识这一部分主要针对Androi系统整个框架，列出几个重要的Android系统关系图，进行讲解一下； 因为Android基于Linux内核，所以先从Linux基础开始讲解，然后再逐渐引入Android系统框架； Linux Kernel MapLinux Kernel Map这一张图主要是针对开发人员提供的，有兴趣的童鞋可以大致了解一下；  源链接 若对Android Kerne">
+<meta name="keywords" content="课程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="课程3: Android系统知识(一)">
+<meta property="og:url" content="http://linkscue.com/2015/05/11/android-internal/index.html">
+<meta property="og:site_name" content="Linkscue&#39;s blogs">
+<meta property="og:description" content="Android系统知识这一部分主要针对Androi系统整个框架，列出几个重要的Android系统关系图，进行讲解一下； 因为Android基于Linux内核，所以先从Linux基础开始讲解，然后再逐渐引入Android系统框架； Linux Kernel MapLinux Kernel Map这一张图主要是针对开发人员提供的，有兴趣的童鞋可以大致了解一下；  源链接 若对Android Kerne">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://linkscue.com/assets/Courses/Courses03_android_internal_02.LKM3_1024.png">
+<meta property="og:image" content="http://linkscue.com/assets/Courses/Courses03_android_internal_01.GNU_Linux_OS_internals.png">
+<meta property="og:image" content="http://linkscue.com/assets/Courses/Courses03_android_internal_03.Android_internals.png">
+<meta property="og:image" content="http://linkscue.com/assets/Courses/Courses03_android_internal_05.Android-system-architecture.jpg">
+<meta property="og:image" content="http://linkscue.com/assets/Courses/Courses03_android_internal_04.Android_API_Classes.png">
+<meta property="og:updated_time" content="2018-03-12T02:01:09.148Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="课程3: Android系统知识(一)">
+<meta name="twitter:description" content="Android系统知识这一部分主要针对Androi系统整个框架，列出几个重要的Android系统关系图，进行讲解一下； 因为Android基于Linux内核，所以先从Linux基础开始讲解，然后再逐渐引入Android系统框架； Linux Kernel MapLinux Kernel Map这一张图主要是针对开发人员提供的，有兴趣的童鞋可以大致了解一下；  源链接 若对Android Kerne">
+<meta name="twitter:image" content="http://linkscue.com/assets/Courses/Courses03_android_internal_02.LKM3_1024.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Linkscue's blogs" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://linkscue.com/2015/05/11/android-internal/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>课程3: Android系统知识(一) | Linkscue's blogs</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Linkscue's blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">清風有情君意愜, 夢徊怡江詩心緣。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/05/11/android-internal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">课程3: Android系统知识(一)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-11T00:00:00+08:00">2015-05-11</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/" itemprop="url" rel="index"><span itemprop="name">课程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Android系统知识"><a href="#Android系统知识" class="headerlink" title="Android系统知识"></a>Android系统知识</h1><p>这一部分主要针对Androi系统整个框架，列出几个重要的Android系统关系图，进行讲解一下；</p>
+<p>因为Android基于Linux内核，所以先从Linux基础开始讲解，然后再逐渐引入Android系统框架；</p>
+<h3 id="Linux-Kernel-Map"><a href="#Linux-Kernel-Map" class="headerlink" title="Linux Kernel Map"></a>Linux Kernel Map</h3><p>Linux Kernel Map这一张图主要是针对开发人员提供的，有兴趣的童鞋可以大致了解一下；</p>
+<p><img src="/assets/Courses/Courses03_android_internal_02.LKM3_1024.png" alt="Linux-Kernel-Map"></p>
+<p><a href="http://www.makelinux.net/kernel_map/" target="_blank" rel="noopener">源链接</a></p>
+<p>若对Android Kernel与Linux Kernel的差异感兴趣，可以参考这里 <a href="http://www.lindusembedded.com/blog/2010/12/07/android-linux-kernel-additions/" target="_blank" rel="noopener">ANDROID LINUX KERNEL ADDITIONS</a></p>
+<p>简单列举如下：</p>
+<ul>
+<li><code>binder</code>:                             进程通信驱动</li>
+<li><code>ashmem</code>:                             匿名共享内存驱动</li>
+<li><code>pmem</code>:                               process memory allocator</li>
+<li><code>logger</code>:                             打印日志驱动</li>
+<li><code>wake locks</code>:                         一但有用户层、或Kernel拿到此锁就阻止手机进入低功耗状态</li>
+<li><code>early suspend</code>:                      Linux电源管理的扩展，LCD、重力感应、传感器依赖于它才能在睡眠时工作；</li>
+<li><code>oom handling</code>:                       android out of memory killer, 内存管理（以前Android手机内存很小，这个很有必要）</li>
+<li><code>android alarm</code>:                      闹钟服务，允许用户空间控制闹钟</li>
+<li><code>android paranoid network security</code>:  通过uid控制网络访问权限</li>
+<li><code>android timed output/gpio</code>:          暴露定时gpio模块到用户空间，供震动模块调用</li>
+<li><code>android ram console</code>:                允许保存一部分printk信息到一小段内存上<code>/proc/last_kmsg</code>，方便调试</li>
+<li><code>other android differences</code>:          yaffs2, bluetooth, scheduleer, adb</li>
+</ul>
+<h3 id="Map-of-GNU-Linux-OS-Internals"><a href="#Map-of-GNU-Linux-OS-Internals" class="headerlink" title="Map of GNU/Linux OS Internals"></a>Map of GNU/Linux OS Internals</h3><p>这是一张GNU/Linux系统各层调用关系图，利用它，我们可以进一步完善SSLVPN、VMP和VDC等案例的设计；</p>
+<p><img src="/assets/Courses/Courses03_android_internal_01.GNU_Linux_OS_internals.png" alt="Linux-OS-Internel"></p>
+<p><a href="http://www.makelinux.net/system/GNU_Linux_OS_internals.png" target="_blank" rel="noopener">源链接</a></p>
+<h3 id="Android-Internal"><a href="#Android-Internal" class="headerlink" title="Android Internal"></a>Android Internal</h3><p>这一部分是Android系统各层间调用关系图</p>
+<p>在我们遇到一些问题不容易排解的时候，看此图，上下左右关系看一看，就能找到答案了</p>
+<p><img src="/assets/Courses/Courses03_android_internal_03.Android_internals.png" alt="Android-Internal"></p>
+<p><a href="http://www.makelinux.net/android/internals/Android_internals_1024.png" target="_blank" rel="noopener">源链接</a></p>
+<h3 id="Android-System-Architecture"><a href="#Android-System-Architecture" class="headerlink" title="Android System Architecture"></a>Android System Architecture</h3><p>这一部分是Android系统结构图，来自于Google Android官网</p>
+<p><img src="/assets/Courses/Courses03_android_internal_05.Android-system-architecture.jpg" alt="Android System Architecture"></p>
+<p><a href="https://developer.android.com/images/system-architecture.jpg" target="_blank" rel="noopener">源链接</a></p>
+<h3 id="Android-API-Classes"><a href="#Android-API-Classes" class="headerlink" title="Android API Classes"></a>Android API Classes</h3><p><img src="/assets/Courses/Courses03_android_internal_04.Android_API_Classes.png" alt="Android API Classes"></p>
+<p><a href="http://www.makelinux.net/android/classes/zoom" target="_blank" rel="noopener">源链接</a></p>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>更多可以查看此<a href="http://www.makelinux.net/resources" target="_blank" rel="noopener">链接</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/课程/" rel="tag"># 课程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/10/android-logcat-all/" rel="next" title="Android抓取所有日志">
+                <i class="fa fa-chevron-left"></i> Android抓取所有日志
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/20/android-bootup/" rel="prev" title="课程3: Android启动过程分析">
+                课程3: Android启动过程分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/assets/images/avatar.png"
+                alt="linkscue(scue)" />
+            
+              <p class="site-author-name" itemprop="name">linkscue(scue)</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/scue" target="_blank" title="GitHub"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:scue@vip.qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android系统知识"><span class="nav-number">1.</span> <span class="nav-text">Android系统知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-Kernel-Map"><span class="nav-number">1.0.1.</span> <span class="nav-text">Linux Kernel Map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-of-GNU-Linux-OS-Internals"><span class="nav-number">1.0.2.</span> <span class="nav-text">Map of GNU/Linux OS Internals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Internal"><span class="nav-number">1.0.3.</span> <span class="nav-text">Android Internal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-System-Architecture"><span class="nav-number">1.0.4.</span> <span class="nav-text">Android System Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-API-Classes"><span class="nav-number">1.0.5.</span> <span class="nav-text">Android API Classes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多"><span class="nav-number">1.0.6.</span> <span class="nav-text">更多</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">linkscue(scue)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.5</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.5"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.0.5"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
