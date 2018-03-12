@@ -5,7 +5,7 @@ title: "GO指南 练习：斐波纳契闭包"
 description: ""
 category: 技术
 tags: 
-  - GO
+  - go
 ---
 
 
