@@ -111,16 +111,56 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：Reader</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-reader/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-reader/</id>
+    <title>GO指南 练习：循环与函数</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-flow-control/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-flow-control/</id>
     <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:14:35.906Z</updated>
+    <updated>2018-03-12T01:57:15.191Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;练习：Reader&lt;/p&gt;
-&lt;p&gt;实现一个 Reader 类型，它产生一个 ASCII 字符 &lt;code&gt;&amp;#39;A&amp;#39;&lt;/code&gt; 的无限流。&lt;/p&gt;
+      牛顿法实现平方根函数
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GO指南 练习：rot13Reader</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-rot13/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-rot13/</id>
+    <published>2018-02-27T16:00:00.000Z</published>
+    <updated>2018-03-12T05:12:14.623Z</updated>
+    
+    <summary type="html">
+    
+      描述
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GO指南 练习：错误</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-error/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-error/</id>
+    <published>2018-02-27T16:00:00.000Z</published>
+    <updated>2018-03-12T05:13:19.252Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;练习：错误&lt;br&gt;从之前的练习中（牛顿平方根方法）复制 Sqrt 函数，修改它使其返回 error 值。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Sqrt&lt;/code&gt; 接受到一个负数时，应当返回一个非 nil 的错误值。复数同样也不被支持。&lt;/p&gt;
     
     </summary>
     
@@ -155,26 +195,6 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：循环与函数</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-flow-control/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-flow-control/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.191Z</updated>
-    
-    <summary type="html">
-    
-      牛顿法实现平方根函数
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
     <title>GO指南 练习：斐波纳契闭包</title>
     <link href="http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/"/>
     <id>http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/</id>
@@ -197,56 +217,16 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：错误</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-error/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-error/</id>
+    <title>GO指南 练习：Reader</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-reader/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-reader/</id>
     <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:13:19.252Z</updated>
+    <updated>2018-03-12T05:14:35.906Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;练习：错误&lt;br&gt;从之前的练习中（牛顿平方根方法）复制 Sqrt 函数，修改它使其返回 error 值。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Sqrt&lt;/code&gt; 接受到一个负数时，应当返回一个非 nil 的错误值。复数同样也不被支持。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：rot13Reader</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-rot13/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-rot13/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:12:14.623Z</updated>
-    
-    <summary type="html">
-    
-      描述
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：切片</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-slice/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-slice/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.208Z</updated>
-    
-    <summary type="html">
-    
-      描述
+      &lt;p&gt;练习：Reader&lt;/p&gt;
+&lt;p&gt;实现一个 Reader 类型，它产生一个 ASCII 字符 &lt;code&gt;&amp;#39;A&amp;#39;&lt;/code&gt; 的无限流。&lt;/p&gt;
     
     </summary>
     
@@ -274,6 +254,26 @@
 &lt;p&gt;你会发现
         
       
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GO指南 练习：切片</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-slice/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-slice/</id>
+    <published>2018-02-27T16:00:00.000Z</published>
+    <updated>2018-03-12T01:57:15.208Z</updated>
+    
+    <summary type="html">
+    
+      描述
     
     </summary>
     
@@ -332,59 +332,22 @@
   </entry>
   
   <entry>
-    <title>Android Gradle离线更新</title>
-    <link href="http://linkscue.com/2018/02/08/android-gradle-offline-update/"/>
-    <id>http://linkscue.com/2018/02/08/android-gradle-offline-update/</id>
+    <title>Laravel 从零开始入门-laradock</title>
+    <link href="http://linkscue.com/2018/02/08/laravel-laradock-getting-start/"/>
+    <id>http://linkscue.com/2018/02/08/laravel-laradock-getting-start/</id>
     <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2018-03-11T05:11:44.830Z</updated>
+    <updated>2018-03-12T01:57:15.246Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;从&lt;a href=&quot;https://downloads.gradle.org/distributions/gradle-3.3-all.zip&quot; target=&quot;_blank&quot;
-        
-      
+      Docker环境
     
     </summary>
     
       <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="Android" scheme="http://linkscue.com/tags/Android/"/>
-    
-      <category term="Gradle" scheme="http://linkscue.com/tags/Gradle/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android计算字符串的MD5值</title>
-    <link href="http://linkscue.com/2018/02/08/android-md5sum-string/"/>
-    <id>http://linkscue.com/2018/02/08/android-md5sum-string/</id>
-    <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.101Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;之前找过一些版本，发现有一些使用场景下，md5sum会少一个字符，这对于一个已发布出去的版本是有一定的硬伤的。&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Android" scheme="http://linkscue.com/tags/Android/"/>
-    
-      <category term="md5sum" scheme="http://linkscue.com/tags/md5sum/"/>
+      <category term="Laravel" scheme="http://linkscue.com/tags/Laravel/"/>
     
   </entry>
   
@@ -446,22 +409,59 @@
   </entry>
   
   <entry>
-    <title>Laravel 从零开始入门-laradock</title>
-    <link href="http://linkscue.com/2018/02/08/laravel-laradock-getting-start/"/>
-    <id>http://linkscue.com/2018/02/08/laravel-laradock-getting-start/</id>
+    <title>Android Gradle离线更新</title>
+    <link href="http://linkscue.com/2018/02/08/android-gradle-offline-update/"/>
+    <id>http://linkscue.com/2018/02/08/android-gradle-offline-update/</id>
     <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.246Z</updated>
+    <updated>2018-03-11T05:11:44.830Z</updated>
     
     <summary type="html">
     
-      Docker环境
+      
+      
+        
+        
+          &lt;p&gt;从&lt;a href=&quot;https://downloads.gradle.org/distributions/gradle-3.3-all.zip&quot; target=&quot;_blank&quot;
+        
+      
     
     </summary>
     
       <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="Laravel" scheme="http://linkscue.com/tags/Laravel/"/>
+      <category term="Android" scheme="http://linkscue.com/tags/Android/"/>
+    
+      <category term="Gradle" scheme="http://linkscue.com/tags/Gradle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android计算字符串的MD5值</title>
+    <link href="http://linkscue.com/2018/02/08/android-md5sum-string/"/>
+    <id>http://linkscue.com/2018/02/08/android-md5sum-string/</id>
+    <published>2018-02-07T16:00:00.000Z</published>
+    <updated>2018-03-12T01:57:15.101Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;之前找过一些版本，发现有一些使用场景下，md5sum会少一个字符，这对于一个已发布出去的版本是有一定的硬伤的。&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Android" scheme="http://linkscue.com/tags/Android/"/>
+    
+      <category term="md5sum" scheme="http://linkscue.com/tags/md5sum/"/>
     
   </entry>
   
