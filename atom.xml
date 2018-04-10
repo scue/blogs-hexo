@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://linkscue.com/"/>
-  <updated>2018-04-10T11:01:40.717Z</updated>
+  <updated>2018-04-10T11:14:27.795Z</updated>
   <id>http://linkscue.com/</id>
   
   <author>
@@ -17,22 +17,26 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>标题</title>
+    <title>手把手教你如何交叉编译MTR二进制程序</title>
     <link href="http://linkscue.com/2018/04/10/2018-04-10-how-to-cross-build-mtr/"/>
     <id>http://linkscue.com/2018/04/10/2018-04-10-how-to-cross-build-mtr/</id>
     <published>2018-04-10T10:54:53.085Z</published>
-    <updated>2018-04-10T11:01:40.717Z</updated>
+    <updated>2018-04-10T11:14:27.795Z</updated>
     
     <summary type="html">
     
-      描述
+      &lt;h1 id=&quot;相关背景&quot;&gt;&lt;a href=&quot;#相关背景&quot; class=&quot;headerlink&quot; title=&quot;相关背景&quot;&gt;&lt;/a&gt;相关背景&lt;/h1&gt;&lt;p&gt;其实我也不知道MTR是干嘛使用的，不过我大致知道它是一个网络诊断工具，源码是使用C/C++编写的。&lt;/p&gt;
+&lt;p&gt;它的源码位于&lt;code&gt;https://github.com/traviscross/mtr&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;我们去官网看看README.md，大致长这样子的：&lt;/p&gt;
     
     </summary>
     
       <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="标签" scheme="http://linkscue.com/tags/%E6%A0%87%E7%AD%BE/"/>
+      <category term="C/C++" scheme="http://linkscue.com/tags/C-C/"/>
+    
+      <category term="MTR" scheme="http://linkscue.com/tags/MTR/"/>
     
   </entry>
   
