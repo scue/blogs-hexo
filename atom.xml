@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://linkscue.com/"/>
-  <updated>2018-04-10T10:15:19.545Z</updated>
+  <updated>2018-04-10T11:01:40.717Z</updated>
   <id>http://linkscue.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>标题</title>
+    <link href="http://linkscue.com/2018/04/10/2018-04-10-how-to-cross-build-mtr/"/>
+    <id>http://linkscue.com/2018/04/10/2018-04-10-how-to-cross-build-mtr/</id>
+    <published>2018-04-10T10:54:53.085Z</published>
+    <updated>2018-04-10T11:01:40.717Z</updated>
+    
+    <summary type="html">
+    
+      描述
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="标签" scheme="http://linkscue.com/tags/%E6%A0%87%E7%AD%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>使用Node.js来写一个文件上传服务器</title>
@@ -81,6 +101,26 @@
   </entry>
   
   <entry>
+    <title>寻找最长不含有重复字符的子串</title>
+    <link href="http://linkscue.com/2018/03/03/go-imooc-find-not-repeat-sub-string/"/>
+    <id>http://linkscue.com/2018/03/03/go-imooc-find-not-repeat-sub-string/</id>
+    <published>2018-03-02T16:00:00.000Z</published>
+    <updated>2018-03-12T05:10:36.613Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;寻找最长不含有重复字符的子串&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>数学中的复数和最美的欧拉公式</title>
     <link href="http://linkscue.com/2018/03/03/math-complex-review/"/>
     <id>http://linkscue.com/2018/03/03/math-complex-review/</id>
@@ -98,26 +138,6 @@
     
     
       <category term="Math" scheme="http://linkscue.com/tags/Math/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>寻找最长不含有重复字符的子串</title>
-    <link href="http://linkscue.com/2018/03/03/go-imooc-find-not-repeat-sub-string/"/>
-    <id>http://linkscue.com/2018/03/03/go-imooc-find-not-repeat-sub-string/</id>
-    <published>2018-03-02T16:00:00.000Z</published>
-    <updated>2018-03-12T05:10:36.613Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;寻找最长不含有重复字符的子串&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
     
   </entry>
   
@@ -175,91 +195,6 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：斐波纳契闭包</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:12:50.335Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;练习：斐波纳契闭包&lt;/p&gt;
-&lt;p&gt;让我们用函数做些好玩的事情。&lt;/p&gt;
-&lt;p&gt;实现一个 &lt;code&gt;fibonacci&lt;/code&gt; 函数，它返回一个函数（闭包）， 该闭包返回一个斐波纳契数列 &lt;code&gt;(0, 1, 1, 2, 3, 5, ...)&lt;/code&gt; 。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：循环与函数</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-flow-control/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-flow-control/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.191Z</updated>
-    
-    <summary type="html">
-    
-      牛顿法实现平方根函数
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：图像</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-image/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-image/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:13:56.116Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;定义你自己的 Image 类型，实现&lt;a href=&quot;https://go-zh.org/pkg/image/#Image&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;必要的方法&lt;/a&gt;并调用 &lt;code&gt;pic.ShowImage&lt;/code&gt; 。&lt;/p&gt;
-&lt;p&gt;Bounds 应当返回一个 &lt;code&gt;image.Rectangle&lt;/code&gt; ，例如 &lt;code&gt;image.Rect(0, 0, w, h)&lt;/code&gt; 。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;ColorModel&lt;/code&gt; 应当返回 &lt;code&gt;color.RGBAModel&lt;/code&gt; 。&lt;/p&gt;
-&lt;p&gt;At 应当返回一个颜色。上一个图片生成器的值 v 对应于此次的 &lt;code&gt;color.RGBA{v, v, 255, 255}&lt;/code&gt; 。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：rot13Reader</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-rot13/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-rot13/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:12:14.623Z</updated>
-    
-    <summary type="html">
-    
-      描述
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
     <title>GO指南 练习：Map</title>
     <link href="http://linkscue.com/2018/02/28/go-tour-parctice-map/"/>
     <id>http://linkscue.com/2018/02/28/go-tour-parctice-map/</id>
@@ -287,16 +222,37 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：错误</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-error/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-error/</id>
+    <title>GO指南 练习：斐波纳契闭包</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/</id>
     <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:13:19.252Z</updated>
+    <updated>2018-03-12T05:12:50.335Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;练习：错误&lt;br&gt;从之前的练习中（牛顿平方根方法）复制 Sqrt 函数，修改它使其返回 error 值。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Sqrt&lt;/code&gt; 接受到一个负数时，应当返回一个非 nil 的错误值。复数同样也不被支持。&lt;/p&gt;
+      &lt;p&gt;练习：斐波纳契闭包&lt;/p&gt;
+&lt;p&gt;让我们用函数做些好玩的事情。&lt;/p&gt;
+&lt;p&gt;实现一个 &lt;code&gt;fibonacci&lt;/code&gt; 函数，它返回一个函数（闭包）， 该闭包返回一个斐波纳契数列 &lt;code&gt;(0, 1, 1, 2, 3, 5, ...)&lt;/code&gt; 。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GO指南 练习：rot13Reader</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-rot13/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-rot13/</id>
+    <published>2018-02-27T16:00:00.000Z</published>
+    <updated>2018-03-12T05:12:14.623Z</updated>
+    
+    <summary type="html">
+    
+      描述
     
     </summary>
     
@@ -349,6 +305,70 @@
   </entry>
   
   <entry>
+    <title>GO指南 练习：图像</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-image/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-image/</id>
+    <published>2018-02-27T16:00:00.000Z</published>
+    <updated>2018-03-12T05:13:56.116Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;定义你自己的 Image 类型，实现&lt;a href=&quot;https://go-zh.org/pkg/image/#Image&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;必要的方法&lt;/a&gt;并调用 &lt;code&gt;pic.ShowImage&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;Bounds 应当返回一个 &lt;code&gt;image.Rectangle&lt;/code&gt; ，例如 &lt;code&gt;image.Rect(0, 0, w, h)&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ColorModel&lt;/code&gt; 应当返回 &lt;code&gt;color.RGBAModel&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;At 应当返回一个颜色。上一个图片生成器的值 v 对应于此次的 &lt;code&gt;color.RGBA{v, v, 255, 255}&lt;/code&gt; 。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GO指南 练习：循环与函数</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-flow-control/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-flow-control/</id>
+    <published>2018-02-27T16:00:00.000Z</published>
+    <updated>2018-03-12T01:57:15.191Z</updated>
+    
+    <summary type="html">
+    
+      牛顿法实现平方根函数
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GO指南 练习：错误</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-error/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-error/</id>
+    <published>2018-02-27T16:00:00.000Z</published>
+    <updated>2018-03-12T05:13:19.252Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;练习：错误&lt;br&gt;从之前的练习中（牛顿平方根方法）复制 Sqrt 函数，修改它使其返回 error 值。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Sqrt&lt;/code&gt; 接受到一个负数时，应当返回一个非 nil 的错误值。复数同样也不被支持。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>使用lorotate压缩服务器日志</title>
     <link href="http://linkscue.com/2018/02/11/logrotate-example/"/>
     <id>http://linkscue.com/2018/02/11/logrotate-example/</id>
@@ -365,35 +385,6 @@
     
     
       <category term="linux" scheme="http://linkscue.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android计算字符串的MD5值</title>
-    <link href="http://linkscue.com/2018/02/08/android-md5sum-string/"/>
-    <id>http://linkscue.com/2018/02/08/android-md5sum-string/</id>
-    <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.101Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;之前找过一些版本，发现有一些使用场景下，md5sum会少一个字符，这对于一个已发布出去的版本是有一定的硬伤的。&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Android" scheme="http://linkscue.com/tags/Android/"/>
-    
-      <category term="md5sum" scheme="http://linkscue.com/tags/md5sum/"/>
     
   </entry>
   
@@ -452,22 +443,30 @@
   </entry>
   
   <entry>
-    <title>Laravel 从零开始入门-laradock</title>
-    <link href="http://linkscue.com/2018/02/08/laravel-laradock-getting-start/"/>
-    <id>http://linkscue.com/2018/02/08/laravel-laradock-getting-start/</id>
+    <title>Android Gradle离线更新</title>
+    <link href="http://linkscue.com/2018/02/08/android-gradle-offline-update/"/>
+    <id>http://linkscue.com/2018/02/08/android-gradle-offline-update/</id>
     <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.246Z</updated>
+    <updated>2018-03-11T05:11:44.830Z</updated>
     
     <summary type="html">
     
-      Docker环境
+      
+      
+        
+        
+          &lt;p&gt;从&lt;a href=&quot;https://downloads.gradle.org/distributions/gradle-3.3-all.zip&quot; target=&quot;_blank&quot;
+        
+      
     
     </summary>
     
       <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="Laravel" scheme="http://linkscue.com/tags/Laravel/"/>
+      <category term="Android" scheme="http://linkscue.com/tags/Android/"/>
+    
+      <category term="Gradle" scheme="http://linkscue.com/tags/Gradle/"/>
     
   </entry>
   
