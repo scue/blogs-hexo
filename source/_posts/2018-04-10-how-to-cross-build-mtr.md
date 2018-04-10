@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "标题"
-description: "描述"
+title: "手把手教你如何交叉编译MTR二进制程序"
+description: ""
 category: 技术
-tags: [标签]
+tags: [C/C++, MTR]
 ---
 
 
@@ -15,6 +15,8 @@ tags: [标签]
 它的源码位于`https://github.com/traviscross/mtr`。
 
 我们去官网看看README.md，大致长这样子的：
+
+<!-- more -->
 
 ![](media/15233577484017.jpg)
 
