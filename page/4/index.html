@@ -242,44 +242,9 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-
-
-
-
-    </div>
   
 </nav>
 
@@ -300,6 +265,536 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/05/11/android-internal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/05/11/android-internal/" itemprop="url">课程3: Android系统知识(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-11T00:00:00+08:00">2015-05-11</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/" itemprop="url" rel="index"><span itemprop="name">课程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Android系统知识"><a href="#Android系统知识" class="headerlink" title="Android系统知识"></a>Android系统知识</h1><p>这一部分主要针对Androi系统整个框架，列出几个重要的Android系统关系图，进行讲解一下；</p>
+<p>因为Android基于Linux内核，所以先从Linux基础开始讲解，然后再逐渐引入Android系统框架；</p>
+<h3 id="Linux-Kernel-Map"><a href="#Linux-Kernel-Map" class="headerlink" title="Linux Kernel Map"></a>Linux Kernel Map</h3><p>Linux Kernel Map这一张图主要是针对开发人员提供的，有兴趣的童鞋可以大致了解一下；</p>
+<p><img src="/assets/Courses/Courses03_android_internal_02.LKM3_1024.png" alt="Linux-Kernel-Map"></p>
+<p><a href="http://www.makelinux.net/kernel_map/" target="_blank" rel="noopener">源链接</a></p>
+<p>若对Android Kernel与Linux Kernel的差异感兴趣，可以参考这里 <a href="http://www.lindusembedded.com/blog/2010/12/07/android-linux-kernel-additions/" target="_blank" rel="noopener">ANDROID LINUX KERNEL ADDITIONS</a></p>
+<p>简单列举如下：</p>
+<ul>
+<li><code>binder</code>:                             进程通信驱动</li>
+<li><code>ashmem</code>:                             匿名共享内存驱动</li>
+<li><code>pmem</code>:                               process memory allocator</li>
+<li><code>logger</code>:                             打印日志驱动</li>
+<li><code>wake locks</code>:                         一但有用户层、或Kernel拿到此锁就阻止手机进入低功耗状态</li>
+<li><code>early suspend</code>:                      Linux电源管理的扩展，LCD、重力感应、传感器依赖于它才能在睡眠时工作；</li>
+<li><code>oom handling</code>:                       android out of memory killer, 内存管理（以前Android手机内存很小，这个很有必要）</li>
+<li><code>android alarm</code>:                      闹钟服务，允许用户空间控制闹钟</li>
+<li><code>android paranoid network security</code>:  通过uid控制网络访问权限</li>
+<li><code>android timed output/gpio</code>:          暴露定时gpio模块到用户空间，供震动模块调用</li>
+<li><code>android ram console</code>:                允许保存一部分printk信息到一小段内存上<code>/proc/last_kmsg</code>，方便调试</li>
+<li><code>other android differences</code>:          yaffs2, bluetooth, scheduleer, adb</li>
+</ul>
+<h3 id="Map-of-GNU-Linux-OS-Internals"><a href="#Map-of-GNU-Linux-OS-Internals" class="headerlink" title="Map of GNU/Linux OS Internals"></a>Map of GNU/Linux OS Internals</h3><p>这是一张GNU/Linux系统各层调用关系图，利用它，我们可以进一步完善SSLVPN、VMP和VDC等案例的设计；</p>
+<p><img src="/assets/Courses/Courses03_android_internal_01.GNU_Linux_OS_internals.png" alt="Linux-OS-Internel"></p>
+<p><a href="http://www.makelinux.net/system/GNU_Linux_OS_internals.png" target="_blank" rel="noopener">源链接</a></p>
+<h3 id="Android-Internal"><a href="#Android-Internal" class="headerlink" title="Android Internal"></a>Android Internal</h3><p>这一部分是Android系统各层间调用关系图</p>
+<p>在我们遇到一些问题不容易排解的时候，看此图，上下左右关系看一看，就能找到答案了</p>
+<p><img src="/assets/Courses/Courses03_android_internal_03.Android_internals.png" alt="Android-Internal"></p>
+<p><a href="http://www.makelinux.net/android/internals/Android_internals_1024.png" target="_blank" rel="noopener">源链接</a></p>
+<h3 id="Android-System-Architecture"><a href="#Android-System-Architecture" class="headerlink" title="Android System Architecture"></a>Android System Architecture</h3><p>这一部分是Android系统结构图，来自于Google Android官网</p>
+<p><img src="/assets/Courses/Courses03_android_internal_05.Android-system-architecture.jpg" alt="Android System Architecture"></p>
+<p><a href="https://developer.android.com/images/system-architecture.jpg" target="_blank" rel="noopener">源链接</a></p>
+<h3 id="Android-API-Classes"><a href="#Android-API-Classes" class="headerlink" title="Android API Classes"></a>Android API Classes</h3><p><img src="/assets/Courses/Courses03_android_internal_04.Android_API_Classes.png" alt="Android API Classes"></p>
+<p><a href="http://www.makelinux.net/android/classes/zoom" target="_blank" rel="noopener">源链接</a></p>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>更多可以查看此<a href="http://www.makelinux.net/resources" target="_blank" rel="noopener">链接</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/05/10/android-logcat-all/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/05/10/android-logcat-all/" itemprop="url">Android抓取所有日志</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-10T00:00:00+08:00">2015-05-10</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>总有些时候我们会遇到非必现场景，若未及时抓取日志，可能为时已晚</p>
+<h3 id="抓取日志"><a href="#抓取日志" class="headerlink" title="抓取日志"></a>抓取日志</h3><ol>
+<li><p>抓取Logcat日志</p>
+<p>这个是最简单的，使用-f重定向到一个文本文件即可，<code>-v threadtime</code>则显示详细时间和进程</p>
+<pre><code># for logcat
+{
+        log -t logcat_all &quot;start logcat to file: $logcat_file&quot;
+            /system/bin/logcat -v threadtime -f $logcat_file
+}   &amp;
+</code></pre></li>
+<li><p>抓取Kmsg日志</p>
+<p>通过抓取<code>/proc/kmsg</code>来完成</p>
+<pre><code># for kmsg
+{
+        log -t logcat_all &quot;start kmsg to file: $kmsg_logfile&quot;
+            cat /proc/kmsg &gt;$kmsg_logfile
+}   &amp;
+</code></pre></li>
+<li><p>抓取Top日志</p>
+<p>通过抓取Top可以看到系统运行时，占用CPU的情况等等</p>
+<pre><code># for top
+{
+    while busybox true; do
+        top_newtime=$(/system/bin/date +%F_%H-%M-%S)
+        top_logfile=$logcat_dir/top_${top_newtime}.log &amp;&amp; &gt; $top_logfile
+        log -t logcat_all &quot;start top to file: $top_logfile&quot;
+        # 仅保留5个top日志文件
+        # 5*100*3=25分钟内的Top信息，避免Top日志文件过大
+        busybox rm -f $(busybox ls -1t ${logcat_dir}/top_* | busybox tail -n +6)
+        for n in $(busybox seq 1 100) ; do
+            # 每3秒打印一次top信息，并加入时间显示
+            top -m 5 -d 3 -t -n 1 | busybox awk &apos;{now=strftime(&quot;%Y-%M-%d %T &quot;); print now $0}&apos; &gt;&gt;$top_logfile
+            echo &gt;&gt;$top_logfile
+        done
+    done
+}   &amp;
+</code></pre><p>为了方便分析结果，这里添加了详细时间，同时限定了Top输出大小（避免SD卡占用过快）</p>
+</li>
+<li><p>抓取vmstat日志</p>
+<p>通过抓取vmstat日志，可分析的系统信息就更多了</p>
+<pre><code># for vmstat
+{
+    while busybox true; do
+        log -t logcat_all &quot;start vmstat_ to file: $vmstat_logfile&quot;
+        vmstat_newtime=$(/system/bin/date +%F_%H-%M-%S)
+        vmstat_logfile=$logcat_dir/vmstat_${vmstat_newtime}.log &amp;&amp; &gt; $vmstat_logfile
+        busybox rm -f $(busybox ls -1t ${logcat_dir}/vmstat_* | busybox tail -n +6)
+        /system/bin/vmstat -d 3 -n 100 | busybox awk &apos;{now=strftime(&quot;%Y-%M-%d %T &quot;); print now $0}&apos; &gt;$vmstat_logfile 2&gt;&amp;1
+    done
+}   &amp;
+</code></pre><p>同时也添加了详细的时间输出，方便分析</p>
+</li>
+</ol>
+<h3 id="开机运行"><a href="#开机运行" class="headerlink" title="开机运行"></a>开机运行</h3><p>在<code>init.rc</code>添加一个Service，当系统已正常启动完成时，执行抓取日志</p>
+<pre><code>service logcat_all /system/bin/logcat_wrapper.sh
+        class main
+        disabled
+        oneshot
+
+on property:dev.bootcomplete=1
+    start logcat_all
+</code></pre><p>其中，<code>logcat_wrapper.sh</code>内容如下：</p>
+<pre><code>#!/system/bin/sh
+{
+        /system/bin/busybox nohup /system/bin/logcat_all.sh &gt; /dev/null 2&gt;&amp;1 &amp;
+}   &amp;
+</code></pre><p>使用nohup执行，避免脚本被杀死，而<code>logcat_all.sh</code>则见此链接 <a href="https://gist.github.com/scue/fbbfdf9e09fe805ff041" target="_blank" rel="noopener">logcat_all.sh</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/05/09/eclipse-import-project-from-android-studiothen-app-crash-solution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/05/09/eclipse-import-project-from-android-studiothen-app-crash-solution/" itemprop="url">Android Studio迁移闪退</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-09T00:00:00+08:00">2015-05-09</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>很久没有撸Android App开发了～<br>最近把一个月前通过反编译、二次修改的 <a href="https://code.csdn.net/myscue/droidsshd/tree/lyh_eclipse" target="_blank" rel="noopener">Android SSHD</a>  项目进行简单修改一下；<br>突然发现迁移项目时，报了一个错误，同时还出现了闪退情况：</p>
+<pre><code>04-29 20:20:11.493: W/dalvikvm(23964): threadid=1: thread exiting with uncaught exception (group=0x41b2cc50)
+04-29 20:20:11.543: E/StubController(23964): service = null
+</code></pre><p>感觉像是迁移过程中没完整导致的，解决方法很简单，<strong>就是把java目录重命名为src即可</strong>；</p>
+<p><img src="/assets/images/292045497241929.png" alt="solution"></p>
+<p><a href="https://code.csdn.net/myscue/droidsshd/commit/70d72506802f4d0034b62889a6c6d28f29a6b217" target="_blank" rel="noopener">历史提交记录</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -902,166 +1397,6 @@ Icon=/home/sinfor/.local/share/icons/adt.png
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/04/16/android-test-skills2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/04/16/android-test-skills2/" itemprop="url">课程1: Android测试技巧(二)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-16T00:00:00+08:00">2015-04-16</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/" itemprop="url" rel="index"><span itemprop="name">课程</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Bug定位技巧"><a href="#Bug定位技巧" class="headerlink" title="Bug定位技巧"></a>Bug定位技巧</h1><p>今天比较匆忙，准备得不算很多；</p>
-<p>首先来针对一些普通的Bug来分析一下如何定位一个Bug的问题；</p>
-<p>一些方法运用好，可以更好的重现一些难以重现的问题，并或许还可以提供有效的Bug解决方法。</p>
-<ol>
-<li><p>日志输出，依据logcat输出的<strong>进程号</strong>来定位问题（如EasyConnect，以下截图仅举例）：</p>
-<p><img src="/assets/Courses/Courses01_android_test_skills_1.png" alt="logcat-pid"></p>
-</li>
-<li><p>日志输出，依据Logcat输出的<strong>详细时间</strong>来定位问题（如发现问题的那一分钟内、以下截图仅举例）：</p>
-<p><img src="/assets/Courses/Courses01_android_test_skills_2.png" alt="logcat-time"></p>
-</li>
-<li><p>输出报告，adb bugreport</p>
-<p><img src="/assets/Courses/Courses01_android_test_skills_3.png" alt="adbBugReport"></p>
-</li>
-<li><p>善于使用索引工具，如OpenGrok</p>
-<p>外网可以参考：<a href="http://androidxref.com" target="_blank" rel="noopener">AndroidXRef</a></p>
-<p>内网可以参考：<a href="http://200.200.137.175:8080/source" target="_blank" rel="noopener">AndroidOS4C</a>, 内网有权限控制</p>
-<p><img src="/assets/Courses/Courses01_android_test_skills_4.png" alt="AndroidXRef"></p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/04/16/android-test-skills/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1199,6 +1534,166 @@ ps -t -p -P # with thread
 </li>
 <li><p>查看、设置属性信息</p>
 <p> getprop<br> setprop</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/04/16/android-test-skills2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/04/16/android-test-skills2/" itemprop="url">课程1: Android测试技巧(二)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-16T00:00:00+08:00">2015-04-16</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/" itemprop="url" rel="index"><span itemprop="name">课程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Bug定位技巧"><a href="#Bug定位技巧" class="headerlink" title="Bug定位技巧"></a>Bug定位技巧</h1><p>今天比较匆忙，准备得不算很多；</p>
+<p>首先来针对一些普通的Bug来分析一下如何定位一个Bug的问题；</p>
+<p>一些方法运用好，可以更好的重现一些难以重现的问题，并或许还可以提供有效的Bug解决方法。</p>
+<ol>
+<li><p>日志输出，依据logcat输出的<strong>进程号</strong>来定位问题（如EasyConnect，以下截图仅举例）：</p>
+<p><img src="/assets/Courses/Courses01_android_test_skills_1.png" alt="logcat-pid"></p>
+</li>
+<li><p>日志输出，依据Logcat输出的<strong>详细时间</strong>来定位问题（如发现问题的那一分钟内、以下截图仅举例）：</p>
+<p><img src="/assets/Courses/Courses01_android_test_skills_2.png" alt="logcat-time"></p>
+</li>
+<li><p>输出报告，adb bugreport</p>
+<p><img src="/assets/Courses/Courses01_android_test_skills_3.png" alt="adbBugReport"></p>
+</li>
+<li><p>善于使用索引工具，如OpenGrok</p>
+<p>外网可以参考：<a href="http://androidxref.com" target="_blank" rel="noopener">AndroidXRef</a></p>
+<p>内网可以参考：<a href="http://200.200.137.175:8080/source" target="_blank" rel="noopener">AndroidOS4C</a>, 内网有权限控制</p>
+<p><img src="/assets/Courses/Courses01_android_test_skills_4.png" alt="AndroidXRef"></p>
 </li>
 </ol>
 
@@ -1444,7 +1939,7 @@ zipalign -v 4 out.apk release.apk
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1518,7 +2013,13 @@ zipalign -v 4 out.apk release.apk
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1749,19 +2250,6 @@ zipalign -v 4 out.apk release.apk
 
 
 
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=6.0.5"></script>
-
-
 
   
 
@@ -1774,6 +2262,12 @@ zipalign -v 4 out.apk release.apk
 
   
   
+    
+      
+    
+      
+    
+      
     
       
     

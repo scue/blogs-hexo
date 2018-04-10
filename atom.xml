@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://linkscue.com/"/>
-  <updated>2018-03-12T05:10:36.613Z</updated>
+  <updated>2018-04-10T10:15:19.545Z</updated>
   <id>http://linkscue.com/</id>
   
   <author>
@@ -17,15 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>寻找最长不含有重复字符的子串</title>
-    <link href="http://linkscue.com/2018/03/03/go-imooc-find-not-repeat-sub-string/"/>
-    <id>http://linkscue.com/2018/03/03/go-imooc-find-not-repeat-sub-string/</id>
-    <published>2018-03-02T16:00:00.000Z</published>
-    <updated>2018-03-12T05:10:36.613Z</updated>
+    <title>使用Node.js来写一个文件上传服务器</title>
+    <link href="http://linkscue.com/2018/04/10/2018-04-10-nodejs-koa-handle-put-upload-file/"/>
+    <id>http://linkscue.com/2018/04/10/2018-04-10-nodejs-koa-handle-put-upload-file/</id>
+    <published>2018-04-10T09:57:27.515Z</published>
+    <updated>2018-04-10T10:15:19.545Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;寻找最长不含有重复字符的子串&lt;/p&gt;
+      一个可以接收curl --upload-file文件上传的服务器
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Node.js" scheme="http://linkscue.com/tags/Node-js/"/>
+    
+      <category term="KOA" scheme="http://linkscue.com/tags/KOA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GO完全静态编译</title>
+    <link href="http://linkscue.com/2018/03/12/2018-03-12-go-static-build/"/>
+    <id>http://linkscue.com/2018/03/12/2018-03-12-go-static-build/</id>
+    <published>2018-03-12T09:18:31.417Z</published>
+    <updated>2018-03-12T09:21:53.485Z</updated>
+    
+    <summary type="html">
+    
+      CGO_ENABLED=0 go build --ldflags &quot;-extldflags -static&quot;
     
     </summary>
     
@@ -33,6 +55,28 @@
     
     
       <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GOPM的使用方式</title>
+    <link href="http://linkscue.com/2018/03/12/2018-03-12-go-gopm/"/>
+    <id>http://linkscue.com/2018/03/12/2018-03-12-go-gopm/</id>
+    <published>2018-03-12T09:14:03.217Z</published>
+    <updated>2018-03-12T09:17:24.574Z</updated>
+    
+    <summary type="html">
+    
+      使用gopm的时候绕了一些弯子，仅作记录
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+      <category term="gopm" scheme="http://linkscue.com/tags/gopm/"/>
     
   </entry>
   
@@ -54,6 +98,26 @@
     
     
       <category term="Math" scheme="http://linkscue.com/tags/Math/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>寻找最长不含有重复字符的子串</title>
+    <link href="http://linkscue.com/2018/03/03/go-imooc-find-not-repeat-sub-string/"/>
+    <id>http://linkscue.com/2018/03/03/go-imooc-find-not-repeat-sub-string/</id>
+    <published>2018-03-02T16:00:00.000Z</published>
+    <updated>2018-03-12T05:10:36.613Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;寻找最长不含有重复字符的子串&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
     
   </entry>
   
@@ -111,6 +175,28 @@
   </entry>
   
   <entry>
+    <title>GO指南 练习：斐波纳契闭包</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/</id>
+    <published>2018-02-27T16:00:00.000Z</published>
+    <updated>2018-03-12T05:12:50.335Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;练习：斐波纳契闭包&lt;/p&gt;
+&lt;p&gt;让我们用函数做些好玩的事情。&lt;/p&gt;
+&lt;p&gt;实现一个 &lt;code&gt;fibonacci&lt;/code&gt; 函数，它返回一个函数（闭包）， 该闭包返回一个斐波纳契数列 &lt;code&gt;(0, 1, 1, 2, 3, 5, ...)&lt;/code&gt; 。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>GO指南 练习：循环与函数</title>
     <link href="http://linkscue.com/2018/02/28/go-tour-practice-flow-control/"/>
     <id>http://linkscue.com/2018/02/28/go-tour-practice-flow-control/</id>
@@ -120,47 +206,6 @@
     <summary type="html">
     
       牛顿法实现平方根函数
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：rot13Reader</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-rot13/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-rot13/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:12:14.623Z</updated>
-    
-    <summary type="html">
-    
-      描述
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：错误</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-error/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-error/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:13:19.252Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;练习：错误&lt;br&gt;从之前的练习中（牛顿平方根方法）复制 Sqrt 函数，修改它使其返回 error 值。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Sqrt&lt;/code&gt; 接受到一个负数时，应当返回一个非 nil 的错误值。复数同样也不被支持。&lt;/p&gt;
     
     </summary>
     
@@ -195,38 +240,15 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：斐波纳契闭包</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/</id>
+    <title>GO指南 练习：rot13Reader</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-rot13/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-rot13/</id>
     <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:12:50.335Z</updated>
+    <updated>2018-03-12T05:12:14.623Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;练习：斐波纳契闭包&lt;/p&gt;
-&lt;p&gt;让我们用函数做些好玩的事情。&lt;/p&gt;
-&lt;p&gt;实现一个 &lt;code&gt;fibonacci&lt;/code&gt; 函数，它返回一个函数（闭包）， 该闭包返回一个斐波纳契数列 &lt;code&gt;(0, 1, 1, 2, 3, 5, ...)&lt;/code&gt; 。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：Reader</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-reader/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-reader/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:14:35.906Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;练习：Reader&lt;/p&gt;
-&lt;p&gt;实现一个 Reader 类型，它产生一个 ASCII 字符 &lt;code&gt;&amp;#39;A&amp;#39;&lt;/code&gt; 的无限流。&lt;/p&gt;
+      描述
     
     </summary>
     
@@ -265,6 +287,27 @@
   </entry>
   
   <entry>
+    <title>GO指南 练习：错误</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-error/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-error/</id>
+    <published>2018-02-27T16:00:00.000Z</published>
+    <updated>2018-03-12T05:13:19.252Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;练习：错误&lt;br&gt;从之前的练习中（牛顿平方根方法）复制 Sqrt 函数，修改它使其返回 error 值。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Sqrt&lt;/code&gt; 接受到一个负数时，应当返回一个非 nil 的错误值。复数同样也不被支持。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>GO指南 练习：切片</title>
     <link href="http://linkscue.com/2018/02/28/go-tour-practice-slice/"/>
     <id>http://linkscue.com/2018/02/28/go-tour-practice-slice/</id>
@@ -274,6 +317,27 @@
     <summary type="html">
     
       描述
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GO指南 练习：Reader</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-reader/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-reader/</id>
+    <published>2018-02-27T16:00:00.000Z</published>
+    <updated>2018-03-12T05:14:35.906Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;练习：Reader&lt;/p&gt;
+&lt;p&gt;实现一个 Reader 类型，它产生一个 ASCII 字符 &lt;code&gt;&amp;#39;A&amp;#39;&lt;/code&gt; 的无限流。&lt;/p&gt;
     
     </summary>
     
@@ -301,138 +365,6 @@
     
     
       <category term="linux" scheme="http://linkscue.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>获取iOS设备信息</title>
-    <link href="http://linkscue.com/2018/02/08/iOS-get-device-info/"/>
-    <id>http://linkscue.com/2018/02/08/iOS-get-device-info/</id>
-    <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.234Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;这是我做一个iOS版本运维App的时候写的代码，记录一下：&lt;/p&gt;
-&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="iOS" scheme="http://linkscue.com/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Laravel 从零开始入门-laradock</title>
-    <link href="http://linkscue.com/2018/02/08/laravel-laradock-getting-start/"/>
-    <id>http://linkscue.com/2018/02/08/laravel-laradock-getting-start/</id>
-    <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.246Z</updated>
-    
-    <summary type="html">
-    
-      Docker环境
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Laravel" scheme="http://linkscue.com/tags/Laravel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS获取应用程序信息</title>
-    <link href="http://linkscue.com/2018/02/08/iOS-get-app-info/"/>
-    <id>http://linkscue.com/2018/02/08/iOS-get-app-info/</id>
-    <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.229Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;主要获取了APP应用程序名、以及版本号。&lt;/p&gt;
-&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="iOS" scheme="http://linkscue.com/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Web JavaScript调用Android原生应用代码</title>
-    <link href="http://linkscue.com/2018/02/08/android-webview-javascript-call-native-code/"/>
-    <id>http://linkscue.com/2018/02/08/android-webview-javascript-call-native-code/</id>
-    <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.129Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;使WebView可以调用原生应用的代码，通过注册Event事件的形式&lt;/p&gt;
-&lt;p&gt;简单的调用方法是：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Android" scheme="http://linkscue.com/tags/Android/"/>
-    
-      <category term="md5sum" scheme="http://linkscue.com/tags/md5sum/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Gradle离线更新</title>
-    <link href="http://linkscue.com/2018/02/08/android-gradle-offline-update/"/>
-    <id>http://linkscue.com/2018/02/08/android-gradle-offline-update/</id>
-    <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2018-03-11T05:11:44.830Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;从&lt;a href=&quot;https://downloads.gradle.org/distributions/gradle-3.3-all.zip&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Android" scheme="http://linkscue.com/tags/Android/"/>
-    
-      <category term="Gradle" scheme="http://linkscue.com/tags/Gradle/"/>
     
   </entry>
   
@@ -466,11 +398,11 @@
   </entry>
   
   <entry>
-    <title>Android Studio 使用笔记</title>
-    <link href="http://linkscue.com/2015/09/01/android-studio-usage/"/>
-    <id>http://linkscue.com/2015/09/01/android-studio-usage/</id>
-    <published>2015-08-31T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.106Z</updated>
+    <title>获取iOS设备信息</title>
+    <link href="http://linkscue.com/2018/02/08/iOS-get-device-info/"/>
+    <id>http://linkscue.com/2018/02/08/iOS-get-device-info/</id>
+    <published>2018-02-07T16:00:00.000Z</published>
+    <updated>2018-03-12T01:57:15.234Z</updated>
     
     <summary type="html">
     
@@ -478,7 +410,8 @@
       
         
         
-          &lt;h2 id=&quot;下载链接&quot;&gt;&lt;a href=&quot;#下载链接&quot; class=&quot;headerlink&quot; title=&quot;下载链接&quot;&gt;&lt;/a&gt;下载链接&lt;/h2&gt;&lt;p&gt;官方网站: &lt;a
+          &lt;p&gt;这是我做一个iOS版本运维App的时候写的代码，记录一下：&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
         
       
     
@@ -487,7 +420,54 @@
       <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="Studio" scheme="http://linkscue.com/tags/Studio/"/>
+      <category term="iOS" scheme="http://linkscue.com/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS获取应用程序信息</title>
+    <link href="http://linkscue.com/2018/02/08/iOS-get-app-info/"/>
+    <id>http://linkscue.com/2018/02/08/iOS-get-app-info/</id>
+    <published>2018-02-07T16:00:00.000Z</published>
+    <updated>2018-03-12T01:57:15.229Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;主要获取了APP应用程序名、以及版本号。&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="iOS" scheme="http://linkscue.com/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Laravel 从零开始入门-laradock</title>
+    <link href="http://linkscue.com/2018/02/08/laravel-laradock-getting-start/"/>
+    <id>http://linkscue.com/2018/02/08/laravel-laradock-getting-start/</id>
+    <published>2018-02-07T16:00:00.000Z</published>
+    <updated>2018-03-12T01:57:15.246Z</updated>
+    
+    <summary type="html">
+    
+      Docker环境
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Laravel" scheme="http://linkscue.com/tags/Laravel/"/>
     
   </entry>
   

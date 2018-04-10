@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.5">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.5" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.5',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Node.js,KOA," />
+
+
+<meta name="description" content="一个可以接收curl --upload-file文件上传的服务器">
+<meta name="keywords" content="Node.js,KOA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Node.js来写一个文件上传服务器">
+<meta property="og:url" content="http://linkscue.com/2018/04/10/2018-04-10-nodejs-koa-handle-put-upload-file/index.html">
+<meta property="og:site_name" content="Linkscue&#39;s blogs">
+<meta property="og:description" content="一个可以接收curl --upload-file文件上传的服务器">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-10T10:15:19.545Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Node.js来写一个文件上传服务器">
+<meta name="twitter:description" content="一个可以接收curl --upload-file文件上传的服务器">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Linkscue's blogs" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://linkscue.com/2018/04/10/2018-04-10-nodejs-koa-handle-put-upload-file/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>使用Node.js来写一个文件上传服务器 | Linkscue's blogs</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Linkscue's blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">清風有情君意愜, 夢徊怡江詩心緣。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/04/10/2018-04-10-nodejs-koa-handle-put-upload-file/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用Node.js来写一个文件上传服务器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T17:57:27+08:00">2018-04-10</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">一个可以接收curl --upload-file文件上传的服务器</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="背景描述"><a href="#背景描述" class="headerlink" title="背景描述"></a>背景描述</h1><p>现在的项目越来越多，要求将玩客云小矿机进行日志文件上传的需要也越来越多。</p>
+<p>通过这一篇文章，我们可以学习到如果使用Node.js来处理文件上传，包含兼容一下旧的<code>curl --upload-file</code>。</p>
+<h1 id="如何上传"><a href="#如何上传" class="headerlink" title="如何上传"></a>如何上传</h1><p>一般我会使用如下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -F <span class="string">'files=@log.tgz'</span> https://upload-logs.myserver.com/upload</span><br></pre></td></tr></table></figure>
+<p>通常以上的命令就足够了，但对于兼容性不太好的一些平台，可能使用这个命令不能正常上传，我会改用如下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -T XXX.log -H <span class="string">"filename: XXX.log"</span> https://upload-logs.myserver.com/upload</span><br></pre></td></tr></table></figure>
+<p>第一个命令，默认是走POST方式，而第二个命令走的是PUT方式，我们来分别写一个对应的代码：</p>
+<h2 id="POST方式"><a href="#POST方式" class="headerlink" title="POST方式"></a>POST方式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mkdirp = <span class="built_in">require</span>(<span class="string">"mkdirp"</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs-extra"</span>);</span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">"config"</span>);</span><br><span class="line"><span class="keyword">const</span> multer = <span class="built_in">require</span>(<span class="string">"koa-multer"</span>);</span><br><span class="line"><span class="keyword">const</span> moment = <span class="built_in">require</span>(<span class="string">"moment"</span>);</span><br><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">"koa-router"</span>);</span><br><span class="line"><span class="keyword">const</span> logger = <span class="built_in">require</span>(<span class="string">"./logger"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// save path</span></span><br><span class="line"><span class="keyword">const</span> save_path = <span class="string">"/tmp/upload-logs"</span>;</span><br><span class="line">mkdirp.sync(save_path);</span><br><span class="line"></span><br><span class="line"><span class="comment">// config upload storage</span></span><br><span class="line"><span class="keyword">const</span> storage = multer.diskStorage(&#123;</span><br><span class="line">  destination: <span class="function"><span class="keyword">function</span>(<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line">    cb(<span class="literal">null</span>, save_path);</span><br><span class="line">  &#125;,</span><br><span class="line">  filename: <span class="function"><span class="keyword">function</span>(<span class="params">req, file, cb</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> time = moment().format(<span class="string">"YYYY-MM-DD_HH-mm-ss"</span>);</span><br><span class="line">    cb(<span class="literal">null</span>, <span class="string">`<span class="subst">$&#123;time&#125;</span>__<span class="subst">$&#123;file.originalname&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> upload = multer(&#123; <span class="attr">storage</span>: storage &#125;);</span><br><span class="line"></span><br><span class="line">router.post(</span><br><span class="line">  <span class="string">"/upload"</span>,</span><br><span class="line">  upload.fields([&#123; <span class="attr">name</span>: <span class="string">"files"</span>, <span class="attr">maxCount</span>: <span class="number">1</span> &#125;]),</span><br><span class="line">  <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> log = ctx.req.files.files[<span class="number">0</span>];</span><br><span class="line">    logger.info(</span><br><span class="line">      <span class="string">`save a file: <span class="subst">$&#123;log.originalname&#125;</span>, size: <span class="subst">$&#123;log.size&#125;</span> =&gt; <span class="subst">$&#123;log.path&#125;</span>`</span></span><br><span class="line">    );</span><br><span class="line">    ctx.body = &#123;</span><br><span class="line">      message: <span class="string">"OK"</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>其实这个很容易，主要是使用了<code>koa-multer</code>来处理，网上到处都有类似的代码，这里就不再阐述了。</p>
+<h2 id="PUT方式"><a href="#PUT方式" class="headerlink" title="PUT方式"></a>PUT方式</h2><p>PUT方式比较复杂一点，也花费了我不少的时间去处理这个问题，先上代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">router.put(<span class="string">"/upload"</span>, <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> time = moment().format(<span class="string">"YYYY-MM-DD_HH-mm-ss"</span>);</span><br><span class="line">  <span class="keyword">let</span> filename =</span><br><span class="line">    (ctx.headers.filename &amp;&amp;</span><br><span class="line">      <span class="built_in">decodeURIComponent</span>(<span class="built_in">escape</span>(ctx.headers.filename))) ||</span><br><span class="line">    <span class="string">"unknown.bin"</span>;</span><br><span class="line">  <span class="keyword">let</span> savefile = <span class="string">`<span class="subst">$&#123;save_path&#125;</span>/<span class="subst">$&#123;time&#125;</span>__<span class="subst">$&#123;filename&#125;</span>`</span>;</span><br><span class="line">  logger.info(<span class="string">`Received a file: <span class="subst">$&#123;filename&#125;</span>, length: <span class="subst">$&#123;ctx.request.length&#125;</span>`</span>);</span><br><span class="line">  fs.removeSync(savefile);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// recv data from socket</span></span><br><span class="line">  ctx.req.socket.on(<span class="string">"data"</span>, <span class="keyword">async</span> data =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> fs.appendFileSync(savefile, data);</span><br><span class="line">    <span class="comment">// logger.info("appended +", data.length);</span></span><br><span class="line">  &#125;);</span><br><span class="line">  ctx.req.socket.on(<span class="string">"end"</span>, () =&gt; &#123;</span><br><span class="line">    logger.info(<span class="string">`Saved to <span class="subst">$&#123;savefile&#125;</span>`</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  ctx.body = &#123;</span><br><span class="line">    message: <span class="string">"OK"</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>我花费了好长的时间去看koa的文件，发现<code>ctx.request</code>和<code>ctx.req</code>根本没有我想到的数据，只看到了一个长度<code>ctx.header.length</code>。</p>
+<p>随后我想它是不是还没有把数据收上来，所以我就注意了一下<code>ctx.req.socket</code>这一个变量，然后尝试去<code>read</code>它，发现<code>read()</code>方法返回的也是null，完全没有数据。</p>
+<p>随后我在官网上找到了一个关于socket的例子 <a href="https://nodejs.org/api/net.html#net_net_createconnection_options_connectlistener" target="_blank" rel="noopener">https://nodejs.org/api/net.html#net_net_createconnection_options_connectlistener</a> 发现人家是使用事件监听的机制去读取socket里边的内容的。</p>
+<p>于是就有了如下的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ctx.req.socket.on(<span class="string">"data"</span>, <span class="keyword">async</span> data =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> fs.appendFileSync(savefile, data);</span><br><span class="line">    <span class="comment">// logger.info("appended +", data.length);</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>All Done，希望这个文章能帮助只在阅读的你。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node-js/" rel="tag"># Node.js</a>
+          
+            <a href="/tags/KOA/" rel="tag"># KOA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/12/2018-03-12-go-static-build/" rel="next" title="GO完全静态编译">
+                <i class="fa fa-chevron-left"></i> GO完全静态编译
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/assets/images/avatar.png"
+                alt="linkscue(scue)" />
+            
+              <p class="site-author-name" itemprop="name">linkscue(scue)</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/scue" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:scue@vip.qq.com" target="_blank" title="邮箱"><i class="fa fa-fw fa-envelope"></i>邮箱</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/scue" target="_blank" title="微博"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.douban.com/people/scue/" target="_blank" title="豆瓣"><i class="fa fa-fw fa-book"></i>豆瓣</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景描述"><span class="nav-number">1.</span> <span class="nav-text">背景描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何上传"><span class="nav-number">2.</span> <span class="nav-text">如何上传</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#POST方式"><span class="nav-number">2.1.</span> <span class="nav-text">POST方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PUT方式"><span class="nav-number">2.2.</span> <span class="nav-text">PUT方式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">linkscue(scue)</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.5</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.5"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
