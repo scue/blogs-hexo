@@ -316,6 +316,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/04/16/android-test-skills/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/04/16/android-test-skills/" itemprop="url">课程1: Android测试技巧(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-16T00:00:00+08:00">2015-04-16</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/" itemprop="url" rel="index"><span itemprop="name">课程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h1><p>主题：主要讲解一些常用的一些命令行，及定位问题的方法</p>
+<ol>
+<li><p>抓图：screencap</p>
+<pre><code>screencap -p /sdcard/Pictures/ScreenShot_$(date +%F_%H-%M-%S).png
+</code></pre></li>
+<li><p>Kernel版本信息：</p>
+<pre><code>cat /proc/version
+</code></pre></li>
+<li><p>Kernel接收传入参数：</p>
+<pre><code>cat /proc/cmdline
+</code></pre></li>
+<li><p>清空并抓取Logcat日志：</p>
+<pre><code>adb logcat -c &amp;&amp; adb logcat -v threadtime
+</code></pre></li>
+<li><p>Logcat日志显示详细时间、进程名称：</p>
+<pre><code>adb logcat -v threadtime
+</code></pre></li>
+<li><p>Top显示占用CPU、内存最多的应用程序:</p>
+<pre><code>adb shell
+for n in $(busybox seq 1 100); do top -m 5 -d 3 -t -n 1 | \
+    busybox awk &apos;{now=strftime(&quot;%Y-%M-%d %T &quot;); print now $0}’ done
+</code></pre></li>
+<li><p>Vmstat输出信息查看及分析（各列定义及问题排查见另一篇文档）：</p>
+<pre><code>adb shell vmstat -d 3 -n 100 | busybox awk &apos;{now=strftime(&quot;%Y-%M-%d %T &quot;); print now $0}&apos;
+</code></pre></li>
+<li><p>网络分析：</p>
+<pre><code>adb shell netcfg
+# or
+adb busybox ifconfig -a
+</code></pre></li>
+<li><p>查看进程：</p>
+<pre><code>ps -P
+ps -t -p -P # with thread
+</code></pre><p>| 参数 | 含义 |<br>|——–|——–|<br>|USER  | 进程的当前用户；|<br>|PID   | process ID的缩写，也就进程号；|<br>|PPID  | process parent ID，父进程ID|<br>|VSIZE | virtual size，进程虚拟地址空间大小；|<br>|RSS   | 进程正在使用的物理内存的大小；|<br>|WCHAN | 进程如果处于休眠状态的话，在内核中的地址；|<br>|PC    | program counter，|<br>|NAME  | process name，进程的名称|<br>|NICE  | 进程优先级|<br>|SCHED | 进程调度|</p>
+</li>
+<li><p>查看存储空间：</p>
+<p>   df<br>   busybox df</p>
+</li>
+<li><p>查看数据库：</p>
+<p> sqlite3 /path/to/xx.db</p>
+</li>
+<li><p>查看内存信息：</p>
+<p> cat /proc/meminfo<br> busybox free<br> vmstat</p>
+</li>
+<li><p>分辨率信息：</p>
+<p> find /sys -iname “<em>vga</em>”<br> /sys/devices/platform/rk30_i2c.2/i2c-2/2-0050/display/display0.VGA/mode # 通过上一行获得</p>
+</li>
+<li><p>查看、设置属性信息</p>
+<p> getprop<br> setprop</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/04/16/android-test-skills2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -666,7 +858,7 @@ zipalign -v 4 out.apk release.apk
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -683,7 +875,9 @@ zipalign -v 4 out.apk release.apk
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -754,7 +948,9 @@ zipalign -v 4 out.apk release.apk
                     
                       
                     
-                    <span class="site-state-item-count">28</span>
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1010,6 +1206,8 @@ zipalign -v 4 out.apk release.apk
 
   
   
+    
+      
     
       
     

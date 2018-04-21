@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://linkscue.com/"/>
-  <updated>2018-04-21T09:13:08.360Z</updated>
+  <updated>2018-04-21T15:41:13.368Z</updated>
   <id>http://linkscue.com/</id>
   
   <author>
@@ -17,23 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>一句话阐述我所理解的「中庸」</title>
+    <link href="http://linkscue.com/2018/04/21/2018-04-21-a-statement-to-understanding-moderation/"/>
+    <id>http://linkscue.com/2018/04/21/2018-04-21-a-statement-to-understanding-moderation/</id>
+    <published>2018-04-21T15:24:53.427Z</published>
+    <updated>2018-04-21T15:41:13.368Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;樊登读书会的书籍听多了，自己也有一些感悟，尤其是一些樊老师经常提到的，一直想写下来，就趁着今天更新博客一起写了。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="读书" scheme="http://linkscue.com/categories/%E8%AF%BB%E4%B9%A6/"/>
+    
+    
+      <category term="中庸" scheme="http://linkscue.com/tags/%E4%B8%AD%E5%BA%B8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MacOS Witch应用程序切换使用心得</title>
     <link href="http://linkscue.com/2018/04/21/2018-04-21-macos-witch-useful-tips/"/>
     <id>http://linkscue.com/2018/04/21/2018-04-21-macos-witch-useful-tips/</id>
     <published>2018-04-21T07:52:46.355Z</published>
-    <updated>2018-04-21T09:13:08.360Z</updated>
+    <updated>2018-04-21T15:22:40.850Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;MacOS原生自带的Cmd+Tab虽然可以满足大多数情况下的操作，但也有一些缺点，比如有应用程序最小化之后，将它重新显示到你的前面还需要再按Alt，感觉不够方便，而为此我还专门购了一个Witch，感觉还不错。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;使最小化的App可以直接打开&lt;br&gt;&lt;
-        
-      
+      &lt;p&gt;MacOS原生自带的Cmd+Tab虽然可以满足大多数情况下的操作，但也有一些缺点，比如有应用程序最小化之后，将它重新显示到你的前面还需要再按Alt，感觉不够方便，而为此我还专门购了一个Witch，感觉还不错。&lt;/p&gt;
     
     </summary>
     
@@ -247,17 +259,15 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：斐波纳契闭包</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/</id>
+    <title>GO指南 练习：循环与函数</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-flow-control/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-flow-control/</id>
     <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:12:50.335Z</updated>
+    <updated>2018-03-12T01:57:15.191Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;练习：斐波纳契闭包&lt;/p&gt;
-&lt;p&gt;让我们用函数做些好玩的事情。&lt;/p&gt;
-&lt;p&gt;实现一个 &lt;code&gt;fibonacci&lt;/code&gt; 函数，它返回一个函数（闭包）， 该闭包返回一个斐波纳契数列 &lt;code&gt;(0, 1, 1, 2, 3, 5, ...)&lt;/code&gt; 。&lt;/p&gt;
+      牛顿法实现平方根函数
     
     </summary>
     
@@ -333,15 +343,17 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：循环与函数</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-flow-control/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-flow-control/</id>
+    <title>GO指南 练习：斐波纳契闭包</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/</id>
     <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.191Z</updated>
+    <updated>2018-03-12T05:12:50.335Z</updated>
     
     <summary type="html">
     
-      牛顿法实现平方根函数
+      &lt;p&gt;练习：斐波纳契闭包&lt;/p&gt;
+&lt;p&gt;让我们用函数做些好玩的事情。&lt;/p&gt;
+&lt;p&gt;实现一个 &lt;code&gt;fibonacci&lt;/code&gt; 函数，它返回一个函数（闭包）， 该闭包返回一个斐波纳契数列 &lt;code&gt;(0, 1, 1, 2, 3, 5, ...)&lt;/code&gt; 。&lt;/p&gt;
     
     </summary>
     
@@ -437,36 +449,6 @@
     
     
       <category term="linux" scheme="http://linkscue.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Web JavaScript调用Android原生应用代码</title>
-    <link href="http://linkscue.com/2018/02/08/android-webview-javascript-call-native-code/"/>
-    <id>http://linkscue.com/2018/02/08/android-webview-javascript-call-native-code/</id>
-    <published>2018-02-07T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.129Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;使WebView可以调用原生应用的代码，通过注册Event事件的形式&lt;/p&gt;
-&lt;p&gt;简单的调用方法是：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Android" scheme="http://linkscue.com/tags/Android/"/>
-    
-      <category term="md5sum" scheme="http://linkscue.com/tags/md5sum/"/>
     
   </entry>
   
