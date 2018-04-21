@@ -111,18 +111,18 @@
 <meta property="og:site_name" content="Linkscue&#39;s blogs">
 <meta property="og:description" content="相关背景其实我也不知道MTR是干嘛使用的，不过我大致知道它是一个网络诊断工具，源码是使用C/C++编写的。 它的源码位于https://github.com/traviscross/mtr。 我们去官网看看README.md，大致长这样子的：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://linkscue.com/2018/04/10/2018-04-10-how-to-cross-build-mtr/media/15233577484017.jpg">
-<meta property="og:image" content="http://linkscue.com/2018/04/10/2018-04-10-how-to-cross-build-mtr/media/15233577684457.jpg">
-<meta property="og:image" content="http://linkscue.com/2018/04/10/2018-04-10-how-to-cross-build-mtr/media/15233579720245.jpg">
-<meta property="og:image" content="http://linkscue.com/2018/04/10/2018-04-10-how-to-cross-build-mtr/media/15233580005006.jpg">
-<meta property="og:image" content="http://linkscue.com/2018/04/10/2018-04-10-how-to-cross-build-mtr/media/15233580258211.jpg">
-<meta property="og:image" content="http://linkscue.com/2018/04/10/2018-04-10-how-to-cross-build-mtr/media/15233580745445.jpg">
-<meta property="og:image" content="http://linkscue.com/2018/04/10/2018-04-10-how-to-cross-build-mtr/media/15233580525823.jpg">
-<meta property="og:updated_time" content="2018-04-10T11:14:27.795Z">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5fj41xj20u80jaq88">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5hcnkwj20lm0dqtct">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5hcqitj20o10ieteo">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5h7xrij20o10ie79w">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5egjd4j20ht06c757">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5gv17tj20rc0l8wpw">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5f4isjj20r503sq3t">
+<meta property="og:updated_time" content="2018-04-21T00:32:20.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手把手教你如何交叉编译MTR二进制程序">
 <meta name="twitter:description" content="相关背景其实我也不知道MTR是干嘛使用的，不过我大致知道它是一个网络诊断工具，源码是使用C/C++编写的。 它的源码位于https://github.com/traviscross/mtr。 我们去官网看看README.md，大致长这样子的：">
-<meta name="twitter:image" content="http://linkscue.com/2018/04/10/2018-04-10-how-to-cross-build-mtr/media/15233577484017.jpg">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5fj41xj20u80jaq88">
 
 
 
@@ -254,9 +254,44 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -381,7 +416,7 @@
 <p>它的源码位于<code>https://github.com/traviscross/mtr</code>。</p>
 <p>我们去官网看看README.md，大致长这样子的：</p>
 <a id="more"></a>
-<p><img src="media/15233577484017.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5fj41xj20u80jaq88" alt=""></p>
 <p>Don’t panic，一切都是如此简单，我们只需要一个Docker环境就，配合使用<code>dockcross/linux-armv7</code>可以进行交叉编译了。</p>
 <p><strong> 你有疑问？</strong></p>
 <ol>
@@ -391,13 +426,13 @@
 </li>
 </ol>
 <h1 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/traviscross/mtr</span><br></pre></td></tr></table></figure>
-<p><img src="media/15233577684457.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5hcnkwj20lm0dqtct" alt=""></p>
 <h1 id="进入交叉编译环境"><a href="#进入交叉编译环境" class="headerlink" title="进入交叉编译环境"></a>进入交叉编译环境</h1><p>如果你已经安装好了docker环境，直接运行以下命令（若找不到镜像它会自动下载）</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -it -v <span class="variable">$PWD</span>/mtr:/work dockcross/linux-armv7 bash</span><br></pre></td></tr></table></figure>
 <h1 id="编译ARM版本的二进制文件"><a href="#编译ARM版本的二进制文件" class="headerlink" title="编译ARM版本的二进制文件"></a>编译ARM版本的二进制文件</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bootstrap.sh &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<p><img src="media/15233579720245.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5hcqitj20o10ieteo" alt=""></p>
 <p>我们检查一下它安装的二进制文件：</p>
-<p><img src="media/15233580005006.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5h7xrij20o10ie79w" alt=""></p>
 <p>发现安装的是<code>mtr</code>和<code>mtr-packet</code>文件（当然，这只是安装到你的Docker容器里边，与宿主机没有一毛钱关系）。</p>
 <h1 id="确认一下依赖库"><a href="#确认一下依赖库" class="headerlink" title="确认一下依赖库"></a>确认一下依赖库</h1><p>有一些二进制运行的时候，有依赖库文件，检查二进制依赖哪些库，可以使用<code>ldd</code>命令 ，如下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ldd /bin/grep</span></span><br><span class="line"> linux-vdso.so.1 (0x00007ffcdb99c000)</span><br><span class="line"> libpcre.so.3 =&gt; /lib/x86_64-linux-gnu/libpcre.so.3 (0x00007ff9c907b000)</span><br><span class="line"> libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.so.2 (0x00007ff9c8e77000)</span><br><span class="line"> libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007ff9c8acc000)</span><br><span class="line"> libpthread.so.0 =&gt; /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007ff9c88af000)</span><br><span class="line"> /lib64/ld-linux-x86-64.so.2 (0x00007ff9c951c000)</span><br></pre></td></tr></table></figure>
@@ -410,12 +445,12 @@
 <p>其中的<code>/thunder/lib</code>是一般都是手工在脚本里边去添加的<code>LD_LIBRARY_PATH</code>变量里边去的。</p>
 <p>我们可以通过一个脚本去检查这些动态库是否存在，比如我写了一个简单的检查脚本，位于 <a href="https://gist.github.com/scue/c8879958ea76dcbc1463eda4ada4e768" target="_blank" rel="noopener">https://gist.github.com/scue/c8879958ea76dcbc1463eda4ada4e768</a> </p>
 <p>通过检查得到，发现libtinfo.so是查找不到的，如下：</p>
-<p><img src="media/15233580258211.jpg" alt=""></p>
-<h1 id="一种解决方式"><a href="#一种解决方式" class="headerlink" title="一种解决方式"></a>一种解决方式</h1><p><img src="media/15233580745445.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5egjd4j20ht06c757" alt=""></p>
+<h1 id="一种解决方式"><a href="#一种解决方式" class="headerlink" title="一种解决方式"></a>一种解决方式</h1><p><img src="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5gv17tj20rc0l8wpw" alt=""></p>
 <p>解决方式有多种，一种是自己去下载libtinfo相关源码，然后自己编译，另一种是可以像我这样子直接看看<code>/app</code>目录之下是否有人已经编译出来了。</p>
 <p>总结起来就是如下几行命令：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find /app -name libtinfo.so\* <span class="comment"># 找到动态库</span></span><br><span class="line">cp /app/docker/aufs/diff/289eedd8bcde52c970e6a6439faa943fed1fe03629e4e0667402325c52026af0/lib/arm-linux-gnueabi/libtinfo.so.5 /tmp/lib/</span><br><span class="line"><span class="built_in">export</span> TERM=xterm</span><br><span class="line">/tmp/mtr <span class="comment"># 运行程序</span></span><br></pre></td></tr></table></figure>
-<p><img src="media/15233580525823.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5f4isjj20r503sq3t" alt=""></p>
 <p>All Done，如有问题，重新阅读一遍文章，保存此文章可以当作手册来使用。<code>(⊙o⊙)</code></p>
 
       
@@ -461,6 +496,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/20/2018-04-20-how-to-rescue-your-macbook/" rel="prev" title="关键时刻，拿什么来拯救你的Mac？">
+                关键时刻，拿什么来拯救你的Mac？ <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -538,7 +577,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -624,7 +663,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">27</span>
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -645,22 +686,22 @@
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/scue" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/scue" target="_blank" title="GitHub"><i class="fa fa-fw fa-globe"></i>GitHub</a>
                   
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="mailto:scue@vip.qq.com" target="_blank" title="邮箱"><i class="fa fa-fw fa-envelope"></i>邮箱</a>
+                  <a href="mailto:scue@vip.qq.com" target="_blank" title="邮箱"><i class="fa fa-fw fa-globe"></i>邮箱</a>
                   
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="https://weibo.com/scue" target="_blank" title="微博"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                  <a href="https://weibo.com/scue" target="_blank" title="微博"><i class="fa fa-fw fa-globe"></i>微博</a>
                   
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="https://www.douban.com/people/scue/" target="_blank" title="豆瓣"><i class="fa fa-fw fa-book"></i>豆瓣</a>
+                  <a href="https://www.douban.com/people/scue/" target="_blank" title="豆瓣"><i class="fa fa-fw fa-globe"></i>豆瓣</a>
                   
                 </span>
               
@@ -873,6 +914,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.0.5"></script>
 
 
 
