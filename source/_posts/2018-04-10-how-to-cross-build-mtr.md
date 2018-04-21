@@ -18,7 +18,7 @@ tags: [C/C++, MTR]
 
 <!-- more -->
 
-![](media/15233577484017.jpg)
+![](https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5fj41xj20u80jaq88)
 
 
 Don't panic，一切都是如此简单，我们只需要一个Docker环境就，配合使用`dockcross/linux-armv7`可以进行交叉编译了。
@@ -36,7 +36,7 @@ Don't panic，一切都是如此简单，我们只需要一个Docker环境就，
 git clone https://github.com/traviscross/mtr
 ```
 
-![](media/15233577684457.jpg)
+![](https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5hcnkwj20lm0dqtct)
 
 
 # 进入交叉编译环境
@@ -53,13 +53,13 @@ docker run --rm -it -v $PWD/mtr:/work dockcross/linux-armv7 bash
 ./bootstrap.sh && ./configure && make && make install
 ```
 
-![](media/15233579720245.jpg)
+![](https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5hcqitj20o10ieteo)
 
 
 
 我们检查一下它安装的二进制文件：
 
-![](media/15233580005006.jpg)
+![](https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5h7xrij20o10ie79w)
 
 
 发现安装的是`mtr`和`mtr-packet`文件（当然，这只是安装到你的Docker容器里边，与宿主机没有一毛钱关系）。
@@ -119,12 +119,12 @@ mtr: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked,
 
 通过检查得到，发现libtinfo.so是查找不到的，如下：
 
-![](media/15233580258211.jpg)
+![](https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5egjd4j20ht06c757)
 
 
 # 一种解决方式
 
-![](media/15233580745445.jpg)
+![](https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5gv17tj20rc0l8wpw)
 
 
 解决方式有多种，一种是自己去下载libtinfo相关源码，然后自己编译，另一种是可以像我这样子直接看看`/app`目录之下是否有人已经编译出来了。
@@ -138,7 +138,7 @@ export TERM=xterm
 /tmp/mtr # 运行程序
 ```
 
-![](media/15233580525823.jpg)
+![](https://ws1.sinaimg.cn/large/6e22ca27gy1fqjz5f4isjj20r503sq3t)
 
 
 All Done，如有问题，重新阅读一遍文章，保存此文章可以当作手册来使用。`(⊙o⊙)`
