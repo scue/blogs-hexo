@@ -74,6 +74,12 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
+# See: https://www.npmjs.com/package/hexo-algolia
+algolia:
+  applicationID: '884IXKDARU'
+  apiKey: '73268cbd2090d14ab01f9fd7b9874762'
+  indexName: 'hexo-blogs'
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
