@@ -84,9 +84,9 @@
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: '884IXKDARU',
+      apiKey: '73268cbd2090d14ab01f9fd7b9874762',
+      indexName: 'hexo-blogs',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -316,149 +316,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/iOS-get-device-info/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/08/iOS-get-device-info/" itemprop="url">获取iOS设备信息</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这是我做一个iOS版本运维App的时候写的代码，记录一下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> resolveDict = [</span><br><span class="line">    <span class="string">"systemName"</span>: <span class="type">UIDevice</span>.current.systemName,</span><br><span class="line">    <span class="string">"systemVersion"</span>: <span class="type">UIDevice</span>.current.systemVersion,</span><br><span class="line">    <span class="string">"identifierForVendor"</span>: <span class="type">UIDevice</span>.current.identifierForVendor?.description ?? <span class="string">""</span>,</span><br><span class="line">    <span class="string">"model"</span>: <span class="type">UIDevice</span>.current.model,</span><br><span class="line">    <span class="string">"localizedModel"</span>: <span class="type">UIDevice</span>.current.localizedModel</span><br><span class="line">    ]</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> json = <span class="keyword">try</span> <span class="type">JSONSerialization</span>.data(withJSONObject: resolveDict, options: []);</span><br><span class="line">    <span class="keyword">let</span> jsonStr = <span class="type">String</span>(data: json, encoding: .utf8);</span><br><span class="line">    resovler(jsonStr);</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    rejecter(<span class="string">"Get AppInfo error"</span>, error.localizedDescription, <span class="literal">nil</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/android-md5sum-string/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -549,149 +406,6 @@
           
             <p>之前找过一些版本，发现有一些使用场景下，md5sum会少一个字符，这对于一个已发布出去的版本是有一定的硬伤的。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">md5sum</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        MessageDigest mdEncoder;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mdEncoder = MessageDigest.getInstance(<span class="string">"MD5"</span>);</span><br><span class="line">            mdEncoder.update(str.getBytes(Charset.forName(<span class="string">"US-ASCII"</span>)), <span class="number">0</span>, str.length());</span><br><span class="line">            StringBuilder hexString = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">byte</span> b : mdEncoder.digest()) &#123;</span><br><span class="line">                hexString.append(String.format(<span class="string">"%02x"</span>, b&amp;<span class="number">0xff</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> hexString.toString();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/iOS-get-app-info/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/08/iOS-get-app-info/" itemprop="url">iOS获取应用程序信息</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>主要获取了APP应用程序名、以及版本号。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> infoDict = <span class="type">Bundle</span>.main.infoDictionary!;</span><br><span class="line"><span class="keyword">let</span> appDisplayName = infoDict[<span class="string">"CFBundleDisplayName"</span>];</span><br><span class="line"><span class="keyword">let</span> appShortVersion = infoDict[<span class="string">"CFBundleShortVersionString"</span>];</span><br><span class="line"><span class="keyword">let</span> appBuildVersion = infoDict[<span class="string">"CFBundleVersion"</span>];</span><br><span class="line"><span class="keyword">let</span> resolveDict = [</span><br><span class="line">    <span class="string">"appDisplayName"</span>: appDisplayName,</span><br><span class="line">    <span class="string">"appShortVersion"</span>: appShortVersion,</span><br><span class="line">    <span class="string">"appBuildVersion"</span>: appBuildVersion,</span><br><span class="line">]</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> json = <span class="keyword">try</span> <span class="type">JSONSerialization</span>.data(withJSONObject: resolveDict, options: []);</span><br><span class="line">    <span class="keyword">let</span> jsonStr = <span class="type">String</span>(data: json, encoding: .utf8);</span><br><span class="line">    resovler(jsonStr);</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    rejecter(<span class="string">"Get AppInfo error"</span>, error.localizedDescription, <span class="literal">nil</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -892,7 +606,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/laravel-laradock-getting-start/">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/iOS-get-app-info/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linkscue(scue)">
@@ -911,7 +625,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/08/laravel-laradock-getting-start/" itemprop="url">Laravel 从零开始入门-laradock</a></h1>
+                <a class="post-title-link" href="/2018/02/08/iOS-get-app-info/" itemprop="url">iOS获取应用程序信息</a></h1>
         
 
         <div class="post-meta">
@@ -979,14 +693,11 @@
 
       
         
-          Docker环境
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/08/laravel-laradock-getting-start/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>主要获取了APP应用程序名、以及版本号。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> infoDict = <span class="type">Bundle</span>.main.infoDictionary!;</span><br><span class="line"><span class="keyword">let</span> appDisplayName = infoDict[<span class="string">"CFBundleDisplayName"</span>];</span><br><span class="line"><span class="keyword">let</span> appShortVersion = infoDict[<span class="string">"CFBundleShortVersionString"</span>];</span><br><span class="line"><span class="keyword">let</span> appBuildVersion = infoDict[<span class="string">"CFBundleVersion"</span>];</span><br><span class="line"><span class="keyword">let</span> resolveDict = [</span><br><span class="line">    <span class="string">"appDisplayName"</span>: appDisplayName,</span><br><span class="line">    <span class="string">"appShortVersion"</span>: appShortVersion,</span><br><span class="line">    <span class="string">"appBuildVersion"</span>: appBuildVersion,</span><br><span class="line">]</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> json = <span class="keyword">try</span> <span class="type">JSONSerialization</span>.data(withJSONObject: resolveDict, options: []);</span><br><span class="line">    <span class="keyword">let</span> jsonStr = <span class="type">String</span>(data: json, encoding: .utf8);</span><br><span class="line">    resovler(jsonStr);</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    rejecter(<span class="string">"Get AppInfo error"</span>, error.localizedDescription, <span class="literal">nil</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -1133,6 +844,295 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@JavascriptInterface</span><br><span class="line">public String event(String params) &#123;</span><br><span class="line">    final String action = JSON.parseObject(params).getString(&quot;action&quot;);</span><br><span class="line">    final Event event = EventManager.getInstance().createEvent(action);</span><br><span class="line">    Logger.d(&quot;event: &quot; + params);</span><br><span class="line">    if (event != null) &#123;</span><br><span class="line">        event.setAction(action);</span><br><span class="line">        event.setDelegate(DELEGATE);</span><br><span class="line">        event.setContext(DELEGATE.getContext());</span><br><span class="line">        event.setUrl(DELEGATE.getUrl());</span><br><span class="line">        return event.execute(params);</span><br><span class="line">    &#125;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/iOS-get-device-info/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/08/iOS-get-device-info/" itemprop="url">获取iOS设备信息</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这是我做一个iOS版本运维App的时候写的代码，记录一下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> resolveDict = [</span><br><span class="line">    <span class="string">"systemName"</span>: <span class="type">UIDevice</span>.current.systemName,</span><br><span class="line">    <span class="string">"systemVersion"</span>: <span class="type">UIDevice</span>.current.systemVersion,</span><br><span class="line">    <span class="string">"identifierForVendor"</span>: <span class="type">UIDevice</span>.current.identifierForVendor?.description ?? <span class="string">""</span>,</span><br><span class="line">    <span class="string">"model"</span>: <span class="type">UIDevice</span>.current.model,</span><br><span class="line">    <span class="string">"localizedModel"</span>: <span class="type">UIDevice</span>.current.localizedModel</span><br><span class="line">    ]</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> json = <span class="keyword">try</span> <span class="type">JSONSerialization</span>.data(withJSONObject: resolveDict, options: []);</span><br><span class="line">    <span class="keyword">let</span> jsonStr = <span class="type">String</span>(data: json, encoding: .utf8);</span><br><span class="line">    resovler(jsonStr);</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    rejecter(<span class="string">"Get AppInfo error"</span>, error.localizedDescription, <span class="literal">nil</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/laravel-laradock-getting-start/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/08/laravel-laradock-getting-start/" itemprop="url">Laravel 从零开始入门-laradock</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          Docker环境
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/08/laravel-laradock-getting-start/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1999,8 +1999,6 @@ docker-compose up
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
@@ -2022,22 +2020,22 @@ docker-compose up
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/scue" target="_blank" title="GitHub"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  <a href="https://github.com/scue" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
                   
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="mailto:scue@vip.qq.com" target="_blank" title="邮箱"><i class="fa fa-fw fa-globe"></i>邮箱</a>
+                  <a href="mailto:scue@vip.qq.com" target="_blank" title="邮箱"><i class="fa fa-fw fa-envelope"></i>邮箱</a>
                   
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="https://weibo.com/scue" target="_blank" title="微博"><i class="fa fa-fw fa-globe"></i>微博</a>
+                  <a href="https://weibo.com/scue" target="_blank" title="微博"><i class="fa fa-fw fa-weibo"></i>微博</a>
                   
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="https://www.douban.com/people/scue/" target="_blank" title="豆瓣"><i class="fa fa-fw fa-globe"></i>豆瓣</a>
+                  <a href="https://www.douban.com/people/scue/" target="_blank" title="豆瓣"><i class="fa fa-fw fa-book"></i>豆瓣</a>
                   
                 </span>
               
