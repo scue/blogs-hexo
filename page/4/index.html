@@ -729,279 +729,6 @@ iptables -A FORWARD -p udp --dport 53 -m string --hex-string &quot;|00 00 ff 00 
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/05/20/android-bootup/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/05/20/android-bootup/" itemprop="url">
-                  课程3: Android启动过程分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-05-20 00:00:00" itemprop="dateCreated datePublished" datetime="2015-05-20T00:00:00+08:00">2015-05-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-11 13:11:15" itemprop="dateModified" datetime="2018-03-11T13:11:15+08:00">2018-03-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/" itemprop="url" rel="index"><span itemprop="name">课程</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="相关技术文章"><a href="#相关技术文章" class="headerlink" title="相关技术文章"></a>相关技术文章</h1><p>首先参阅一下别人写得很不错的文章，个人感觉还是有很多可以借鉴的内容</p>
-<h2 id="1-Android启动过程深入解析-原文链接"><a href="#1-Android启动过程深入解析-原文链接" class="headerlink" title="1.  Android启动过程深入解析 原文链接"></a>1.  Android启动过程深入解析 <a href="http://blog.jobbole.com/67931/" target="_blank" rel="noopener">原文链接</a></h2><p>当然，小伙伴们若是英文足够好，可以直接查看：<a href="http://kpbird.blogspot.com/2012/11/in-depth-android-boot-sequence-process.html" target="_blank" rel="noopener">英文原文</a></p>
-<p><img src="/assets/Courses/Courses03_android_boot_squence.png" alt="Android_bootup1"></p>
-<p>我们先来粗略查看一下文章要点</p>
-<p>####第一步：启动电源以及系统启动</p>
-<blockquote>
-<p>当电源按下，引导芯片代码开始从预定义的地方（固化在ROM）开始执行。</p>
-</blockquote>
-<p>####第二步：引导程序</p>
-<blockquote>
-<p>引导程序是运行的第一个程序，因此它是针对特定的主板与芯片的；</p>
-</blockquote>
-<blockquote>
-<p>引导程序是OEM厂商或者运营商加锁和限制的地方;</p>
-</blockquote>
-<p>####第三步：内核</p>
-<blockquote>
-<p>Android内核与桌面linux内核启动的方式差不多。</p>
-</blockquote>
-<p>####第四步：init进程</p>
-<blockquote>
-<p>init进程有两个责任，一是挂载目录，比如/sys、/dev、/proc，二是运行init.rc脚本</p>
-</blockquote>
-<p>####第五步：Zygote</p>
-<blockquote>
-<p>Zygote让Dalvik虚拟机共享代码、低内存占用以及最小的启动时间成为可能。</p>
-</blockquote>
-<blockquote>
-<p>Zygote是一个虚拟器进程，正如我们在前一个步骤所说的在系统引导的时候启动。Zygote预加载以及初始化核心库类。</p>
-</blockquote>
-<p>####第六步：系统服务或服务</p>
-<blockquote>
-<p>系统服务同时使用native以及java编写，系统服务可以认为是一个进程。</p>
-</blockquote>
-<blockquote>
-<p>系统服务包含了所有的System Services。</p>
-</blockquote>
-<blockquote>
-<p>Zygote创建新的进程去启动系统服务。你可以在ZygoteInit类的”startSystemServer”方法中找到源代码。</p>
-</blockquote>
-<p>####第七步：引导完成</p>
-<blockquote>
-<p><code>ACTION_BOOT_COMPLETED</code> 启动已完成的广播</p>
-</blockquote>
-<p>备注：在init.rc上还可以使用<code>on property:dev.bootcomplete=1</code>来处理你期望开机完成后做爱做的事情</p>
-<h2 id="2-Android启动分析-原文链接"><a href="#2-Android启动分析-原文链接" class="headerlink" title="2. Android启动分析 原文链接"></a>2. Android启动分析 <a href="http://blog.csdn.net/dlmu2001/article/details/6537304" target="_blank" rel="noopener">原文链接</a></h2><p>由于前一篇文章，在<code>system_server或services</code>上讲解不够深入，现在利用这一篇文章来粗略讲解一下</p>
-<p>关于这个文章的英文原文: <a href="http://www.phonesdevelopers.com/1695827/" target="_blank" rel="noopener">链接: Android Start Up</a></p>
-<p>接下来这一段，我是依据 <a href="http://blog.csdn.net/dlmu2001/article/details/6537304#t8" target="_blank" rel="noopener">链接: 2.3服务启动过程</a> 来讲解有关 <code>system_server</code>和<code>Services</code>的内容</p>
-<p>####1. <code>daemons</code>和<code>Zygote</code></p>
-<blockquote>
-<p>1) <code>init.rc</code>启动类似<code>adbd</code>, <code>debuggerd</code>, <code>rild</code>等核心后台进程，用于监听指定信息</p>
-</blockquote>
-<blockquote>
-<p>2) <code>Zygote</code>是用于初始化虚拟机的进程，监听请求创建虚拟机实例的socket，算是App的“鼻祖”</p>
-</blockquote>
-<p><img src="/assets/Courses/Courses03_android_bootup_01.gif" alt="2.1_init.rc_daemons_zygote" title="Android 启动分析：Daemons和Zygote"></p>
-<p>####2. <code>Services Manager</code></p>
-<p>在 <a href="http://androidxref.com/4.4_r1/xref/system/core/rootdir/init.rc#448" target="_blank" rel="noopener">init.rc</a> 有这么一段内容</p>
-<pre><code>service servicemanager /system/bin/servicemanager
-    class core
-    user system
-    group system
-    critical
-    onrestart restart healthd
-    onrestart restart zygote
-    onrestart restart media
-    onrestart restart surfaceflinger
-    onrestart restart drm
-</code></pre><blockquote>
-<p>init.rc启动Service Manager，注册为Binder服务缺省的context manager，处理服务注册和监听</p>
-</blockquote>
-<p><img src="/assets/Courses/Courses03_android_bootup_02.gif" alt="2.2_init.rc_servicemanager" title="Android 启动分析：Services Manager"></p>
-<p>####3. <code>system_server</code></p>
-<p>system_server是由Zygote分裂出来的一个进程(而非原文所说的由Runtime拉起)</p>
-<p><code>争议</code>：这里原文可能是针对较低版本的，经过分析源码，正确的应该是 <a href="http://images.cnitblog.com/blog/563439/201309/25154945-40c8b0ec63774e02af485973a4c05c45.png" target="_blank" rel="noopener">链接: system_server启动流程</a></p>
-<p><img src="/assets/Courses/Courses03_android_bootup_04.gif" alt="system_server_start_up_seq_bad"></p>
-<p>####4. <code>System server</code> init1和init2</p>
-<p>在<code>system_server</code>起来之后，它调用了<code>init1</code>和<code>init2</code></p>
-<blockquote>
-<p>init1: 拉起了<code>SurfaceFlinger</code>和<code>AudioFlinger</code>等（与硬件层交互的服务，主要是C/C++代码）</p>
-</blockquote>
-<p><img src="/assets/Courses/Courses03_android_bootup_05.gif" alt="init1" title="init1"></p>
-<p>####5. 原生<code>server sevices</code>向<code>service manager</code>注册为IPC服务目标</p>
-<p>比如AudioFlinger.cpp的instantiate函数</p>
-<blockquote>
-<p>init2: 拉起了<code>Activity Manager</code>和<code>Window Manager</code>等（与应用层、框架层交互的服务，主要是Java代码）</p>
-</blockquote>
-<p><img src="/assets/Courses/Courses03_android_bootup_06.gif" alt="init2" title="init2"></p>
-<p>####6. <code>Android managed services</code></p>
-<p>SystemServer.java的run函数</p>
-<p><img src="/assets/Courses/Courses03_android_bootup_07.gif" alt="Managed Services"></p>
-<p>####7. <code>Android managed services</code>向<code>service manager</code>注册</p>
-<p><img src="/assets/Courses/Courses03_android_bootup_08.gif" alt="Managed Services"></p>
-<p>####8. <code>system_server</code>加载所有的服务后，系统初始化完成</p>
-<p><img src="/assets/Courses/Courses03_android_bootup_09.gif" alt="system_server"></p>
-<p>####9. 桌面程序</p>
-<p><code>ActivityManagerService.java</code>的<code>startHomeActivityLocked</code></p>
-<p><img src="/assets/Courses/Courses03_android_bootup_10.gif" alt="HomeActivity"></p>
-<p>####10.其他App在自己进程中启动</p>
-<p><img src="/assets/Courses/Courses03_android_bootup_11.gif" alt="OtherActivity"></p>
-<h2 id="3-图解Android-Zygote-System-Server-启动分析-原文链接"><a href="#3-图解Android-Zygote-System-Server-启动分析-原文链接" class="headerlink" title="3. 图解Android - Zygote, System Server 启动分析 原文链接"></a>3. 图解Android - Zygote, System Server 启动分析 <a href="http://www.cnblogs.com/samchen2009/p/3294713.html" target="_blank" rel="noopener">原文链接</a></h2><p>这绝对是一篇好文，写得很精彩</p>
-<p>相应的，这个博主的Github相关链接: <a href="https://github.com/samchen2009/android_uml" target="_blank" rel="noopener">android_url</a></p>
-<p>我对这里的<code>system_server</code>启动流程比较感兴趣，这里只贴出<code>system_server</code>相关的启动流程图</p>
-<h4 id="system-server启动流程图"><a href="#system-server启动流程图" class="headerlink" title="system_server启动流程图"></a><code>system_server</code>启动流程图</h4><p><img src="/assets/Courses/Courses03_android_bootup_systemServer.png" alt="SystemServerUml" title="Android 启用分析: SystemServer启动流程图"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/05/20/bash-git-aliases-complete/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1290,6 +1017,279 @@ type __git_complete &gt;/dev/null 2&gt;&amp;1 &amp;&amp; {
 </code></pre><p>然后，再让 <code>~/.bashrc</code> 去包含这个文件：</p>
 <pre><code>echo &apos;test -e ~/.bash_aliases.git &amp;&amp; . ~/.bash_aliases.git&apos; &gt;&gt; ~/.bashrc
 </code></pre><p>然后使用类似命令<code>gd</code>、<code>gst</code>、<code>ga</code>和<code>gc</code>等命令简写时，会非常顺手，Enjoy！</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/05/20/android-bootup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/05/20/android-bootup/" itemprop="url">
+                  课程3: Android启动过程分析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-05-20 00:00:00" itemprop="dateCreated datePublished" datetime="2015-05-20T00:00:00+08:00">2015-05-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-11 13:11:15" itemprop="dateModified" datetime="2018-03-11T13:11:15+08:00">2018-03-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/" itemprop="url" rel="index"><span itemprop="name">课程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="相关技术文章"><a href="#相关技术文章" class="headerlink" title="相关技术文章"></a>相关技术文章</h1><p>首先参阅一下别人写得很不错的文章，个人感觉还是有很多可以借鉴的内容</p>
+<h2 id="1-Android启动过程深入解析-原文链接"><a href="#1-Android启动过程深入解析-原文链接" class="headerlink" title="1.  Android启动过程深入解析 原文链接"></a>1.  Android启动过程深入解析 <a href="http://blog.jobbole.com/67931/" target="_blank" rel="noopener">原文链接</a></h2><p>当然，小伙伴们若是英文足够好，可以直接查看：<a href="http://kpbird.blogspot.com/2012/11/in-depth-android-boot-sequence-process.html" target="_blank" rel="noopener">英文原文</a></p>
+<p><img src="/assets/Courses/Courses03_android_boot_squence.png" alt="Android_bootup1"></p>
+<p>我们先来粗略查看一下文章要点</p>
+<p>####第一步：启动电源以及系统启动</p>
+<blockquote>
+<p>当电源按下，引导芯片代码开始从预定义的地方（固化在ROM）开始执行。</p>
+</blockquote>
+<p>####第二步：引导程序</p>
+<blockquote>
+<p>引导程序是运行的第一个程序，因此它是针对特定的主板与芯片的；</p>
+</blockquote>
+<blockquote>
+<p>引导程序是OEM厂商或者运营商加锁和限制的地方;</p>
+</blockquote>
+<p>####第三步：内核</p>
+<blockquote>
+<p>Android内核与桌面linux内核启动的方式差不多。</p>
+</blockquote>
+<p>####第四步：init进程</p>
+<blockquote>
+<p>init进程有两个责任，一是挂载目录，比如/sys、/dev、/proc，二是运行init.rc脚本</p>
+</blockquote>
+<p>####第五步：Zygote</p>
+<blockquote>
+<p>Zygote让Dalvik虚拟机共享代码、低内存占用以及最小的启动时间成为可能。</p>
+</blockquote>
+<blockquote>
+<p>Zygote是一个虚拟器进程，正如我们在前一个步骤所说的在系统引导的时候启动。Zygote预加载以及初始化核心库类。</p>
+</blockquote>
+<p>####第六步：系统服务或服务</p>
+<blockquote>
+<p>系统服务同时使用native以及java编写，系统服务可以认为是一个进程。</p>
+</blockquote>
+<blockquote>
+<p>系统服务包含了所有的System Services。</p>
+</blockquote>
+<blockquote>
+<p>Zygote创建新的进程去启动系统服务。你可以在ZygoteInit类的”startSystemServer”方法中找到源代码。</p>
+</blockquote>
+<p>####第七步：引导完成</p>
+<blockquote>
+<p><code>ACTION_BOOT_COMPLETED</code> 启动已完成的广播</p>
+</blockquote>
+<p>备注：在init.rc上还可以使用<code>on property:dev.bootcomplete=1</code>来处理你期望开机完成后做爱做的事情</p>
+<h2 id="2-Android启动分析-原文链接"><a href="#2-Android启动分析-原文链接" class="headerlink" title="2. Android启动分析 原文链接"></a>2. Android启动分析 <a href="http://blog.csdn.net/dlmu2001/article/details/6537304" target="_blank" rel="noopener">原文链接</a></h2><p>由于前一篇文章，在<code>system_server或services</code>上讲解不够深入，现在利用这一篇文章来粗略讲解一下</p>
+<p>关于这个文章的英文原文: <a href="http://www.phonesdevelopers.com/1695827/" target="_blank" rel="noopener">链接: Android Start Up</a></p>
+<p>接下来这一段，我是依据 <a href="http://blog.csdn.net/dlmu2001/article/details/6537304#t8" target="_blank" rel="noopener">链接: 2.3服务启动过程</a> 来讲解有关 <code>system_server</code>和<code>Services</code>的内容</p>
+<p>####1. <code>daemons</code>和<code>Zygote</code></p>
+<blockquote>
+<p>1) <code>init.rc</code>启动类似<code>adbd</code>, <code>debuggerd</code>, <code>rild</code>等核心后台进程，用于监听指定信息</p>
+</blockquote>
+<blockquote>
+<p>2) <code>Zygote</code>是用于初始化虚拟机的进程，监听请求创建虚拟机实例的socket，算是App的“鼻祖”</p>
+</blockquote>
+<p><img src="/assets/Courses/Courses03_android_bootup_01.gif" alt="2.1_init.rc_daemons_zygote" title="Android 启动分析：Daemons和Zygote"></p>
+<p>####2. <code>Services Manager</code></p>
+<p>在 <a href="http://androidxref.com/4.4_r1/xref/system/core/rootdir/init.rc#448" target="_blank" rel="noopener">init.rc</a> 有这么一段内容</p>
+<pre><code>service servicemanager /system/bin/servicemanager
+    class core
+    user system
+    group system
+    critical
+    onrestart restart healthd
+    onrestart restart zygote
+    onrestart restart media
+    onrestart restart surfaceflinger
+    onrestart restart drm
+</code></pre><blockquote>
+<p>init.rc启动Service Manager，注册为Binder服务缺省的context manager，处理服务注册和监听</p>
+</blockquote>
+<p><img src="/assets/Courses/Courses03_android_bootup_02.gif" alt="2.2_init.rc_servicemanager" title="Android 启动分析：Services Manager"></p>
+<p>####3. <code>system_server</code></p>
+<p>system_server是由Zygote分裂出来的一个进程(而非原文所说的由Runtime拉起)</p>
+<p><code>争议</code>：这里原文可能是针对较低版本的，经过分析源码，正确的应该是 <a href="http://images.cnitblog.com/blog/563439/201309/25154945-40c8b0ec63774e02af485973a4c05c45.png" target="_blank" rel="noopener">链接: system_server启动流程</a></p>
+<p><img src="/assets/Courses/Courses03_android_bootup_04.gif" alt="system_server_start_up_seq_bad"></p>
+<p>####4. <code>System server</code> init1和init2</p>
+<p>在<code>system_server</code>起来之后，它调用了<code>init1</code>和<code>init2</code></p>
+<blockquote>
+<p>init1: 拉起了<code>SurfaceFlinger</code>和<code>AudioFlinger</code>等（与硬件层交互的服务，主要是C/C++代码）</p>
+</blockquote>
+<p><img src="/assets/Courses/Courses03_android_bootup_05.gif" alt="init1" title="init1"></p>
+<p>####5. 原生<code>server sevices</code>向<code>service manager</code>注册为IPC服务目标</p>
+<p>比如AudioFlinger.cpp的instantiate函数</p>
+<blockquote>
+<p>init2: 拉起了<code>Activity Manager</code>和<code>Window Manager</code>等（与应用层、框架层交互的服务，主要是Java代码）</p>
+</blockquote>
+<p><img src="/assets/Courses/Courses03_android_bootup_06.gif" alt="init2" title="init2"></p>
+<p>####6. <code>Android managed services</code></p>
+<p>SystemServer.java的run函数</p>
+<p><img src="/assets/Courses/Courses03_android_bootup_07.gif" alt="Managed Services"></p>
+<p>####7. <code>Android managed services</code>向<code>service manager</code>注册</p>
+<p><img src="/assets/Courses/Courses03_android_bootup_08.gif" alt="Managed Services"></p>
+<p>####8. <code>system_server</code>加载所有的服务后，系统初始化完成</p>
+<p><img src="/assets/Courses/Courses03_android_bootup_09.gif" alt="system_server"></p>
+<p>####9. 桌面程序</p>
+<p><code>ActivityManagerService.java</code>的<code>startHomeActivityLocked</code></p>
+<p><img src="/assets/Courses/Courses03_android_bootup_10.gif" alt="HomeActivity"></p>
+<p>####10.其他App在自己进程中启动</p>
+<p><img src="/assets/Courses/Courses03_android_bootup_11.gif" alt="OtherActivity"></p>
+<h2 id="3-图解Android-Zygote-System-Server-启动分析-原文链接"><a href="#3-图解Android-Zygote-System-Server-启动分析-原文链接" class="headerlink" title="3. 图解Android - Zygote, System Server 启动分析 原文链接"></a>3. 图解Android - Zygote, System Server 启动分析 <a href="http://www.cnblogs.com/samchen2009/p/3294713.html" target="_blank" rel="noopener">原文链接</a></h2><p>这绝对是一篇好文，写得很精彩</p>
+<p>相应的，这个博主的Github相关链接: <a href="https://github.com/samchen2009/android_uml" target="_blank" rel="noopener">android_url</a></p>
+<p>我对这里的<code>system_server</code>启动流程比较感兴趣，这里只贴出<code>system_server</code>相关的启动流程图</p>
+<h4 id="system-server启动流程图"><a href="#system-server启动流程图" class="headerlink" title="system_server启动流程图"></a><code>system_server</code>启动流程图</h4><p><img src="/assets/Courses/Courses03_android_bootup_systemServer.png" alt="SystemServerUml" title="Android 启用分析: SystemServer启动流程图"></p>
 
           
         
