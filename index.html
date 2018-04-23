@@ -2,6 +2,9 @@
 
 
 
+
+
+
   
 
 
@@ -9,7 +12,7 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
 
@@ -49,19 +52,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.5">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.5">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.5">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.0.5" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
 
 
 
@@ -76,7 +79,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '6.0.5',
+    version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
@@ -99,11 +102,7 @@
 
 
 
-  
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-<meta property="og:type" content="website">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Linkscue&#39;s blogs">
 <meta property="og:url" content="http://linkscue.com/index.html">
 <meta property="og:site_name" content="Linkscue&#39;s blogs">
@@ -127,6 +126,7 @@
     sidebar: "",
   };
 </script>
+
   <title>Linkscue's blogs</title>
   
 
@@ -179,12 +179,12 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"> <div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Linkscue's blogs</span>
         <span class="logo-line-after"><i></i></span>
@@ -196,7 +196,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -204,43 +204,55 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home menu-item-active">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
+      
       
         <li class="menu-item menu-item-search">
           
@@ -251,6 +263,8 @@
         </li>
       
     </ul>
+  
+
   
 
   
@@ -284,11 +298,12 @@
 </nav>
 
 
+
   
 
 
 
- </div>
+</div>
     </header>
 
     
@@ -297,6 +312,10 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -335,11 +354,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/21/2018-04-21-a-statement-to-understanding-moderation/" itemprop="url">一句话阐述我所理解的「中庸」</a></h1>
+                <a class="post-title-link" href="/2018/04/21/2018-04-21-a-statement-to-understanding-moderation/" itemprop="url">
+                  一句话阐述我所理解的「中庸」
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -347,12 +376,18 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T23:24:53+08:00">2018-04-21</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-21 23:24:53 / 修改时间：23:41:13" itemprop="dateCreated datePublished" datetime="2018-04-21T23:24:53+08:00">2018-04-21</time>
             
 
             
-            
+              
 
+              
             
           </span>
 
@@ -406,7 +441,7 @@
           <p>樊登读书会的书籍听多了，自己也有一些感悟，尤其是一些樊老师经常提到的，一直想写下来，就趁着今天更新博客一起写了。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/04/21/2018-04-21-a-statement-to-understanding-moderation/#more" rel="contents">
+            <a class="btn" href="/2018/04/21/2018-04-21-a-statement-to-understanding-moderation/#更多" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -481,11 +516,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/21/2018-04-21-macos-witch-useful-tips/" itemprop="url">MacOS Witch应用程序切换使用心得</a></h1>
+                <a class="post-title-link" href="/2018/04/21/2018-04-21-macos-witch-useful-tips/" itemprop="url">
+                  MacOS Witch应用程序切换使用心得
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -493,12 +538,18 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T15:52:46+08:00">2018-04-21</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-21 15:52:46 / 修改时间：23:22:40" itemprop="dateCreated datePublished" datetime="2018-04-21T15:52:46+08:00">2018-04-21</time>
             
 
             
-            
+              
 
+              
             
           </span>
 
@@ -552,7 +603,7 @@
           <p>MacOS原生自带的Cmd+Tab虽然可以满足大多数情况下的操作，但也有一些缺点，比如有应用程序最小化之后，将它重新显示到你的前面还需要再按Alt，感觉不够方便，而为此我还专门购了一个Witch，感觉还不错。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/04/21/2018-04-21-macos-witch-useful-tips/#more" rel="contents">
+            <a class="btn" href="/2018/04/21/2018-04-21-macos-witch-useful-tips/#更多" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -627,11 +678,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/20/2018-04-20-how-to-rescue-your-macbook/" itemprop="url">关键时刻，拿什么来拯救你的Mac？</a></h1>
+                <a class="post-title-link" href="/2018/04/20/2018-04-20-how-to-rescue-your-macbook/" itemprop="url">
+                  关键时刻，拿什么来拯救你的Mac？
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -639,12 +700,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T22:50:35+08:00">2018-04-20</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-20 22:50:35" itemprop="dateCreated datePublished" datetime="2018-04-20T22:50:35+08:00">2018-04-20</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-21 15:36:20" itemprop="dateModified" datetime="2018-04-21T15:36:20+08:00">2018-04-21</time>
+              
             
           </span>
 
@@ -773,11 +852,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/10/2018-04-10-how-to-cross-build-mtr/" itemprop="url">手把手教你如何交叉编译MTR二进制程序</a></h1>
+                <a class="post-title-link" href="/2018/04/10/2018-04-10-how-to-cross-build-mtr/" itemprop="url">
+                  手把手教你如何交叉编译MTR二进制程序
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -785,12 +874,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T18:54:53+08:00">2018-04-10</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-10 18:54:53" itemprop="dateCreated datePublished" datetime="2018-04-10T18:54:53+08:00">2018-04-10</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-21 08:32:20" itemprop="dateModified" datetime="2018-04-21T08:32:20+08:00">2018-04-21</time>
+              
             
           </span>
 
@@ -846,7 +953,7 @@
 <p>我们去官网看看README.md，大致长这样子的：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/04/10/2018-04-10-how-to-cross-build-mtr/#more" rel="contents">
+            <a class="btn" href="/2018/04/10/2018-04-10-how-to-cross-build-mtr/#更多" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -921,11 +1028,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/10/2018-04-10-nodejs-koa-handle-put-upload-file/" itemprop="url">使用Node.js来写一个文件上传服务器</a></h1>
+                <a class="post-title-link" href="/2018/04/10/2018-04-10-nodejs-koa-handle-put-upload-file/" itemprop="url">
+                  使用Node.js来写一个文件上传服务器
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -933,12 +1050,18 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T17:57:27+08:00">2018-04-10</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-10 17:57:27 / 修改时间：18:15:19" itemprop="dateCreated datePublished" datetime="2018-04-10T17:57:27+08:00">2018-04-10</time>
             
 
             
-            
+              
 
+              
             
           </span>
 
@@ -1067,11 +1190,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/2018-03-12-go-static-build/" itemprop="url">GO完全静态编译</a></h1>
+                <a class="post-title-link" href="/2018/03/12/2018-03-12-go-static-build/" itemprop="url">
+                  GO完全静态编译
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1079,12 +1212,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:18:31+08:00">2018-03-12</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-12 17:18:31" itemprop="dateCreated datePublished" datetime="2018-03-12T17:18:31+08:00">2018-03-12</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-21 08:33:13" itemprop="dateModified" datetime="2018-04-21T08:33:13+08:00">2018-04-21</time>
+              
             
           </span>
 
@@ -1213,11 +1364,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/2018-03-12-go-gopm/" itemprop="url">GOPM的使用方式</a></h1>
+                <a class="post-title-link" href="/2018/03/12/2018-03-12-go-gopm/" itemprop="url">
+                  GOPM的使用方式
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1225,12 +1386,18 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:14:03+08:00">2018-03-12</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-12 17:14:03 / 修改时间：17:17:24" itemprop="dateCreated datePublished" datetime="2018-03-12T17:14:03+08:00">2018-03-12</time>
             
 
             
-            
+              
 
+              
             
           </span>
 
@@ -1359,11 +1526,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/03/go-imooc-find-not-repeat-sub-string/" itemprop="url">寻找最长不含有重复字符的子串</a></h1>
+                <a class="post-title-link" href="/2018/03/03/go-imooc-find-not-repeat-sub-string/" itemprop="url">
+                  寻找最长不含有重复字符的子串
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1371,12 +1548,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-03T00:00:00+08:00">2018-03-03</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-03 00:00:00" itemprop="dateCreated datePublished" datetime="2018-03-03T00:00:00+08:00">2018-03-03</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 13:10:36" itemprop="dateModified" datetime="2018-03-12T13:10:36+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -1430,7 +1625,7 @@
           <p>寻找最长不含有重复字符的子串</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/03/03/go-imooc-find-not-repeat-sub-string/#more" rel="contents">
+            <a class="btn" href="/2018/03/03/go-imooc-find-not-repeat-sub-string/#更多" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1505,11 +1700,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/03/math-complex-review/" itemprop="url">数学中的复数和最美的欧拉公式</a></h1>
+                <a class="post-title-link" href="/2018/03/03/math-complex-review/" itemprop="url">
+                  数学中的复数和最美的欧拉公式
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1517,12 +1722,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-03T00:00:00+08:00">2018-03-03</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-03 00:00:00" itemprop="dateCreated datePublished" datetime="2018-03-03T00:00:00+08:00">2018-03-03</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 13:11:05" itemprop="dateModified" datetime="2018-03-12T13:11:05+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -1577,7 +1800,7 @@
 <h1 id="模"><a href="#模" class="headerlink" title="模"></a>模</h1><p>$$ |3+4i| = \sqrt{3^2 + 4^2} = 5 $$</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/03/03/math-complex-review/#more" rel="contents">
+            <a class="btn" href="/2018/03/03/math-complex-review/#更多" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1652,11 +1875,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/01/go-tour-practice-binarytree/" itemprop="url">GO指南 练习：等价二叉查找树</a></h1>
+                <a class="post-title-link" href="/2018/03/01/go-tour-practice-binarytree/" itemprop="url">
+                  GO指南 练习：等价二叉查找树
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1664,12 +1897,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T00:00:00+08:00">2018-03-01</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-01 00:00:00" itemprop="dateCreated datePublished" datetime="2018-03-01T00:00:00+08:00">2018-03-01</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 13:11:33" itemprop="dateModified" datetime="2018-03-12T13:11:33+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -1735,7 +1986,7 @@
 </ol>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/03/01/go-tour-practice-binarytree/#more" rel="contents">
+            <a class="btn" href="/2018/03/01/go-tour-practice-binarytree/#更多" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1780,7 +2031,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1989,7 +2240,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">linkscue(scue)</span>
@@ -2002,7 +2253,7 @@
 
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.6.0</div>
 
 
 
@@ -2010,7 +2261,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.5</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
 
 
 
@@ -2091,28 +2342,28 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.0.5"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.5"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
 
 
 
   
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
 
 
 
@@ -2158,7 +2409,7 @@
   <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
   
 
-  <script src="/js/src/algolia-search.js?v=6.0.5"></script>
+  <script src="/js/src/algolia-search.js?v=6.2.0"></script>
 
 
 
@@ -2225,6 +2476,8 @@
 
 
   
+  
+
   
 
   

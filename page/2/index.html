@@ -2,6 +2,9 @@
 
 
 
+
+
+
   
 
 
@@ -9,7 +12,7 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
 
@@ -49,19 +52,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.5">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.5">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.5">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.0.5" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
 
 
 
@@ -76,7 +79,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '6.0.5',
+    version: '6.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
@@ -99,11 +102,7 @@
 
 
 
-  
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-<meta property="og:type" content="website">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Linkscue&#39;s blogs">
 <meta property="og:url" content="http://linkscue.com/page/2/index.html">
 <meta property="og:site_name" content="Linkscue&#39;s blogs">
@@ -127,6 +126,7 @@
     sidebar: "",
   };
 </script>
+
   <title>Linkscue's blogs</title>
   
 
@@ -179,12 +179,12 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"> <div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Linkscue's blogs</span>
         <span class="logo-line-after"><i></i></span>
@@ -196,7 +196,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -204,43 +204,55 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
+      
       
         <li class="menu-item menu-item-search">
           
@@ -251,6 +263,8 @@
         </li>
       
     </ul>
+  
+
   
 
   
@@ -284,11 +298,12 @@
 </nav>
 
 
+
   
 
 
 
- </div>
+</div>
     </header>
 
     
@@ -297,6 +312,10 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -335,11 +354,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/01/go-tour-practice-web-crawl/" itemprop="url">GO指南 练习：Web爬虫</a></h1>
+                <a class="post-title-link" href="/2018/03/01/go-tour-practice-web-crawl/" itemprop="url">
+                  GO指南 练习：Web爬虫
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -347,12 +376,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T00:00:00+08:00">2018-03-01</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-01 00:00:00" itemprop="dateCreated datePublished" datetime="2018-03-01T00:00:00+08:00">2018-03-01</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 13:11:57" itemprop="dateModified" datetime="2018-03-12T13:11:57+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -407,7 +454,7 @@
 <p>修改 <code>Crawl</code> 函数来并行地抓取 URL，并且保证不重复。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/03/01/go-tour-practice-web-crawl/#more" rel="contents">
+            <a class="btn" href="/2018/03/01/go-tour-practice-web-crawl/#更多" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -482,11 +529,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/28/go-tour-practice-fibonacci/" itemprop="url">GO指南 练习：斐波纳契闭包</a></h1>
+                <a class="post-title-link" href="/2018/02/28/go-tour-practice-fibonacci/" itemprop="url">
+                  GO指南 练习：斐波纳契闭包
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -494,12 +551,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 13:12:50" itemprop="dateModified" datetime="2018-03-12T13:12:50+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -555,7 +630,7 @@
 <p>实现一个 <code>fibonacci</code> 函数，它返回一个函数（闭包）， 该闭包返回一个斐波纳契数列 <code>(0, 1, 1, 2, 3, 5, ...)</code> 。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/28/go-tour-practice-fibonacci/#more" rel="contents">
+            <a class="btn" href="/2018/02/28/go-tour-practice-fibonacci/#更多" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -630,11 +705,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/28/go-tour-practice-image/" itemprop="url">GO指南 练习：图像</a></h1>
+                <a class="post-title-link" href="/2018/02/28/go-tour-practice-image/" itemprop="url">
+                  GO指南 练习：图像
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -642,12 +727,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 13:13:56" itemprop="dateModified" datetime="2018-03-12T13:13:56+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -704,7 +807,7 @@
 <p>At 应当返回一个颜色。上一个图片生成器的值 v 对应于此次的 <code>color.RGBA{v, v, 255, 255}</code> 。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/28/go-tour-practice-image/#more" rel="contents">
+            <a class="btn" href="/2018/02/28/go-tour-practice-image/#更多" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -779,11 +882,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/28/go-tour-practice-error/" itemprop="url">GO指南 练习：错误</a></h1>
+                <a class="post-title-link" href="/2018/02/28/go-tour-practice-error/" itemprop="url">
+                  GO指南 练习：错误
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -791,12 +904,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 13:13:19" itemprop="dateModified" datetime="2018-03-12T13:13:19+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -851,7 +982,7 @@
 <p><code>Sqrt</code> 接受到一个负数时，应当返回一个非 nil 的错误值。复数同样也不被支持。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/28/go-tour-practice-error/#more" rel="contents">
+            <a class="btn" href="/2018/02/28/go-tour-practice-error/#更多" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -926,11 +1057,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/28/go-tour-practice-flow-control/" itemprop="url">GO指南 练习：循环与函数</a></h1>
+                <a class="post-title-link" href="/2018/02/28/go-tour-practice-flow-control/" itemprop="url">
+                  GO指南 练习：循环与函数
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -938,12 +1079,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -1072,11 +1231,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/28/go-tour-parctice-map/" itemprop="url">GO指南 练习：Map</a></h1>
+                <a class="post-title-link" href="/2018/02/28/go-tour-parctice-map/" itemprop="url">
+                  GO指南 练习：Map
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1084,12 +1253,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -1219,11 +1406,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/28/go-tour-practice-slice/" itemprop="url">GO指南 练习：切片</a></h1>
+                <a class="post-title-link" href="/2018/02/28/go-tour-practice-slice/" itemprop="url">
+                  GO指南 练习：切片
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1231,12 +1428,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -1365,11 +1580,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/28/go-tour-practice-reader/" itemprop="url">GO指南 练习：Reader</a></h1>
+                <a class="post-title-link" href="/2018/02/28/go-tour-practice-reader/" itemprop="url">
+                  GO指南 练习：Reader
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1377,12 +1602,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 13:14:35" itemprop="dateModified" datetime="2018-03-12T13:14:35+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -1437,7 +1680,7 @@
 <p>实现一个 Reader 类型，它产生一个 ASCII 字符 <code>&#39;A&#39;</code> 的无限流。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/28/go-tour-practice-reader/#more" rel="contents">
+            <a class="btn" href="/2018/02/28/go-tour-practice-reader/#更多" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1512,11 +1755,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/28/go-tour-rot13/" itemprop="url">GO指南 练习：rot13Reader</a></h1>
+                <a class="post-title-link" href="/2018/02/28/go-tour-rot13/" itemprop="url">
+                  GO指南 练习：rot13Reader
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1524,12 +1777,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 13:12:14" itemprop="dateModified" datetime="2018-03-12T13:12:14+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -1658,11 +1929,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/11/logrotate-example/" itemprop="url">使用lorotate压缩服务器日志</a></h1>
+                <a class="post-title-link" href="/2018/02/11/logrotate-example/" itemprop="url">
+                  使用lorotate压缩服务器日志
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1670,12 +1951,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-11T00:00:00+08:00">2018-02-11</time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-11 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-11T00:00:00+08:00">2018-02-11</time>
             
 
             
-            
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+              
             
           </span>
 
@@ -1774,7 +2073,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1983,7 +2282,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">linkscue(scue)</span>
@@ -1996,7 +2295,7 @@
 
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.6.0</div>
 
 
 
@@ -2004,7 +2303,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.5</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
 
 
 
@@ -2085,28 +2384,28 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.0.5"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.5"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
 
 
 
   
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
 
 
 
@@ -2152,7 +2451,7 @@
   <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
   
 
-  <script src="/js/src/algolia-search.js?v=6.0.5"></script>
+  <script src="/js/src/algolia-search.js?v=6.2.0"></script>
 
 
 
@@ -2194,6 +2493,8 @@
 
 
   
+  
+
   
 
   
