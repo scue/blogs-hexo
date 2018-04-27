@@ -335,6 +335,629 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/08/19/android4.2.2-emulated-sdcard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/08/19/android4.2.2-emulated-sdcard/" itemprop="url">
+                  Android 4.2.2 Emulate Sdcard
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-08-19 00:00:00" itemprop="dateCreated datePublished" datetime="2015-08-19T00:00:00+08:00">2015-08-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考链接: <a href="https://source.android.com/devices/storage/config-example.html" target="_blank" rel="noopener">source.android.com</a></p>
+<p>由于官方提供的参考方法不能使用, 所以我把修改的配置贴了出来</p>
+<h3 id="init-hardware-rc"><a href="#init-hardware-rc" class="headerlink" title="init.hardware.rc"></a>init.hardware.rc</h3><pre><code>on post-fs-data
+    mkdir /data/media 0770 media_rw media_rw
+    chown media_rw media_rw /data/media
+
+on init
+    mkdir /mnt/shell/emulated 0771 system sdcard_rw
+    mkdir /mnt/shell/test 0771 system sdcard_rw
+    mkdir /storage/emulated 0775 root root
+
+    export EXTERNAL_STORAGE /storage/emulated/0
+    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    export EMULATED_STORAGE_TARGET /storage/emulated
+
+    # Support legacy paths
+    symlink /storage/emulated/0 /sdcard
+    symlink /storage/emulated/0 /mnt/sdcard
+    symlink /storage/emulated/0 /storage/sdcard0
+    symlink /mnt/shell/emulated/0 /storage/emulated/0
+
+service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
+    disabled
+
+on property:dev.bootcomplete=1
+    start sdcard
+</code></pre><h3 id="storage-list-xml"><a href="#storage-list-xml" class="headerlink" title="storage_list.xml"></a>storage_list.xml</h3><pre><code>&lt;storage
+        android:storageDescription=&quot;@string/storage_internal&quot;
+        android:emulated=&quot;true&quot;
+        android:mtpReserve=&quot;100&quot; /&gt;
+</code></pre><h2 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h2><p>由于我希望把 <code>mtd@user</code> 这个分区挂载为 ext4 格式，以减少使用FAT32格式导致文件系统不稳定的引发的问题；</p>
+<p>所以，我总体思路是，把 <code>mnt@user</code> 以 ext4 文件系统格式挂载到 <code>/mnt/user</code>；</p>
+<p>然后再使用 <code>/system/bin/sdcard</code> 模拟一个SDcard出来至 <code>/mnt/sdcard/emulated</code>；</p>
+<p>最后再软链接到 <code>/storage/emulated</code> 和 <code>/mnt/sdcard</code>;</p>
+<h3 id="init-rk30board-rc"><a href="#init-rk30board-rc" class="headerlink" title="init.rk30board.rc"></a>init.rk30board.rc</h3><pre><code>on fs
+    mkdir /mnt/user 0770 media_rw media_rw
+    mount ext4 mtd@user /mnt/user wait noatime nodiratime nosuid nodev noauto_da_alloc
+
+on post-fs
+    chown media_rw media_rw /mnt/user
+
+on post-fs-data
+    # we will remap this as /mnt/sdcard with the sdcard fuse tool
+    mkdir /data/media 0770 media_rw media_rw
+    chown media_rw media_rw /data/media
+
+on init
+
+    mkdir /mnt/shell/emulated 0771 system sdcard_rw
+    mkdir /mnt/shell/test 0771 system sdcard_rw
+    mkdir /storage/emulated 0775 root root
+
+    export EXTERNAL_STORAGE /storage/emulated/0
+    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    export EMULATED_STORAGE_TARGET /storage/emulated
+
+    # Support legacy paths
+    symlink /storage/emulated/0 /sdcard
+    symlink /storage/emulated/0 /mnt/sdcard
+    symlink /storage/emulated/0 /storage/sdcard0
+    symlink /mnt/shell/emulated/0 /storage/emulated/0
+
+    # create virtual SD card at /mnt/sdcard, based on the /data/media directory
+    # daemon will drop to user/group system/media_rw after initializing
+    # underlying files in /data/media will be created with user and group media_rw (1023)
+    service sdcard /system/bin/sdcard /mnt/user /mnt/shell/emulated 1023 1023
+       disabled
+
+    # for emulated sdcard
+    on property:dev.bootcomplete=1
+        start sdcard
+</code></pre><h3 id="storage-list-xml-1"><a href="#storage-list-xml-1" class="headerlink" title="storage_list.xml"></a>storage_list.xml</h3><pre><code>&lt;storage
+        android:storageDescription=&quot;@string/storage_internal&quot;
+        android:emulated=&quot;true&quot;
+        android:mtpReserve=&quot;100&quot; /&gt;
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/08/05/docker-gitlab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/08/05/docker-gitlab/" itemprop="url">
+                  使用docker搭建gitlab环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-08-05 00:00:00" itemprop="dateCreated datePublished" datetime="2015-08-05T00:00:00+08:00">2015-08-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###安装环境</p>
+<p><code>lsb_release -a</code></p>
+<pre><code>No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 14.04.1 LTS
+Release:        14.04
+Codename:       trusty
+</code></pre><p>###安装Docker</p>
+<pre><code>wget -qO- https://get.docker.com/ | sh
+sudo pip install -U docker-compose
+</code></pre><p>###安装gitlab</p>
+<pre><code>mkdir -p /srv/docker/gitlab/postgresql
+mkdir -p /srv/docker/gitlab/gitlab
+mkdir -p /srv/docker/gitlab/redis
+cd /srv/docker/gitlab
+wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
+docker-compose up
+</code></pre><p>###后继维护</p>
+<ul>
+<li><p>修改配置: 如果想修改一些配置，直接修改<code>docker-compose.yml</code>这个配置即可</p>
+<ul>
+<li>docker链接: <a href="https://registry.hub.docker.com/u/sameersbn/gitlab/" target="_blank" rel="noopener">https://registry.hub.docker.com/u/sameersbn/gitlab/</a></li>
+<li>github链接: <a href="https://github.com/sameersbn/docker-gitlab" target="_blank" rel="noopener">https://github.com/sameersbn/docker-gitlab</a></li>
+</ul>
+</li>
+<li><p>后台启用: <code>sudo docker-compose up -d</code></p>
+</li>
+<li><p>查看日志: 查看docker运行日志<code>sudo docker-compose logs</code></p>
+</li>
+<li><p>结束运行: <code>sudo docker-compose stop</code></p>
+</li>
+<li><p>删除容器: <code>sudo docker-compose rm -f</code> 删除容器不会影响下次启动</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/06/15/cyanogenmod-code-search-in-github/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/06/15/cyanogenmod-code-search-in-github/" itemprop="url">
+                  CyanogenMod Code Search in Github
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-06-15 00:00:00" itemprop="dateCreated datePublished" datetime="2015-06-15T00:00:00+08:00">2015-06-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>有些时候希望在Github上搜索源代码，包含字符串什么的</p>
+<p>Github的响应速度比AndroidXref等等快得多了，值得推荐</p>
+<pre><code>https://github.com/search?q=user%3ACyanogenMod+%s&amp;type=Code&amp;ref=searchresults
+</code></pre><p>或者，如果想包含android的源代码：</p>
+<pre><code>https://github.com/search?q=user%3ACyanogenMod+user%3Aandroid+%s&amp;ref=searchresults&amp;type=Code
+</code></pre><p>效果如下：</p>
+<p><a href="http://ww4.sinaimg.cn/large/6e22ca27gw1et53cao1zxj20tj0craeg.jpg" target="_blank" rel="noopener"><img src="http://ww4.sinaimg.cn/mw690/6e22ca27gw1et53cao1zxj20tj0craeg.jpg" alt="img"></a>{:target=”brank”}</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/05/28/google-code-access-not-allowed/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1942,676 +2565,6 @@ on property:dev.bootcomplete=1
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/05/09/my-android-adt-eclipse/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/05/09/my-android-adt-eclipse/" itemprop="url">
-                  Eclipse ADT定制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-05-09 00:00:00" itemprop="dateCreated datePublished" datetime="2015-05-09T00:00:00+08:00">2015-05-09</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>配置自动补全：</p>
-<p>Windows -&gt; preferences -&gt; 搜索assist，修改 java xml自动触发补全：</p>
-<pre><code>.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_
-</code></pre></li>
-<li><p>自动补全插件：</p>
-<p><a href="http://www.cnblogs.com/sunjie21/archive/2012/06/28/2567463.html" target="_blank" rel="noopener">Eclipse Tab自动补全</a></p>
-<p>Windows -&gt; Preference -&gt; 搜索 Assist，C/C++、Java、XML都输入（或追加）：</p>
-<pre><code>.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_
-</code></pre><p>直接替换文件方法：</p>
-<pre><code># 备份文件
-find eclipse/plugins -name \*jface.text\* -exec mv -v {} {}.bak \;
-# 复制文件到
-eclipse/plugins/org.eclipse.jface.text_3.8.2.v20121126-164145.jar #(要相同版本才可以)
-</code></pre></li>
-<li><p>修改边框过大以及颜色配置：</p>
-<p>3.1.   修改提示框背景颜色：</p>
-<p>路径：/usr/share/themes/Greybird/gtk-2.0/gtkrc 修改：</p>
-<pre><code>gtk-color-scheme    = &quot;tooltip_bg_color:#f2edbc\ntooltip_fg_color:#000000&quot; # Tooltips.
-</code></pre><p>3.2.   修改全局背景颜色：</p>
-<pre><code>gtk-color-scheme    = &quot;bg_color:#cce8cf\nselected_bg_color:#398ee7\nbase_color:#fcfcfc&quot; # Background, base.
-</code></pre><p>3.3.   修改eclispe背景颜色：</p>
-<pre><code>windows-&gt;Preferences-&gt;General-&gt;Editor-&gt;Text Editors-&gt;Backgroud color修改成#fcfcfc
-</code></pre><p>3.4.   边框过大的调整方法</p>
-<pre><code>cd /path/to/adt
-vi &quot;$(find eclipse -name e4_default_gtk.css)&quot;
-# 打开： plugins/org.eclipse.platform_4.2.*/css/e4_default_gtk.css，找到并修改：
- .MPartStack {
-    font-size: 9;
-    font-family: Liberation Sans;
-    swt-tab-renderer: null;
-    swt-tab-height: 22px;
-    swt-selected-tabs-background: #FFFFFF #ECE9D8 100%;
-    swt-simple: false;
-    swt-mru-visible: false;
- }
-# 原始内容：
-.MPartStack {
-    font-size: 11;
-    swt-simple: false;
-    swt-mru-visible: false;
-}
-</code></pre><p>3.5.   Logcat 字体大小： Android → Logcat位置</p>
-</li>
-<li><p>崩溃解决方法：</p>
-<p>打开 eclipse/configuration/config.ini 文件， 在最后一行添加</p>
-<pre><code>org.eclipse.swt.browser.DefaultType=mozilla
-</code></pre><p>参考博客： <a href="http://www.cnblogs.com/scue/p/4461845.html" target="_blank" rel="noopener">Eclipse崩溃总结</a></p>
-</li>
-<li><p>Eclipse快捷键：</p>
-<p>vi ~/.local/share/applications/eclipse.desktop </p>
-<p>Sample1:</p>
-<pre><code>[Desktop Entry]
-Type=Application
-Name=Eclipse
-Comment=Eclipse Integrated Development Environment
-Icon=eclipse.png
-Exec=&quot;/media/Study/Program Files/adt-bundle-linux-x86_64-20131030/eclipse/eclipse&quot;
-Terminal=false
-Categories=Development;IDE;Java;
-StartupWMClass=Eclipse
-</code></pre><p>Sample2: for <code>ubuntu 15.04</code></p>
-<pre><code>[Desktop Entry]
-Encoding=UTF-8
-Version=1.0
-Name=Eclipse
-Comment=Eclipse IDE
-Type=Application
-Exec=env JAVA_HOME=/home/sinfor/apt/jdk1.7.0_67 /media/Study/android/eclipse/eclipse_luna_scue/eclipse
-Icon=/home/sinfor/.local/share/icons/adt.png
-</code></pre></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/05/07/android-unit-tests/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/05/07/android-unit-tests/" itemprop="url">
-                  课程2: Android单元测试
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-05-07 00:00:00" itemprop="dateCreated datePublished" datetime="2015-05-07T00:00:00+08:00">2015-05-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/课程/" itemprop="url" rel="index"><span itemprop="name">课程</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Android单元测试"><a href="#Android单元测试" class="headerlink" title="Android单元测试"></a>Android单元测试</h1><h2 id="Java单元测试："><a href="#Java单元测试：" class="headerlink" title="Java单元测试："></a>Java单元测试：</h2><ul>
-<li><p>解决的问题：使用单元测试，对一个方法进行测试，通常包括 正确性、错误性、边界性等测试，从源头上解决缺陷引入；</p>
-</li>
-<li><p>使用方法：这只是一个Demo，我们部门还没有得到有力的推广（敏捷测试理论上更需要单元测试，但我们项目时间都比较紧）；</p>
-<pre><code>./junit_gen.sh &lt;项目目录&gt; # 然后填写测试代码到Test.java
-./test_on_android.sh
-</code></pre></li>
-<li><p>详情请参考： <a href="http://200.200.0.36/28120/junit_test_android/tree/linux" target="_blank" rel="noopener">链接</a></p>
-</li>
-</ul>
-<p>####Java覆盖率报告：</p>
-<ul>
-<li><p>解决的问题：看看到底我们测试到了哪里，哪些我们覆盖到了？</p>
-</li>
-<li><p>使用方法：emma，编译时应该输入参数 ant emma debug，这由Android SDK已实现；</p>
-</li>
-<li><p>详情请参考： <a href="http://200.200.0.36/28120/junit_test_android/blob/linux/test_on_android.sh#L112" target="_blank" rel="noopener">链接</a></p>
-</li>
-</ul>
-<p>####Java单测总体报告：</p>
-<ul>
-<li>解决的问题：现阶段的单元测试（Junit）并没有生成一份Jenkins可识别的报告，这里是解决Jenkins识别不到的问题；</li>
-<li>详情请参考： <a href="http://200.200.0.36/28120/junit_test_android/blob/linux/android-junit-report-1.5.8.jar" target="_blank" rel="noopener">链接</a></li>
-</ul>
-<p>####Java单测 - 效果展示：</p>
-<pre><code>[Java单测效果](http://200.200.0.36/28120/junit_test_android/tree/linux/ScreenShot)
-</code></pre><h2 id="NDK单元测试：（C-C-）"><a href="#NDK单元测试：（C-C-）" class="headerlink" title="NDK单元测试：（C/C++）"></a>NDK单元测试：（C/C++）</h2><ul>
-<li><p>解决的问题：与Java单元测试类似，但是针对的是NDK（C/C++），NDK的一个明显的好处是它的安全性要比Java的好；</p>
-</li>
-<li><p>使用方法：这是一个简单的Demo</p>
-<ul>
-<li>注意到 <code>sangfor_android</code>目录</li>
-<li>Jni代码放置到 <code>sangfor_android/jni</code></li>
-<li>测试代码添加到 <code>demo_unit.cpp</code></li>
-<li>然后执行 <code>./run_linux.sh</code> 即可</li>
-</ul>
-</li>
-<li><p>详情请参考： <a href="http://200.200.0.36/28120/gtest_android_ndk/tree/all_in_one" target="_blank" rel="noopener">链接</a></p>
-</li>
-<li><p>注意事项：采用是gtest，它提供了很多测试实例，我们可以去学习一下 <a href="http://200.200.0.36/28120/gtest_android_ndk/tree/all_in_one/gtest-1.7/samples" target="_blank" rel="noopener">Gtest模板</a></p>
-</li>
-</ul>
-<p>####NDK覆盖率报告：</p>
-<ul>
-<li><p>解决的问题：覆盖率报告可以让我们清楚的知道，哪一行代码被执行了多少次</p>
-</li>
-<li><p>使用方法：<code>./gen_gcov_html.sh &lt;源码目录&gt;</code></p>
-<pre><code>./gen_gcov_html.sh sangfor_android
-</code></pre></li>
-<li><p>详情请参考： <a href="http://200.200.0.36/28120/gtest_android_ndk/blob/all_in_one/gen_gcov_html.sh" target="_blank" rel="noopener">链接</a></p>
-</li>
-</ul>
-<h2 id="创新分享："><a href="#创新分享：" class="headerlink" title="创新分享："></a>创新分享：</h2><p>主要讲解一下思路来源，拿到问题之后怎么思考去解决它</p>
-<p>分享一下思维，不具体深入讲解如何实现（具体实现包含在创新文章里边了）。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/04/28/android-check-string-res/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/04/28/android-check-string-res/" itemprop="url">
-                  Android字符串资源检查
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-04-28 00:00:00" itemprop="dateCreated datePublished" datetime="2015-04-28T00:00:00+08:00">2015-04-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-11 13:11:07" itemprop="dateModified" datetime="2018-03-11T13:11:07+08:00">2018-03-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Android项目开发过程中，容易出现缺少对应中英文翻译的情况，这个Python脚本是用于检查字符串是否缺少了对应的翻译</p>
-<p>脚本链接：</p>
-<p><a href="htps://gist.github.com/scue/0ad950803038d9eab634" target="_blank" rel="noopener">Android字符串资源检查</a></p>
-<p>使用方法：</p>
-<pre><code>./check_string_res.py packages/apps/Settings/
-./check_string_res.py packages/apps/Settings/ packages/apps/QuickSearchBox/ ..
-</code></pre><p>效果如下：</p>
-<pre><code>$ ./check_string_res.py packages/apps/Bluetooth/
-
-###正在检查项目packages/apps/Bluetooth/
-
-&gt;&gt;&gt; Checking res/values/strings.xml file ..
-  - Warning: string name &apos;auth_notif_message&apos; not found!!!
-  - Warning: string name &apos;auth_notif_ticker&apos; not found!!!
-  - Warning: string name &apos;auth_notif_title&apos; not found!!!
-  - Warning: string name &apos;cancel&apos; not found!!!
-  - Warning: string name &apos;defaultname&apos; not found!!!
-  - Warning: string name &apos;localPhoneName&apos; not found!!!
-  - Warning: string name &apos;ok&apos; not found!!!
-  - Warning: string name &apos;pbap_authentication_timeout_message&apos; not found!!!
-  - Warning: string name &apos;pbap_session_key_dialog_header&apos; not found!!!
-  - Warning: string name &apos;pbap_session_key_dialog_title&apos; not found!!!
-  - Warning: string name &apos;unknownName&apos; not found!!!
-
-&gt;&gt;&gt; Checking res/values-zh-rCN/strings.xml file ..
-  - Warning: string name &apos;auth_notif_message&apos; not found!!!
-  - Warning: string name &apos;auth_notif_ticker&apos; not found!!!
-  - Warning: string name &apos;auth_notif_title&apos; not found!!!
-  - Warning: string name &apos;bluetooth_share_file_name&apos; not found!!!
-  - Warning: string name &apos;cancel&apos; not found!!!
-  - Warning: string name &apos;defaultname&apos; not found!!!
-  - Warning: string name &apos;localPhoneName&apos; not found!!!
-  - Warning: string name &apos;ok&apos; not found!!!
-  - Warning: string name &apos;pbap_authentication_timeout_message&apos; not found!!!
-  - Warning: string name &apos;pbap_session_key_dialog_header&apos; not found!!!
-  - Warning: string name &apos;pbap_session_key_dialog_title&apos; not found!!!
-  - Warning: string name &apos;unknownName&apos; not found!!!
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2663,7 +2616,7 @@ Icon=/home/sinfor/.local/share/icons/adt.png
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2753,7 +2706,15 @@ Icon=/home/sinfor/.local/share/icons/adt.png
                     
                       
                     
-                    <span class="site-state-item-count">29</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

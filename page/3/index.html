@@ -335,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/laravel-laradock-getting-start/">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/28/go-tour-parctice-map/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linkscue(scue)">
@@ -354,8 +354,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/08/laravel-laradock-getting-start/" itemprop="url">
-                  Laravel 从零开始入门-laradock
+                <a class="post-title-link" href="/2018/02/28/go-tour-parctice-map/" itemprop="url">
+                  GO指南 练习：Map
                 </a>
               
             
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2018-02-08 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
+              <time title="创建时间：2018-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
             
 
             
@@ -450,10 +450,359 @@
 
       
         
-          Docker环境
+          
+            <p>实现 <code>WordCount</code> 。它应当返回一个映射，其中包含每个字符串 <code>s</code> 中“单词”的个数。函数 <code>wc.Test</code> 会对此函数执行一系列测试用例，并输出成功还是失败。</p>
+<p>你会发现 <code>strings.Fields</code> 很有帮助。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"strings"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"golang.org/x/tour/wc"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">WordCount</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">map</span>[<span class="title">string</span>]<span class="title">int</span></span> &#123;</span><br><span class="line">	a := strings.Fields(s)</span><br><span class="line">	m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> a &#123;</span><br><span class="line">		m[v]++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> m</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	wc.Test(WordCount)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">PASS</span><br><span class="line"> f(&quot;I am learning Go!&quot;) = </span><br><span class="line">  map[string]int&#123;&quot;I&quot;:1, &quot;am&quot;:1, &quot;learning&quot;:1, &quot;Go!&quot;:1&#125;</span><br><span class="line">PASS</span><br><span class="line"> f(&quot;The quick brown fox jumped over the lazy dog.&quot;) = </span><br><span class="line">  map[string]int&#123;&quot;over&quot;:1, &quot;the&quot;:1, &quot;lazy&quot;:1, &quot;dog.&quot;:1, &quot;The&quot;:1, &quot;brown&quot;:1, &quot;fox&quot;:1, &quot;jumped&quot;:1, &quot;quick&quot;:1&#125;</span><br><span class="line">PASS</span><br><span class="line"> f(&quot;I ate a donut. Then I ate another donut.&quot;) = </span><br><span class="line">  map[string]int&#123;&quot;I&quot;:2, &quot;ate&quot;:2, &quot;a&quot;:1, &quot;donut.&quot;:2, &quot;Then&quot;:1, &quot;another&quot;:1&#125;</span><br><span class="line">PASS</span><br><span class="line"> f(&quot;A man a plan a canal panama.&quot;) = </span><br><span class="line">  map[string]int&#123;&quot;plan&quot;:1, &quot;canal&quot;:1, &quot;panama.&quot;:1, &quot;A&quot;:1, &quot;man&quot;:1, &quot;a&quot;:2&#125;</span><br><span class="line"></span><br><span class="line">Program exited.</span><br></pre></td></tr></table></figure>
+<p>链接：<a href="https://tour.go-zh.org/moretypes/23" target="_blank" rel="noopener">https://tour.go-zh.org/moretypes/23</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/28/go-tour-rot13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/28/go-tour-rot13/" itemprop="url">
+                  GO指南 练习：rot13Reader
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 13:12:14" itemprop="dateModified" datetime="2018-03-12T13:12:14+08:00">2018-03-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          描述
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/08/laravel-laradock-getting-start/">
+            <a class="btn" href="/2018/02/28/go-tour-rot13/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/11/logrotate-example/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/11/logrotate-example/" itemprop="url">
+                  使用lorotate压缩服务器日志
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-11 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-11T00:00:00+08:00">2018-02-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          logrotate
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/11/logrotate-example/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -684,6 +1033,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/laravel-laradock-getting-start/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/08/laravel-laradock-getting-start/" itemprop="url">
+                  Laravel 从零开始入门-laradock
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-08 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          Docker环境
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/08/laravel-laradock-getting-start/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/iOS-get-app-info/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -802,6 +1325,180 @@
           
             <p>主要获取了APP应用程序名、以及版本号。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> infoDict = <span class="type">Bundle</span>.main.infoDictionary!;</span><br><span class="line"><span class="keyword">let</span> appDisplayName = infoDict[<span class="string">"CFBundleDisplayName"</span>];</span><br><span class="line"><span class="keyword">let</span> appShortVersion = infoDict[<span class="string">"CFBundleShortVersionString"</span>];</span><br><span class="line"><span class="keyword">let</span> appBuildVersion = infoDict[<span class="string">"CFBundleVersion"</span>];</span><br><span class="line"><span class="keyword">let</span> resolveDict = [</span><br><span class="line">    <span class="string">"appDisplayName"</span>: appDisplayName,</span><br><span class="line">    <span class="string">"appShortVersion"</span>: appShortVersion,</span><br><span class="line">    <span class="string">"appBuildVersion"</span>: appBuildVersion,</span><br><span class="line">]</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> json = <span class="keyword">try</span> <span class="type">JSONSerialization</span>.data(withJSONObject: resolveDict, options: []);</span><br><span class="line">    <span class="keyword">let</span> jsonStr = <span class="type">String</span>(data: json, encoding: .utf8);</span><br><span class="line">    resovler(jsonStr);</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    rejecter(<span class="string">"Get AppInfo error"</span>, error.localizedDescription, <span class="literal">nil</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/android-webview-javascript-call-native-code/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/08/android-webview-javascript-call-native-code/" itemprop="url">
+                  Web JavaScript调用Android原生应用代码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-08 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使WebView可以调用原生应用的代码，通过注册Event事件的形式</p>
+<p>简单的调用方法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=&quot;btn_test_event&quot;&gt;测试事件&lt;/button&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">document.getElementById(btn_test_event).onclick = function () &#123;</span><br><span class="line">    var command = &#123;</span><br><span class="line">        &apos;action&apos;: &apos;test&apos;</span><br><span class="line">    &#125;;</span><br><span class="line">    Eagle.event(JSON.stringify(command));</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>这其中的Eagle就是客户端指定的<code>addJavascriptInterface(EagleWebInterface.create(this), &quot;Eagle&quot;)</code><br>而event是指event()这个方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@JavascriptInterface</span><br><span class="line">public String event(String params) &#123;</span><br><span class="line">    final String action = JSON.parseObject(params).getString(&quot;action&quot;);</span><br><span class="line">    final Event event = EventManager.getInstance().createEvent(action);</span><br><span class="line">    Logger.d(&quot;event: &quot; + params);</span><br><span class="line">    if (event != null) &#123;</span><br><span class="line">        event.setAction(action);</span><br><span class="line">        event.setDelegate(DELEGATE);</span><br><span class="line">        event.setContext(DELEGATE.getContext());</span><br><span class="line">        event.setUrl(DELEGATE.getUrl());</span><br><span class="line">        return event.execute(params);</span><br><span class="line">    &#125;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1197,180 +1894,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/android-webview-javascript-call-native-code/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/08/android-webview-javascript-call-native-code/" itemprop="url">
-                  Web JavaScript调用Android原生应用代码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-02-08 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使WebView可以调用原生应用的代码，通过注册Event事件的形式</p>
-<p>简单的调用方法是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=&quot;btn_test_event&quot;&gt;测试事件&lt;/button&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">document.getElementById(btn_test_event).onclick = function () &#123;</span><br><span class="line">    var command = &#123;</span><br><span class="line">        &apos;action&apos;: &apos;test&apos;</span><br><span class="line">    &#125;;</span><br><span class="line">    Eagle.event(JSON.stringify(command));</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>这其中的Eagle就是客户端指定的<code>addJavascriptInterface(EagleWebInterface.create(this), &quot;Eagle&quot;)</code><br>而event是指event()这个方法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@JavascriptInterface</span><br><span class="line">public String event(String params) &#123;</span><br><span class="line">    final String action = JSON.parseObject(params).getString(&quot;action&quot;);</span><br><span class="line">    final Event event = EventManager.getInstance().createEvent(action);</span><br><span class="line">    Logger.d(&quot;event: &quot; + params);</span><br><span class="line">    if (event != null) &#123;</span><br><span class="line">        event.setAction(action);</span><br><span class="line">        event.setDelegate(DELEGATE);</span><br><span class="line">        event.setContext(DELEGATE.getContext());</span><br><span class="line">        event.setUrl(DELEGATE.getUrl());</span><br><span class="line">        return event.execute(params);</span><br><span class="line">    &#125;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/09/01/android-studio-usage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1534,629 +2057,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/08/19/android4.2.2-emulated-sdcard/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/08/19/android4.2.2-emulated-sdcard/" itemprop="url">
-                  Android 4.2.2 Emulate Sdcard
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-08-19 00:00:00" itemprop="dateCreated datePublished" datetime="2015-08-19T00:00:00+08:00">2015-08-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考链接: <a href="https://source.android.com/devices/storage/config-example.html" target="_blank" rel="noopener">source.android.com</a></p>
-<p>由于官方提供的参考方法不能使用, 所以我把修改的配置贴了出来</p>
-<h3 id="init-hardware-rc"><a href="#init-hardware-rc" class="headerlink" title="init.hardware.rc"></a>init.hardware.rc</h3><pre><code>on post-fs-data
-    mkdir /data/media 0770 media_rw media_rw
-    chown media_rw media_rw /data/media
-
-on init
-    mkdir /mnt/shell/emulated 0771 system sdcard_rw
-    mkdir /mnt/shell/test 0771 system sdcard_rw
-    mkdir /storage/emulated 0775 root root
-
-    export EXTERNAL_STORAGE /storage/emulated/0
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
-
-    # Support legacy paths
-    symlink /storage/emulated/0 /sdcard
-    symlink /storage/emulated/0 /mnt/sdcard
-    symlink /storage/emulated/0 /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/0
-
-service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
-    disabled
-
-on property:dev.bootcomplete=1
-    start sdcard
-</code></pre><h3 id="storage-list-xml"><a href="#storage-list-xml" class="headerlink" title="storage_list.xml"></a>storage_list.xml</h3><pre><code>&lt;storage
-        android:storageDescription=&quot;@string/storage_internal&quot;
-        android:emulated=&quot;true&quot;
-        android:mtpReserve=&quot;100&quot; /&gt;
-</code></pre><h2 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h2><p>由于我希望把 <code>mtd@user</code> 这个分区挂载为 ext4 格式，以减少使用FAT32格式导致文件系统不稳定的引发的问题；</p>
-<p>所以，我总体思路是，把 <code>mnt@user</code> 以 ext4 文件系统格式挂载到 <code>/mnt/user</code>；</p>
-<p>然后再使用 <code>/system/bin/sdcard</code> 模拟一个SDcard出来至 <code>/mnt/sdcard/emulated</code>；</p>
-<p>最后再软链接到 <code>/storage/emulated</code> 和 <code>/mnt/sdcard</code>;</p>
-<h3 id="init-rk30board-rc"><a href="#init-rk30board-rc" class="headerlink" title="init.rk30board.rc"></a>init.rk30board.rc</h3><pre><code>on fs
-    mkdir /mnt/user 0770 media_rw media_rw
-    mount ext4 mtd@user /mnt/user wait noatime nodiratime nosuid nodev noauto_da_alloc
-
-on post-fs
-    chown media_rw media_rw /mnt/user
-
-on post-fs-data
-    # we will remap this as /mnt/sdcard with the sdcard fuse tool
-    mkdir /data/media 0770 media_rw media_rw
-    chown media_rw media_rw /data/media
-
-on init
-
-    mkdir /mnt/shell/emulated 0771 system sdcard_rw
-    mkdir /mnt/shell/test 0771 system sdcard_rw
-    mkdir /storage/emulated 0775 root root
-
-    export EXTERNAL_STORAGE /storage/emulated/0
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
-
-    # Support legacy paths
-    symlink /storage/emulated/0 /sdcard
-    symlink /storage/emulated/0 /mnt/sdcard
-    symlink /storage/emulated/0 /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/0
-
-    # create virtual SD card at /mnt/sdcard, based on the /data/media directory
-    # daemon will drop to user/group system/media_rw after initializing
-    # underlying files in /data/media will be created with user and group media_rw (1023)
-    service sdcard /system/bin/sdcard /mnt/user /mnt/shell/emulated 1023 1023
-       disabled
-
-    # for emulated sdcard
-    on property:dev.bootcomplete=1
-        start sdcard
-</code></pre><h3 id="storage-list-xml-1"><a href="#storage-list-xml-1" class="headerlink" title="storage_list.xml"></a>storage_list.xml</h3><pre><code>&lt;storage
-        android:storageDescription=&quot;@string/storage_internal&quot;
-        android:emulated=&quot;true&quot;
-        android:mtpReserve=&quot;100&quot; /&gt;
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/08/05/docker-gitlab/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/08/05/docker-gitlab/" itemprop="url">
-                  使用docker搭建gitlab环境
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-08-05 00:00:00" itemprop="dateCreated datePublished" datetime="2015-08-05T00:00:00+08:00">2015-08-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>###安装环境</p>
-<p><code>lsb_release -a</code></p>
-<pre><code>No LSB modules are available.
-Distributor ID: Ubuntu
-Description:    Ubuntu 14.04.1 LTS
-Release:        14.04
-Codename:       trusty
-</code></pre><p>###安装Docker</p>
-<pre><code>wget -qO- https://get.docker.com/ | sh
-sudo pip install -U docker-compose
-</code></pre><p>###安装gitlab</p>
-<pre><code>mkdir -p /srv/docker/gitlab/postgresql
-mkdir -p /srv/docker/gitlab/gitlab
-mkdir -p /srv/docker/gitlab/redis
-cd /srv/docker/gitlab
-wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
-docker-compose up
-</code></pre><p>###后继维护</p>
-<ul>
-<li><p>修改配置: 如果想修改一些配置，直接修改<code>docker-compose.yml</code>这个配置即可</p>
-<ul>
-<li>docker链接: <a href="https://registry.hub.docker.com/u/sameersbn/gitlab/" target="_blank" rel="noopener">https://registry.hub.docker.com/u/sameersbn/gitlab/</a></li>
-<li>github链接: <a href="https://github.com/sameersbn/docker-gitlab" target="_blank" rel="noopener">https://github.com/sameersbn/docker-gitlab</a></li>
-</ul>
-</li>
-<li><p>后台启用: <code>sudo docker-compose up -d</code></p>
-</li>
-<li><p>查看日志: 查看docker运行日志<code>sudo docker-compose logs</code></p>
-</li>
-<li><p>结束运行: <code>sudo docker-compose stop</code></p>
-</li>
-<li><p>删除容器: <code>sudo docker-compose rm -f</code> 删除容器不会影响下次启动</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2015/06/15/cyanogenmod-code-search-in-github/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/06/15/cyanogenmod-code-search-in-github/" itemprop="url">
-                  CyanogenMod Code Search in Github
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-06-15 00:00:00" itemprop="dateCreated datePublished" datetime="2015-06-15T00:00:00+08:00">2015-06-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>有些时候希望在Github上搜索源代码，包含字符串什么的</p>
-<p>Github的响应速度比AndroidXref等等快得多了，值得推荐</p>
-<pre><code>https://github.com/search?q=user%3ACyanogenMod+%s&amp;type=Code&amp;ref=searchresults
-</code></pre><p>或者，如果想包含android的源代码：</p>
-<pre><code>https://github.com/search?q=user%3ACyanogenMod+user%3Aandroid+%s&amp;ref=searchresults&amp;type=Code
-</code></pre><p>效果如下：</p>
-<p><a href="http://ww4.sinaimg.cn/large/6e22ca27gw1et53cao1zxj20tj0craeg.jpg" target="_blank" rel="noopener"><img src="http://ww4.sinaimg.cn/mw690/6e22ca27gw1et53cao1zxj20tj0craeg.jpg" alt="img"></a>{:target=”brank”}</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2208,7 +2108,7 @@ docker-compose up
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2298,7 +2198,15 @@ docker-compose up
                     
                       
                     
-                    <span class="site-state-item-count">29</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

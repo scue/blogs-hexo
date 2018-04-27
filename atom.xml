@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://linkscue.com/"/>
-  <updated>2018-04-21T15:41:13.368Z</updated>
+  <updated>2018-04-27T04:52:36.367Z</updated>
   <id>http://linkscue.com/</id>
   
   <author>
@@ -17,11 +17,79 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>手把手教你交叉编译hdparm</title>
+    <link href="http://linkscue.com/2018/04/27/2018-04-27-how-to-cross-build-hdparm/"/>
+    <id>http://linkscue.com/2018/04/27/2018-04-27-how-to-cross-build-hdparm/</id>
+    <published>2018-04-27T04:49:10.875Z</published>
+    <updated>2018-04-27T04:52:36.367Z</updated>
+    
+    <summary type="html">
+    
+      HDPARM是一个磁盘测速工具
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="hdparm" scheme="http://linkscue.com/tags/hdparm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MWeb如何使用新浪微博图床</title>
+    <link href="http://linkscue.com/2018/04/27/2018-04-26-how-to-use-sina-weibo-picture-bed-in-mweb/"/>
+    <id>http://linkscue.com/2018/04/27/2018-04-26-how-to-use-sina-weibo-picture-bed-in-mweb/</id>
+    <published>2018-04-27T04:48:53.876Z</published>
+    <updated>2018-04-27T04:48:53.876Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;MWeb如何使用新浪微博图床&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;第0节 背景&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;虽然我比较建议使用腾讯云、七牛云之类的，不过新浪微博图床也是蛮不错的，应该有需要之人，我就比较喜欢使用，因为它的https链接都是「免费」的。
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="MWeb" scheme="http://linkscue.com/tags/MWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用OmniOutliner让你爱上思维的发散</title>
+    <link href="http://linkscue.com/2018/04/27/2018-04-26-love-mind-node-by-using-omnioutliner/"/>
+    <id>http://linkscue.com/2018/04/27/2018-04-26-love-mind-node-by-using-omnioutliner/</id>
+    <published>2018-04-27T04:48:53.876Z</published>
+    <updated>2018-04-27T04:48:53.876Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;OmniGroup的软件都不便宜，但OmniOutliner算是里边的最便宜的一款了，人民币195就可以到手了。&lt;/p&gt;
+&lt;p&gt;OmniOutliner在你没有纸笔的情况下，可以快速地让你想到什么就整理什么，这样对于我们天天面对着需求不断需要变更的研发同事来说，简直是一个福音。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="OmniGroup" scheme="http://linkscue.com/tags/OmniGroup/"/>
+    
+      <category term="OmniOutliner" scheme="http://linkscue.com/tags/OmniOutliner/"/>
+    
+  </entry>
+  
+  <entry>
     <title>一句话阐述我所理解的「中庸」</title>
     <link href="http://linkscue.com/2018/04/21/2018-04-21-a-statement-to-understanding-moderation/"/>
     <id>http://linkscue.com/2018/04/21/2018-04-21-a-statement-to-understanding-moderation/</id>
     <published>2018-04-21T15:24:53.427Z</published>
-    <updated>2018-04-21T15:41:13.368Z</updated>
+    <updated>2018-04-23T06:37:28.798Z</updated>
     
     <summary type="html">
     
@@ -206,6 +274,27 @@
   </entry>
   
   <entry>
+    <title>GO指南 练习：Web爬虫</title>
+    <link href="http://linkscue.com/2018/03/01/go-tour-practice-web-crawl/"/>
+    <id>http://linkscue.com/2018/03/01/go-tour-practice-web-crawl/</id>
+    <published>2018-02-28T16:00:00.000Z</published>
+    <updated>2018-03-12T05:11:57.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在这个练习中，我们将会使用 Go 的并发特性来并行化一个 Web 爬虫。&lt;/p&gt;
+&lt;p&gt;修改 &lt;code&gt;Crawl&lt;/code&gt; 函数来并行地抓取 URL，并且保证不重复。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>GO指南 练习：等价二叉查找树</title>
     <link href="http://linkscue.com/2018/03/01/go-tour-practice-binarytree/"/>
     <id>http://linkscue.com/2018/03/01/go-tour-practice-binarytree/</id>
@@ -238,16 +327,15 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：Web爬虫</title>
-    <link href="http://linkscue.com/2018/03/01/go-tour-practice-web-crawl/"/>
-    <id>http://linkscue.com/2018/03/01/go-tour-practice-web-crawl/</id>
-    <published>2018-02-28T16:00:00.000Z</published>
-    <updated>2018-03-12T05:11:57.000Z</updated>
+    <title>GO指南 练习：循环与函数</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-flow-control/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-flow-control/</id>
+    <published>2018-02-27T16:00:00.000Z</published>
+    <updated>2018-03-12T01:57:15.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;在这个练习中，我们将会使用 Go 的并发特性来并行化一个 Web 爬虫。&lt;/p&gt;
-&lt;p&gt;修改 &lt;code&gt;Crawl&lt;/code&gt; 函数来并行地抓取 URL，并且保证不重复。&lt;/p&gt;
+      牛顿法实现平方根函数
     
     </summary>
     
@@ -281,27 +369,6 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：错误</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-error/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-error/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:13:19.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;练习：错误&lt;br&gt;从之前的练习中（牛顿平方根方法）复制 Sqrt 函数，修改它使其返回 error 值。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Sqrt&lt;/code&gt; 接受到一个负数时，应当返回一个非 nil 的错误值。复数同样也不被支持。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
     <title>GO指南 练习：切片</title>
     <link href="http://linkscue.com/2018/02/28/go-tour-practice-slice/"/>
     <id>http://linkscue.com/2018/02/28/go-tour-practice-slice/</id>
@@ -311,33 +378,6 @@
     <summary type="html">
     
       描述
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：Map</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-parctice-map/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-parctice-map/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;实现 &lt;code&gt;WordCount&lt;/code&gt; 。它应当返回一个映射，其中包含每个字符串 &lt;code&gt;s&lt;/code&gt; 中“单词”的个数。函数 &lt;code&gt;wc.Test&lt;/code&gt; 会对此函数执行一系列测试用例，并输出成功还是失败。&lt;/p&gt;
-&lt;p&gt;你会发现
-        
-      
     
     </summary>
     
@@ -393,15 +433,16 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：rot13Reader</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-rot13/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-rot13/</id>
+    <title>GO指南 练习：错误</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-error/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-error/</id>
     <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:12:14.000Z</updated>
+    <updated>2018-03-12T05:13:19.000Z</updated>
     
     <summary type="html">
     
-      描述
+      &lt;p&gt;练习：错误&lt;br&gt;从之前的练习中（牛顿平方根方法）复制 Sqrt 函数，修改它使其返回 error 值。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Sqrt&lt;/code&gt; 接受到一个负数时，应当返回一个非 nil 的错误值。复数同样也不被支持。&lt;/p&gt;
     
     </summary>
     
@@ -409,46 +450,6 @@
     
     
       <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：循环与函数</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-flow-control/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-flow-control/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.000Z</updated>
-    
-    <summary type="html">
-    
-      牛顿法实现平方根函数
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用lorotate压缩服务器日志</title>
-    <link href="http://linkscue.com/2018/02/11/logrotate-example/"/>
-    <id>http://linkscue.com/2018/02/11/logrotate-example/</id>
-    <published>2018-02-10T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.000Z</updated>
-    
-    <summary type="html">
-    
-      logrotate
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="linux" scheme="http://linkscue.com/tags/linux/"/>
     
   </entry>
   
