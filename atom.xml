@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://linkscue.com/"/>
-  <updated>2018-04-27T04:52:36.367Z</updated>
+  <updated>2018-05-06T15:08:12.777Z</updated>
   <id>http://linkscue.com/</id>
   
   <author>
@@ -17,11 +17,58 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>手把手教你交叉编译zip（for Android/Linux）</title>
+    <link href="http://linkscue.com/2018/05/06/2018-05-06-how-to-build-zip/"/>
+    <id>http://linkscue.com/2018/05/06/2018-05-06-how-to-build-zip/</id>
+    <published>2018-05-06T15:03:24.597Z</published>
+    <updated>2018-05-06T15:08:12.777Z</updated>
+    
+    <summary type="html">
+    
+      静态编译，支持Android和Linux
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Android" scheme="http://linkscue.com/tags/Android/"/>
+    
+      <category term="zip" scheme="http://linkscue.com/tags/zip/"/>
+    
+      <category term="Linux" scheme="http://linkscue.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何使用pm2来管理hexo博客</title>
+    <link href="http://linkscue.com/2018/05/06/2018-05-06-how-to-use-pm2-manage-hexo-blog/"/>
+    <id>http://linkscue.com/2018/05/06/2018-05-06-how-to-use-pm2-manage-hexo-blog/</id>
+    <published>2018-05-06T14:47:39.005Z</published>
+    <updated>2018-05-06T15:02:35.556Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近有想把博客部署到腾讯云上去，以加速在国内的访问速度。发现博客的启动依赖于&lt;code&gt;hexo server&lt;/code&gt;这一个命令了。&lt;/p&gt;
+&lt;p&gt;我的基本思路是本地监听一个&lt;code&gt;127.0.0.1:4000&lt;/code&gt;，然后再使用nginx的&lt;code&gt;proxy_pass&lt;/code&gt;将请求转发给本地的服务，这样子还可以使用nginx来配置一下https请求。（题外话：虽然node.js也可以使用https，但那个性能真的与nginx的差得太多…）&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="pm2" scheme="http://linkscue.com/tags/pm2/"/>
+    
+      <category term="hexo" scheme="http://linkscue.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>手把手教你交叉编译hdparm</title>
     <link href="http://linkscue.com/2018/04/27/2018-04-27-how-to-cross-build-hdparm/"/>
     <id>http://linkscue.com/2018/04/27/2018-04-27-how-to-cross-build-hdparm/</id>
     <published>2018-04-27T04:49:10.875Z</published>
-    <updated>2018-04-27T04:52:36.367Z</updated>
+    <updated>2018-05-06T14:40:02.744Z</updated>
     
     <summary type="html">
     
@@ -274,27 +321,6 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：Web爬虫</title>
-    <link href="http://linkscue.com/2018/03/01/go-tour-practice-web-crawl/"/>
-    <id>http://linkscue.com/2018/03/01/go-tour-practice-web-crawl/</id>
-    <published>2018-02-28T16:00:00.000Z</published>
-    <updated>2018-03-12T05:11:57.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在这个练习中，我们将会使用 Go 的并发特性来并行化一个 Web 爬虫。&lt;/p&gt;
-&lt;p&gt;修改 &lt;code&gt;Crawl&lt;/code&gt; 函数来并行地抓取 URL，并且保证不重复。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
     <title>GO指南 练习：等价二叉查找树</title>
     <link href="http://linkscue.com/2018/03/01/go-tour-practice-binarytree/"/>
     <id>http://linkscue.com/2018/03/01/go-tour-practice-binarytree/</id>
@@ -327,6 +353,27 @@
   </entry>
   
   <entry>
+    <title>GO指南 练习：Web爬虫</title>
+    <link href="http://linkscue.com/2018/03/01/go-tour-practice-web-crawl/"/>
+    <id>http://linkscue.com/2018/03/01/go-tour-practice-web-crawl/</id>
+    <published>2018-02-28T16:00:00.000Z</published>
+    <updated>2018-03-12T05:11:57.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在这个练习中，我们将会使用 Go 的并发特性来并行化一个 Web 爬虫。&lt;/p&gt;
+&lt;p&gt;修改 &lt;code&gt;Crawl&lt;/code&gt; 函数来并行地抓取 URL，并且保证不重复。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="go" scheme="http://linkscue.com/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>GO指南 练习：循环与函数</title>
     <link href="http://linkscue.com/2018/02/28/go-tour-practice-flow-control/"/>
     <id>http://linkscue.com/2018/02/28/go-tour-practice-flow-control/</id>
@@ -336,48 +383,6 @@
     <summary type="html">
     
       牛顿法实现平方根函数
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：斐波纳契闭包</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:12:50.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;练习：斐波纳契闭包&lt;/p&gt;
-&lt;p&gt;让我们用函数做些好玩的事情。&lt;/p&gt;
-&lt;p&gt;实现一个 &lt;code&gt;fibonacci&lt;/code&gt; 函数，它返回一个函数（闭包）， 该闭包返回一个斐波纳契数列 &lt;code&gt;(0, 1, 1, 2, 3, 5, ...)&lt;/code&gt; 。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：切片</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-slice/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-slice/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.000Z</updated>
-    
-    <summary type="html">
-    
-      描述
     
     </summary>
     
@@ -410,18 +415,15 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：图像</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-image/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-image/</id>
+    <title>GO指南 练习：rot13Reader</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-rot13/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-rot13/</id>
     <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:13:56.000Z</updated>
+    <updated>2018-03-12T05:12:14.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;定义你自己的 Image 类型，实现&lt;a href=&quot;https://go-zh.org/pkg/image/#Image&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;必要的方法&lt;/a&gt;并调用 &lt;code&gt;pic.ShowImage&lt;/code&gt; 。&lt;/p&gt;
-&lt;p&gt;Bounds 应当返回一个 &lt;code&gt;image.Rectangle&lt;/code&gt; ，例如 &lt;code&gt;image.Rect(0, 0, w, h)&lt;/code&gt; 。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;ColorModel&lt;/code&gt; 应当返回 &lt;code&gt;color.RGBAModel&lt;/code&gt; 。&lt;/p&gt;
-&lt;p&gt;At 应当返回一个颜色。上一个图片生成器的值 v 对应于此次的 &lt;code&gt;color.RGBA{v, v, 255, 255}&lt;/code&gt; 。&lt;/p&gt;
+      描述
     
     </summary>
     
@@ -433,16 +435,17 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：错误</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-error/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-error/</id>
+    <title>GO指南 练习：斐波纳契闭包</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/</id>
     <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:13:19.000Z</updated>
+    <updated>2018-03-12T05:12:50.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;练习：错误&lt;br&gt;从之前的练习中（牛顿平方根方法）复制 Sqrt 函数，修改它使其返回 error 值。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Sqrt&lt;/code&gt; 接受到一个负数时，应当返回一个非 nil 的错误值。复数同样也不被支持。&lt;/p&gt;
+      &lt;p&gt;练习：斐波纳契闭包&lt;/p&gt;
+&lt;p&gt;让我们用函数做些好玩的事情。&lt;/p&gt;
+&lt;p&gt;实现一个 &lt;code&gt;fibonacci&lt;/code&gt; 函数，它返回一个函数（闭包）， 该闭包返回一个斐波纳契数列 &lt;code&gt;(0, 1, 1, 2, 3, 5, ...)&lt;/code&gt; 。&lt;/p&gt;
     
     </summary>
     

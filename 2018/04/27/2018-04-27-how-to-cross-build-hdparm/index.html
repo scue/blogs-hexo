@@ -112,7 +112,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/6e22ca27gy1fqr4eyxobmj20jb0bhmz1">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/6e22ca27gy1fqr4f719q7j20vt0p0wrt">
-<meta property="og:updated_time" content="2018-04-27T04:52:36.367Z">
+<meta property="og:updated_time" content="2018-05-06T14:40:02.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手把手教你交叉编译hdparm">
 <meta name="twitter:description" content="HDPARM是一个磁盘测速工具">
@@ -384,12 +384,24 @@
                 
               
 
-              <time title="创建时间：2018-04-27 12:49:10 / 修改时间：12:52:36" itemprop="dateCreated datePublished" datetime="2018-04-27T12:49:10+08:00">2018-04-27</time>
+              <time title="创建时间：2018-04-27 12:49:10" itemprop="dateCreated datePublished" datetime="2018-04-27T12:49:10+08:00">2018-04-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-06 22:40:02" itemprop="dateModified" datetime="2018-05-06T22:40:02+08:00">2018-05-06</time>
               
             
           </span>
@@ -449,14 +461,14 @@
 </ul>
 </li>
 <li>源码下载<ul>
-<li>git clone <a href="https://github.com/Distrotech/hdparm.git" target="_blank" rel="noopener">https://github.com/Distrotech/hdparm.git</a></li>
+<li><code>git clone https://github.com/Distrotech/hdparm.git</code></li>
 </ul>
 </li>
 <li><p>开始编译</p>
 <ul>
-<li>进入交叉编译环境：docker run –rm -it -v $PWD:/work dockcross/linux-armv7 bash</li>
-<li>设置环境变量：export CFLAGS=-static; export STRIP=arm-linux-gnueabihf-strip</li>
-<li>修改LDFLAGS: vim Makefile，加上 -static以静态链接</li>
+<li>进入交叉编译环境：<code>docker run --rm -it -v $PWD:/work dockcross/linux-armv7 bash</code></li>
+<li>设置环境变量：<code>export CFLAGS=-static; export STRIP=arm-linux-gnueabihf-strip</code></li>
+<li>修改LDFLAGS: vim Makefile，加上<code>-static</code>以静态链接</li>
 <li><img src="https://ws1.sinaimg.cn/large/6e22ca27gy1fqr4eyxobmj20jb0bhmz1" alt=""></li>
 <li>make -j8</li>
 <li><img src="https://ws1.sinaimg.cn/large/6e22ca27gy1fqr4f719q7j20vt0p0wrt" alt=""></li>
@@ -465,12 +477,12 @@
 <li><p>验证工具</p>
 <ul>
 <li>Android:<ul>
-<li>adb push hdparm /data/local/tmp/</li>
-<li>adb shell /data/local/tmp/hdparm -t -T –direct /dev/block/system_a</li>
+<li><code>adb push hdparm /data/local/tmp/</code></li>
+<li><code>adb shell /data/local/tmp/hdparm -t -T --direct /dev/block/system_a</code></li>
 </ul>
 </li>
 <li>Linux Arm:<ul>
-<li>/tmp/hdparm -t -T –direct /dev/sda</li>
+<li><code>/tmp/hdparm -t -T --direct /dev/sda</code></li>
 </ul>
 </li>
 </ul>
@@ -518,6 +530,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/06/2018-05-06-how-to-use-pm2-manage-hexo-blog/" rel="prev" title="如何使用pm2来管理hexo博客">
+                如何使用pm2来管理hexo博客 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -586,7 +602,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -684,7 +700,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">33</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
