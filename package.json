@@ -5,6 +5,13 @@
   "hexo": {
     "version": "3.6.0"
   },
+  "scripts": {
+    "start": "pm2 start --name blog hexo -- s",
+    "stop": "pm2 stop blog",
+    "delete": "pm2 delete blog",
+    "status": "pm2 status blog",
+    "restart": "pm2 restart blog"
+  },
   "dependencies": {
     "hexo": "^3.2.0",
     "hexo-algolia": "^1.2.5",
