@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://linkscue.com/"/>
-  <updated>2018-05-06T15:08:12.777Z</updated>
+  <updated>2018-05-06T15:34:17.043Z</updated>
   <id>http://linkscue.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何解决GO语言中的Android DNS解析异常、时区不正确的问题</title>
+    <link href="http://linkscue.com/2018/05/06/2018-05-06-how-to-slove-android-go-dns-timezone-problems/"/>
+    <id>http://linkscue.com/2018/05/06/2018-05-06-how-to-slove-android-go-dns-timezone-problems/</id>
+    <published>2018-05-06T15:11:40.310Z</published>
+    <updated>2018-05-06T15:34:17.043Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;其实这两个问题都是因为Android不是标准的Linux系统环境导致的，如果你给Android操作系统添加上了&lt;code&gt;/etc/resolv.conf&lt;/code&gt;就能解决DNS问题，时区的问题不容易通过添加文件解决（毕竟要添加的文件还是蛮多的）。&lt;/p&gt;
+&lt;p&gt;但其实我们作为一个软件开发者，能让自己少一点依赖就少一点依赖，就按Android的开发方式去搞就好了。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Android" scheme="http://linkscue.com/tags/Android/"/>
+    
+      <category term="GO" scheme="http://linkscue.com/tags/GO/"/>
+    
+      <category term="DNS" scheme="http://linkscue.com/tags/DNS/"/>
+    
+      <category term="TimeZone" scheme="http://linkscue.com/tags/TimeZone/"/>
+    
+  </entry>
   
   <entry>
     <title>手把手教你交叉编译zip（for Android/Linux）</title>
@@ -84,6 +111,29 @@
   </entry>
   
   <entry>
+    <title>使用OmniOutliner让你爱上思维的发散</title>
+    <link href="http://linkscue.com/2018/04/27/2018-04-26-love-mind-node-by-using-omnioutliner/"/>
+    <id>http://linkscue.com/2018/04/27/2018-04-26-love-mind-node-by-using-omnioutliner/</id>
+    <published>2018-04-27T04:48:53.876Z</published>
+    <updated>2018-04-27T04:48:53.876Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;OmniGroup的软件都不便宜，但OmniOutliner算是里边的最便宜的一款了，人民币195就可以到手了。&lt;/p&gt;
+&lt;p&gt;OmniOutliner在你没有纸笔的情况下，可以快速地让你想到什么就整理什么，这样对于我们天天面对着需求不断需要变更的研发同事来说，简直是一个福音。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="OmniGroup" scheme="http://linkscue.com/tags/OmniGroup/"/>
+    
+      <category term="OmniOutliner" scheme="http://linkscue.com/tags/OmniOutliner/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MWeb如何使用新浪微博图床</title>
     <link href="http://linkscue.com/2018/04/27/2018-04-26-how-to-use-sina-weibo-picture-bed-in-mweb/"/>
     <id>http://linkscue.com/2018/04/27/2018-04-26-how-to-use-sina-weibo-picture-bed-in-mweb/</id>
@@ -105,29 +155,6 @@
     
     
       <category term="MWeb" scheme="http://linkscue.com/tags/MWeb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用OmniOutliner让你爱上思维的发散</title>
-    <link href="http://linkscue.com/2018/04/27/2018-04-26-love-mind-node-by-using-omnioutliner/"/>
-    <id>http://linkscue.com/2018/04/27/2018-04-26-love-mind-node-by-using-omnioutliner/</id>
-    <published>2018-04-27T04:48:53.876Z</published>
-    <updated>2018-04-27T04:48:53.876Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;OmniGroup的软件都不便宜，但OmniOutliner算是里边的最便宜的一款了，人民币195就可以到手了。&lt;/p&gt;
-&lt;p&gt;OmniOutliner在你没有纸笔的情况下，可以快速地让你想到什么就整理什么，这样对于我们天天面对着需求不断需要变更的研发同事来说，简直是一个福音。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="OmniGroup" scheme="http://linkscue.com/tags/OmniGroup/"/>
-    
-      <category term="OmniOutliner" scheme="http://linkscue.com/tags/OmniOutliner/"/>
     
   </entry>
   
@@ -374,15 +401,18 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：循环与函数</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-flow-control/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-flow-control/</id>
+    <title>GO指南 练习：图像</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-image/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-image/</id>
     <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T01:57:15.000Z</updated>
+    <updated>2018-03-12T05:13:56.000Z</updated>
     
     <summary type="html">
     
-      牛顿法实现平方根函数
+      &lt;p&gt;定义你自己的 Image 类型，实现&lt;a href=&quot;https://go-zh.org/pkg/image/#Image&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;必要的方法&lt;/a&gt;并调用 &lt;code&gt;pic.ShowImage&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;Bounds 应当返回一个 &lt;code&gt;image.Rectangle&lt;/code&gt; ，例如 &lt;code&gt;image.Rect(0, 0, w, h)&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ColorModel&lt;/code&gt; 应当返回 &lt;code&gt;color.RGBAModel&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;At 应当返回一个颜色。上一个图片生成器的值 v 对应于此次的 &lt;code&gt;color.RGBA{v, v, 255, 255}&lt;/code&gt; 。&lt;/p&gt;
     
     </summary>
     
@@ -415,37 +445,16 @@
   </entry>
   
   <entry>
-    <title>GO指南 练习：rot13Reader</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-rot13/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-rot13/</id>
+    <title>GO指南 练习：错误</title>
+    <link href="http://linkscue.com/2018/02/28/go-tour-practice-error/"/>
+    <id>http://linkscue.com/2018/02/28/go-tour-practice-error/</id>
     <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:12:14.000Z</updated>
+    <updated>2018-03-12T05:13:19.000Z</updated>
     
     <summary type="html">
     
-      描述
-    
-    </summary>
-    
-      <category term="技术" scheme="http://linkscue.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="go" scheme="http://linkscue.com/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GO指南 练习：斐波纳契闭包</title>
-    <link href="http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/"/>
-    <id>http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/</id>
-    <published>2018-02-27T16:00:00.000Z</published>
-    <updated>2018-03-12T05:12:50.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;练习：斐波纳契闭包&lt;/p&gt;
-&lt;p&gt;让我们用函数做些好玩的事情。&lt;/p&gt;
-&lt;p&gt;实现一个 &lt;code&gt;fibonacci&lt;/code&gt; 函数，它返回一个函数（闭包）， 该闭包返回一个斐波纳契数列 &lt;code&gt;(0, 1, 1, 2, 3, 5, ...)&lt;/code&gt; 。&lt;/p&gt;
+      &lt;p&gt;练习：错误&lt;br&gt;从之前的练习中（牛顿平方根方法）复制 Sqrt 函数，修改它使其返回 error 值。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Sqrt&lt;/code&gt; 接受到一个负数时，应当返回一个非 nil 的错误值。复数同样也不被支持。&lt;/p&gt;
     
     </summary>
     

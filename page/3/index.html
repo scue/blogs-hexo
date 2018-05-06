@@ -335,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/28/go-tour-parctice-map/">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/28/go-tour-rot13/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linkscue(scue)">
@@ -354,8 +354,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/28/go-tour-parctice-map/" itemprop="url">
-                  GO指南 练习：Map
+                <a class="post-title-link" href="/2018/02/28/go-tour-rot13/" itemprop="url">
+                  GO指南 练习：rot13Reader
                 </a>
               
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+                <time title="修改时间：2018-03-12 13:12:14" itemprop="dateModified" datetime="2018-03-12T13:12:14+08:00">2018-03-12</time>
               
             
           </span>
@@ -450,15 +450,190 @@
 
       
         
-          
-            <p>实现 <code>WordCount</code> 。它应当返回一个映射，其中包含每个字符串 <code>s</code> 中“单词”的个数。函数 <code>wc.Test</code> 会对此函数执行一系列测试用例，并输出成功还是失败。</p>
-<p>你会发现 <code>strings.Fields</code> 很有帮助。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"strings"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"golang.org/x/tour/wc"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">WordCount</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">map</span>[<span class="title">string</span>]<span class="title">int</span></span> &#123;</span><br><span class="line">	a := strings.Fields(s)</span><br><span class="line">	m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> a &#123;</span><br><span class="line">		m[v]++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> m</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	wc.Test(WordCount)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">PASS</span><br><span class="line"> f(&quot;I am learning Go!&quot;) = </span><br><span class="line">  map[string]int&#123;&quot;I&quot;:1, &quot;am&quot;:1, &quot;learning&quot;:1, &quot;Go!&quot;:1&#125;</span><br><span class="line">PASS</span><br><span class="line"> f(&quot;The quick brown fox jumped over the lazy dog.&quot;) = </span><br><span class="line">  map[string]int&#123;&quot;over&quot;:1, &quot;the&quot;:1, &quot;lazy&quot;:1, &quot;dog.&quot;:1, &quot;The&quot;:1, &quot;brown&quot;:1, &quot;fox&quot;:1, &quot;jumped&quot;:1, &quot;quick&quot;:1&#125;</span><br><span class="line">PASS</span><br><span class="line"> f(&quot;I ate a donut. Then I ate another donut.&quot;) = </span><br><span class="line">  map[string]int&#123;&quot;I&quot;:2, &quot;ate&quot;:2, &quot;a&quot;:1, &quot;donut.&quot;:2, &quot;Then&quot;:1, &quot;another&quot;:1&#125;</span><br><span class="line">PASS</span><br><span class="line"> f(&quot;A man a plan a canal panama.&quot;) = </span><br><span class="line">  map[string]int&#123;&quot;plan&quot;:1, &quot;canal&quot;:1, &quot;panama.&quot;:1, &quot;A&quot;:1, &quot;man&quot;:1, &quot;a&quot;:2&#125;</span><br><span class="line"></span><br><span class="line">Program exited.</span><br></pre></td></tr></table></figure>
-<p>链接：<a href="https://tour.go-zh.org/moretypes/23" target="_blank" rel="noopener">https://tour.go-zh.org/moretypes/23</a></p>
+          描述
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/28/go-tour-rot13/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/28/go-tour-practice-fibonacci/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/28/go-tour-practice-fibonacci/" itemprop="url">
+                  GO指南 练习：斐波纳契闭包
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">2018-02-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 13:12:50" itemprop="dateModified" datetime="2018-03-12T13:12:50+08:00">2018-03-12</time>
+              
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>练习：斐波纳契闭包</p>
+<p>让我们用函数做些好玩的事情。</p>
+<p>实现一个 <code>fibonacci</code> 函数，它返回一个函数（闭包）， 该闭包返回一个斐波纳契数列 <code>(0, 1, 1, 2, 3, 5, ...)</code> 。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/28/go-tour-practice-fibonacci/#更多" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -684,7 +859,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/28/go-tour-practice-error/">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/28/go-tour-practice-flow-control/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linkscue(scue)">
@@ -703,8 +878,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/28/go-tour-practice-error/" itemprop="url">
-                  GO指南 练习：错误
+                <a class="post-title-link" href="/2018/02/28/go-tour-practice-flow-control/" itemprop="url">
+                  GO指南 练习：循环与函数
                 </a>
               
             
@@ -747,7 +922,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-03-12 13:13:19" itemprop="dateModified" datetime="2018-03-12T13:13:19+08:00">2018-03-12</time>
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
               
             
           </span>
@@ -799,11 +974,10 @@
 
       
         
-          <p>练习：错误<br>从之前的练习中（牛顿平方根方法）复制 Sqrt 函数，修改它使其返回 error 值。</p>
-<p><code>Sqrt</code> 接受到一个负数时，应当返回一个非 nil 的错误值。复数同样也不被支持。</p>
+          牛顿法实现平方根函数
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/28/go-tour-practice-error/#更多" rel="contents">
+            <a class="btn" href="/2018/02/28/go-tour-practice-flow-control/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -859,7 +1033,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/28/go-tour-practice-image/">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/28/go-tour-parctice-map/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linkscue(scue)">
@@ -878,8 +1052,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/28/go-tour-practice-image/" itemprop="url">
-                  GO指南 练习：图像
+                <a class="post-title-link" href="/2018/02/28/go-tour-parctice-map/" itemprop="url">
+                  GO指南 练习：Map
                 </a>
               
             
@@ -922,7 +1096,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-03-12 13:13:56" itemprop="dateModified" datetime="2018-03-12T13:13:56+08:00">2018-03-12</time>
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
               
             
           </span>
@@ -974,17 +1148,15 @@
 
       
         
-          <p>定义你自己的 Image 类型，实现<a href="https://go-zh.org/pkg/image/#Image" target="_blank" rel="noopener">必要的方法</a>并调用 <code>pic.ShowImage</code> 。</p>
-<p>Bounds 应当返回一个 <code>image.Rectangle</code> ，例如 <code>image.Rect(0, 0, w, h)</code> 。</p>
-<p><code>ColorModel</code> 应当返回 <code>color.RGBAModel</code> 。</p>
-<p>At 应当返回一个颜色。上一个图片生成器的值 v 对应于此次的 <code>color.RGBA{v, v, 255, 255}</code> 。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/28/go-tour-practice-image/#更多" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>实现 <code>WordCount</code> 。它应当返回一个映射，其中包含每个字符串 <code>s</code> 中“单词”的个数。函数 <code>wc.Test</code> 会对此函数执行一系列测试用例，并输出成功还是失败。</p>
+<p>你会发现 <code>strings.Fields</code> 很有帮助。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"strings"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"golang.org/x/tour/wc"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">WordCount</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">map</span>[<span class="title">string</span>]<span class="title">int</span></span> &#123;</span><br><span class="line">	a := strings.Fields(s)</span><br><span class="line">	m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> a &#123;</span><br><span class="line">		m[v]++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> m</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	wc.Test(WordCount)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">PASS</span><br><span class="line"> f(&quot;I am learning Go!&quot;) = </span><br><span class="line">  map[string]int&#123;&quot;I&quot;:1, &quot;am&quot;:1, &quot;learning&quot;:1, &quot;Go!&quot;:1&#125;</span><br><span class="line">PASS</span><br><span class="line"> f(&quot;The quick brown fox jumped over the lazy dog.&quot;) = </span><br><span class="line">  map[string]int&#123;&quot;over&quot;:1, &quot;the&quot;:1, &quot;lazy&quot;:1, &quot;dog.&quot;:1, &quot;The&quot;:1, &quot;brown&quot;:1, &quot;fox&quot;:1, &quot;jumped&quot;:1, &quot;quick&quot;:1&#125;</span><br><span class="line">PASS</span><br><span class="line"> f(&quot;I ate a donut. Then I ate another donut.&quot;) = </span><br><span class="line">  map[string]int&#123;&quot;I&quot;:2, &quot;ate&quot;:2, &quot;a&quot;:1, &quot;donut.&quot;:2, &quot;Then&quot;:1, &quot;another&quot;:1&#125;</span><br><span class="line">PASS</span><br><span class="line"> f(&quot;A man a plan a canal panama.&quot;) = </span><br><span class="line">  map[string]int&#123;&quot;plan&quot;:1, &quot;canal&quot;:1, &quot;panama.&quot;:1, &quot;A&quot;:1, &quot;man&quot;:1, &quot;a&quot;:2&#125;</span><br><span class="line"></span><br><span class="line">Program exited.</span><br></pre></td></tr></table></figure>
+<p>链接：<a href="https://tour.go-zh.org/moretypes/23" target="_blank" rel="noopener">https://tour.go-zh.org/moretypes/23</a></p>
+
+          
         
       
     </div>
@@ -1159,6 +1331,348 @@
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/iOS-get-device-info/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/08/iOS-get-device-info/" itemprop="url">
+                  获取iOS设备信息
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-08 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这是我做一个iOS版本运维App的时候写的代码，记录一下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> resolveDict = [</span><br><span class="line">    <span class="string">"systemName"</span>: <span class="type">UIDevice</span>.current.systemName,</span><br><span class="line">    <span class="string">"systemVersion"</span>: <span class="type">UIDevice</span>.current.systemVersion,</span><br><span class="line">    <span class="string">"identifierForVendor"</span>: <span class="type">UIDevice</span>.current.identifierForVendor?.description ?? <span class="string">""</span>,</span><br><span class="line">    <span class="string">"model"</span>: <span class="type">UIDevice</span>.current.model,</span><br><span class="line">    <span class="string">"localizedModel"</span>: <span class="type">UIDevice</span>.current.localizedModel</span><br><span class="line">    ]</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> json = <span class="keyword">try</span> <span class="type">JSONSerialization</span>.data(withJSONObject: resolveDict, options: []);</span><br><span class="line">    <span class="keyword">let</span> jsonStr = <span class="type">String</span>(data: json, encoding: .utf8);</span><br><span class="line">    resovler(jsonStr);</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    rejecter(<span class="string">"Get AppInfo error"</span>, error.localizedDescription, <span class="literal">nil</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/android-md5sum-string/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linkscue(scue)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linkscue's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/08/android-md5sum-string/" itemprop="url">
+                  Android计算字符串的MD5值
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-08 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>之前找过一些版本，发现有一些使用场景下，md5sum会少一个字符，这对于一个已发布出去的版本是有一定的硬伤的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">md5sum</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        MessageDigest mdEncoder;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mdEncoder = MessageDigest.getInstance(<span class="string">"MD5"</span>);</span><br><span class="line">            mdEncoder.update(str.getBytes(Charset.forName(<span class="string">"US-ASCII"</span>)), <span class="number">0</span>, str.length());</span><br><span class="line">            StringBuilder hexString = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">byte</span> b : mdEncoder.digest()) &#123;</span><br><span class="line">                hexString.append(String.format(<span class="string">"%02x"</span>, b&amp;<span class="number">0xff</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> hexString.toString();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -1540,526 +2054,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/iOS-get-device-info/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/08/iOS-get-device-info/" itemprop="url">
-                  获取iOS设备信息
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-02-08 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这是我做一个iOS版本运维App的时候写的代码，记录一下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> resolveDict = [</span><br><span class="line">    <span class="string">"systemName"</span>: <span class="type">UIDevice</span>.current.systemName,</span><br><span class="line">    <span class="string">"systemVersion"</span>: <span class="type">UIDevice</span>.current.systemVersion,</span><br><span class="line">    <span class="string">"identifierForVendor"</span>: <span class="type">UIDevice</span>.current.identifierForVendor?.description ?? <span class="string">""</span>,</span><br><span class="line">    <span class="string">"model"</span>: <span class="type">UIDevice</span>.current.model,</span><br><span class="line">    <span class="string">"localizedModel"</span>: <span class="type">UIDevice</span>.current.localizedModel</span><br><span class="line">    ]</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> json = <span class="keyword">try</span> <span class="type">JSONSerialization</span>.data(withJSONObject: resolveDict, options: []);</span><br><span class="line">    <span class="keyword">let</span> jsonStr = <span class="type">String</span>(data: json, encoding: .utf8);</span><br><span class="line">    resovler(jsonStr);</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    rejecter(<span class="string">"Get AppInfo error"</span>, error.localizedDescription, <span class="literal">nil</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/android-gradle-offline-update/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/08/android-gradle-offline-update/" itemprop="url">
-                  Android Gradle离线更新
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-02-08 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-11 13:11:44" itemprop="dateModified" datetime="2018-03-11T13:11:44+08:00">2018-03-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>从<a href="https://downloads.gradle.org/distributions/gradle-3.3-all.zip" target="_blank" rel="noopener">https://downloads.gradle.org/distributions/gradle-3.3-all.zip</a> 下载Gradle文件。</p>
-<p>Gradle Wrapper设定：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#Mon Aug 14 15:14:25 CST 2017</span><br><span class="line">distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip</span><br></pre></td></tr></table></figure>
-<p>使用迅雷下载gradle-3.3-all.zip，保存这个文件到以下路径：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\&lt;YOURNAME&gt;\.gradle\wrapper\dists\gradle-3.3-all\55gk2rcmfc6p2dg9u9ohc3hw9</span><br></pre></td></tr></table></figure>
-<p>这里的YOURNAME当然就是指你自己的用户名的路径了，这个路径基本上都是固定的，不信可以看这个博文，它的路径也与我的是一样的<a href="http://blog.csdn.net/u010921682/article/details/73741264" target="_blank" rel="noopener">http://blog.csdn.net/u010921682/article/details/73741264</a> </p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linkscue.com/2018/02/08/laravel-laradock-getting-start/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linkscue(scue)">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Linkscue's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/08/laravel-laradock-getting-start/" itemprop="url">
-                  Laravel 从零开始入门-laradock
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-02-08 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-08T00:00:00+08:00">2018-02-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-12 09:57:15" itemprop="dateModified" datetime="2018-03-12T09:57:15+08:00">2018-03-12</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Docker环境
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/08/laravel-laradock-getting-start/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2111,7 +2105,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2217,7 +2211,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">37</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
