@@ -9,7 +9,7 @@ tags: [GO, gomobile]
 
 # 初始化环境
 
-官方的WiKi链接：https://github.com/golang/go/wiki/Mobile，但我感觉它写得不是很好，尤其是`gomobile init`的部分。
+官方的WiKi链接：https://github.com/golang/go/wiki/Mobile ，但我感觉它写得不是很好，尤其是`gomobile init`的部分。
 
 首先，我安装了Android Studio，安装好之后，默认的SDK路径是`/Users/scue/Library/Android/sdk`。
 
