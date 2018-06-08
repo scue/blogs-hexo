@@ -15,6 +15,8 @@ Github: https://github.com/scue/qcloud-cos-mweb
 
 这是一个使得MWeb支持直接上传文件至腾讯云的服务器。
 
+<!-- more -->
+
 ![](https://media-1256569450.cos.ap-chengdu.myqcloud.com/blog/15284246994720.jpg)
 
 # 背景
