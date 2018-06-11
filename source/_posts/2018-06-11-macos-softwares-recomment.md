@@ -73,7 +73,7 @@ MacOS的效率神器，比较好用的功能可以列举如下：
 
 链接：[MacOS Witch应用程序切换使用心得](https://linkscue.com/2018/05/05/2018-04-21-macos-witch-useful-tips/)
 
-## 免费软件
+# 免费软件
 
 免费的一些软件可以推荐如下，大家都熟悉的像chrome之类的就不推荐了~
 
