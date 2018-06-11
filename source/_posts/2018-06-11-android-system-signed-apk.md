@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "标题"
-description: "描述"
+title: "聊一聊Android APK系统签名~"
+description: ""
 category: 技术
-tags: [标签]
+tags: [Android]
 ---
 
 # 通过signapk.jar签名
