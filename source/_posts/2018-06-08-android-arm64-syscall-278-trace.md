@@ -22,7 +22,7 @@ tags: [Android, Kernel, Syscall]
 - 只有一个PC和LR的地址，还没有Backstrace
 - 那只好对vmlinux使用gdb或addr2line进行操刀了
 - 这里使用addr2line定位一下具体出错的函数：
-- 命令：aarch64-linux-android-addr2line -fe $OUT/obj/KERNEL_OBJ/vmlinux 72369a3d58
+- 命令：`aarch64-linux-android-addr2line -fe $OUT/obj/KERNEL_OBJ/vmlinux 72369a3d58`
 
   ![](https://media-1256569450.cos.ap-chengdu.myqcloud.com/blog/15284273540379.jpg)
   
@@ -31,7 +31,7 @@ tags: [Android, Kernel, Syscall]
 # 回到起点
 
 - 现在唯一的线索就是知道它调用了syscall 278
-- 我们去看一下内核的定义：common/arch/arm64/include/asm/unistd32.h
+- 我们去看一下内核的定义：`common/arch/arm64/include/asm/unistd32.h`
   ![](https://media-1256569450.cos.ap-chengdu.myqcloud.com/blog/15284273784880.jpg)
 - `mq_notify`是什么鬼？我好像在程序中没有使用过你呀？
 
