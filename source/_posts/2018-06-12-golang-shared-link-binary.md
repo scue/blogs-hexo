@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GO语言混合C语言链接外部的库"
-description: "描述"
+description: ""
 category: 技术
 tags: [GO, CGO]
 ---
@@ -84,6 +84,7 @@ CGO_ENABLED=1 CC=$CC CXX=$CXX GOOS=linux GOARCH=mips go build -v --ldflags '-lin
 > 提示：使用`ldd`是不可能的了，交叉编译之后，架构都不同，ldd看不出东西来。
 
 
+![](https://media-1256569450.cos.ap-chengdu.myqcloud.com/blog/15288047680154.jpg)
 
 
 
