@@ -6,7 +6,7 @@ category: 技术
 tags: [GO, CGO]
 ---
 
-与甲方合作，对方提供的是`libcapi.so`动态库，而我期望我的程序依然**我(bian)行(ti)我(lin)素(shang)**地使用GO语言进行开发。
+与甲方合作，对方提供的是`libcapi.so`动态库，而我期望我的程序依然<font color="#FF4500">我(bian)行(ti)我(lin)素(shang)</font>地使用GO语言进行开发。
 
 OK，撸起裙子加油干！
 
@@ -61,7 +61,7 @@ export CXX=mips-linux-g++
 
 set -x
 
-CGO_ENABLED=1 CC=$CC CXX=$CXX GOOS=linux GOARCH=mips go build -v --ldflags '-linkmode external' "$@"
+CGO_ENABLED=1 CC=$CC CXX=$CXX GOOS=linux GOARCH=mips go build -v "$@"
 ```
 
 `./go-mips-build.sh -o agent .`
