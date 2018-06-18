@@ -115,4 +115,14 @@ Intellij Idea支持设定编译的tags，这样子可以在写代码的时候进
 
 
 
+# 实战应用
+
+![](https://media-1256569450.cos.ap-chengdu.myqcloud.com/blog/15293028548028.jpg)
+
+我拿`disk-health.go`（检查磁盘的健康程序，预测坏盘的可能性）来举例。
+
+正如图上，大量可以复用的代码（超过80%），位于`disk-health.go`文件，只有少量的函数实现需要根据平台的不同进行一些细小的变化，他们分别位于`disk-health_android.go`和`disk-health_linux.go`文件上。
+
+这样子写的出来的代码耦合性很低，或者可以说几乎没有，并且审核代码的时候也很方便。
+
 
