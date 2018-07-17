@@ -21,7 +21,7 @@ Nginx配置文件：
 
 server {
     listen 80;
-    server_name ops-conf.onething.net;
+    server_name someweb.example.net;
     return 301 https://$host$request_uri;
     # location / {
     #     proxy_pass http://127.0.0.1:4430;
