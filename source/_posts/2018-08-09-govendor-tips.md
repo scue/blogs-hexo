@@ -14,9 +14,11 @@ govendor是go语言依赖管理工具，推荐使用 https://github.com/kardiano
 go get -u -v github.com/kardianos/govendor
 ```
 
-> 就像nodejs的`yarn`或`npm`包管理工具一样！
-
 第一次初始化的时候，只需要`govendor init`命令行执行一下就可以了。
+
+> 它的使用起来就像nodejs的`yarn`或`npm`包管理工具一样简单！
+
+<!-- more -->
 
 # 当我们需要下载一个依赖包的时候
 
@@ -37,7 +39,7 @@ govendor fetch -v github.com/gin-gonic/gin@v1.2 # 只拷贝gin/目录的内容�
 govendor fetch -v github.com/gin-gonic/gin/...@v1.2 # 可以得到gin/目录，及其所有子目录
 ```
 
-> `@v1.2`表示使用`v1.2`这个版本，其实是对应的是`git tag`为`v1.2`的revision，这个功能也是很实用！
+> `@v1.2` 表示使用 `v1.2` 这个版本，其实是对应的是 `git tag` 为 `v1.2` 的revision，这个功能也是很实用！
 
 # 当我们所需要的依赖包不是官方的时候
 
@@ -64,6 +66,8 @@ govendor get -v 'github.com/go-sql-driver/mysql::github.com/scue/go-mysql'
 ```sh
 govendor sync -v
 ```
+
+> 它就像 `yarn install` 一样简单！
 
 它是有缓存的，同步效率很高。
 
