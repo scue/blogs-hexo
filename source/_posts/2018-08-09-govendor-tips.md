@@ -97,3 +97,15 @@ govendor sync -v
 !/vendor/vendor.json
 ```
 
+# 对应关系
+
+若你有`nodejs`的一些经验，这里列出一些关系供您参考：
+
+| 命令说明 | yarn | govendor |
+| --- | --- | --- |
+| 初始化 | yarn init | govendor init |
+| 添加依赖（包含依赖的依赖） | yarn add | govendor fetch |
+| 删除依赖 | yarn remove | govendor remove |
+| 同步依赖 | yarn install | govendor sync |
+
+> 提示：你可能需要经常使用 `govendor list` 来查看是否有一些依赖已经安装到了 `$GOPATH` 的全局环境了，如果有，并且是必须的，建议通过 `govendor fetch` 将它们添加进来。
