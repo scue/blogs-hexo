@@ -63,3 +63,6 @@ dlv --listen=:2345 --headless=true --api-version=2 exec ./main
 ![](https://media-1256569450.cos.ap-chengdu.myqcloud.com/blog/15355153762364.jpg)
 
 一旦连接上了，红色框框内的这个按钮，会从灰色变成了彩色，表示可以使用了，然后就可以进行调试了，非常的方便~
+
+
+
