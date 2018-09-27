@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "修复MacOS的Matplotlib中文乱码问题"
-description: "描述"
+description: ""
 category: 技术
 tags: [macos, matplotlib]
 ---
