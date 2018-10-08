@@ -99,7 +99,7 @@ export CGO_CFLAGS="-target aarch64-none-linux-android --sysroot ${TOOLCHAINS}/sy
 export CGO_CPPFLAGS="-target aarch64-none-linux-android --sysroot ${TOOLCHAINS}/sysroot"
 export CGO_LDFLAGS="-target aarch64-none-linux-android --sysroot ${TOOLCHAINS}/sysroot"
 export CGO_ENABLED=1
-HOST_EXTRA_LDFLAGS="-pie -fPIE -fPIC"
+export HOST_EXTRA_LDFLAGS="-pie -fPIE -fPIC" # for android binary
 ```
 然后再`make build`
 
