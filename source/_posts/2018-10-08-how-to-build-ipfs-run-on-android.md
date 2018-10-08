@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "标题"
-description: "描述"
+title: "如何交叉编译ipfs并运行于android平台上"
+description: ""
 category: 技术
-tags: [标签]
+tags: [ipfs, android]
 ---
 
 > IPFS is the Distributed Web
