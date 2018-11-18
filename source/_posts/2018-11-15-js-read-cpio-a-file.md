@@ -7,7 +7,7 @@ tags: [js,cpio]
 ---
 
 
-开发前端Vue组件涉及OTA文件上传的时候，想优先通过读取OTA升级包(cpio)文件的一个描述文件`description.json`来获取一些参数的信息，这样子不需要跑到后台去解析zip文件内容了。
+开发前端Vue组件涉及OTA文件上传的时候，想优先通过读取OTA升级包(cpio)文件的一个描述文件`description.json`来获取一些参数的信息，这样子不需要跑到后台去解析cpio文件内容了。
 
 <!-- more -->
 
