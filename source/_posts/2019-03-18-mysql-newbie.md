@@ -1,3 +1,11 @@
+
+---
+layout: post
+title: "MySQL从零开始"
+description: "一个很全面的mysql入门手册和思维导图"
+category: 技术
+tags: [mysql]
+---
 [TOC]
 
 ---
@@ -190,68 +198,68 @@
   
 * 示例  
     * 省份  
-        * ```sql  
-            mysql> CREATE TABLE provinces (  
-                -> id SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,  
-                -> pname VARCHAR(20) NOT NULL  
-                -> );  
-            ```  
+        ```sql  
+        mysql> CREATE TABLE provinces (  
+            -> id SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,  
+            -> pname VARCHAR(20) NOT NULL  
+            -> );  
+        ```  
   
     * 用户  
-        * ```sql  
-            mysql> CREATE TABLE users(  
-                -> id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,  
-                -> username VARCHAR(20) NOT NULL,  
-                -> pid SMALLINT UNSIGNED,  
-                -> FOREIGN KEY (pid) REFERENCES provinces (id)  
-                -> );  
-            ```  
-              
-            - 1）`pid SMALLINT UNSIGNED` 必须与provinces的id字段类型一致  
-            - 2）`FOREIGN KEY (pid) REFERENCES provinces (id)`指明外键列、参照列  
-            - 3）pid是外键列  
-            - 4）provinces的id为参照列  
-            - 5）pid外键列将自动创建索引  
+        ```sql  
+        mysql> CREATE TABLE users(  
+            -> id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,  
+            -> username VARCHAR(20) NOT NULL,  
+            -> pid SMALLINT UNSIGNED,  
+            -> FOREIGN KEY (pid) REFERENCES provinces (id)  
+            -> );  
+        ```  
+        
+        - 1）`pid SMALLINT UNSIGNED` 必须与provinces的id字段类型一致  
+        - 2）`FOREIGN KEY (pid) REFERENCES provinces (id)`指明外键列、参照列  
+        - 3）pid是外键列  
+        - 4）provinces的id为参照列  
+        - 5）pid外键列将自动创建索引  
   
         * 查看索引`SHOW INDEXES FROM users\G`  
-            * ```sql  
-                mysql> SHOW INDEXES FROM users\G  
-                *************************** 1. row ***************************  
-                        Table: users  
-                   Non_unique: 0  
-                     Key_name: PRIMARY  
-                 Seq_in_index: 1  
-                  Column_name: id  
-                    Collation: A  
-                  Cardinality: 0  
-                     Sub_part: NULL  
-                       Packed: NULL  
-                         Null:  
-                   Index_type: BTREE  
-                      Comment:  
-                Index_comment:  
-                *************************** 2. row ***************************  
-                        Table: users  
-                   Non_unique: 1  
-                     Key_name: pid  
-                 Seq_in_index: 1  
-                  Column_name: pid  
-                    Collation: A  
-                  Cardinality: 0  
-                     Sub_part: NULL  
-                       Packed: NULL  
-                         Null: YES  
-                   Index_type: BTREE  
-                      Comment:  
-                Index_comment:  
-                2 rows in set (0.00 sec)  
-                ```  
+            ```sql  
+            mysql> SHOW INDEXES FROM users\G  
+            *************************** 1. row ***************************  
+                    Table: users  
+               Non_unique: 0  
+                 Key_name: PRIMARY  
+             Seq_in_index: 1  
+              Column_name: id  
+                Collation: A  
+              Cardinality: 0  
+                 Sub_part: NULL  
+                   Packed: NULL  
+                     Null:  
+               Index_type: BTREE  
+                  Comment:  
+            Index_comment:  
+            *************************** 2. row ***************************  
+                    Table: users  
+               Non_unique: 1  
+                 Key_name: pid  
+             Seq_in_index: 1  
+              Column_name: pid  
+                Collation: A  
+              Cardinality: 0  
+                 Sub_part: NULL  
+                   Packed: NULL  
+                     Null: YES  
+               Index_type: BTREE  
+                  Comment:  
+            Index_comment:  
+            2 rows in set (0.00 sec)  
+            ```  
   
             * pid外键列已自动创建索引  
 * 参照操作  
     * 使用方法  
-        * - FOREIGN KEY (pid) REFERENCES provinces (id)  
-            - FOREIGN KEY (pid) REFERENCES provinces (id) **ON DELETE CASCADE**  
+        - FOREIGN KEY (pid) REFERENCES provinces (id)  
+        - FOREIGN KEY (pid) REFERENCES provinces (id) **ON DELETE CASCADE**  
   
     * CASCADE  
         * 从父表删除或更新，会自动删除或更新子表中匹配的行  
@@ -277,7 +285,7 @@
 ### 列的操作  
   
 * 添加列  
-    * **ALTER TABLE** tbl_name **ADD** [COLUMN] col_name column_definition [FIRST | AFTER col_name]  
+    * `ALTER TABLE tbl_name ADD [COLUMN] col_name column_definition [FIRST | AFTER col_name]`
     * `ALTER TABLE users ADD password VARCHAR(20) NOT NULL DEFAULT "***" AFTER username;`  
 * 删除列  
     * ALTER TABLE users DROP truename;  
@@ -384,23 +392,29 @@
 * 此方法可以将查询结果插入到指定的数据表  
 * 示例1：INSERT users2(username) SELECT username FROM users WHERE age >= 30;  
 * 示例2  
-    * ```  
-        CREATE TABLE tdb_goods_cates (  
-          cate_id smallint not null primary key auto_increment,  
-          cate_name varchar(40) not null);  
-        ```  
+    ```sql
+    CREATE TABLE tdb_goods_cates (  
+      cate_id smallint not null primary key auto_increment,  
+      cate_name varchar(40) not null);  
+    ```
   
-    * `INSERT tdb_goods_cates(cate_name) SELECT goods_cate FROM tdb_goods GROUP BY goods_cate;`  
+    ```sql
+    INSERT tdb_goods_cates(cate_name) SELECT goods_cate FROM tdb_goods GROUP BY goods_cate;
+    ```
   
 ### CREATE ... SELECT  
   
 * 创建数据表同时将查询结果写入数据表  
-* **CREATE TABLE [IF NOT EXISTS]** tbl_name  
+
+    ```sql
+    CREATE TABLE [IF NOT EXISTS] tbl_name  
     [(create_definition,...)]  
     select_statement  
+    ```
   
-* 示例1：  
-    ```  
+* 示例1：
+
+    ```sql
     CREATE TABLE tdb_goods_brands (  
       brand_id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,  
       brand_name VARCHAR(40) NOT NULL)  
@@ -443,11 +457,13 @@
     接下来可以把 goods_cate和brand_name改为id的形式，并使用smallint来存储  
   
 ### 表的参照关系 (REFERENCE)  
-  
-* tbl_reference  
-    {[INNER | CROSS] **JOIN** | {LEFT|RIGHT} [OUTER] JOIN}  
+ 
+```sql 
+tbl_reference  
+    {[INNER | CROSS] JOIN | {LEFT|RIGHT} [OUTER] JOIN}  
     tbl_reference  
-    **ON** condition_expr  
+    ON condition_expr  
+```
   
 * 连接类型  
     * INNER JOIN：内连接  
@@ -1232,3 +1248,7 @@ mysql> SELECT @d_nums, @r_nums;
 * 结束符从’;’改为了’//’  
   
 [1]: https://www.imooc.com/qadetail/266469  
+
+# iThoughtsX 思维导图
+
+下载链接：[MySQL.itmz](https://media-1256569450.cos.ap-chengdu.myqcloud.com/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/MySQL.itmz)
