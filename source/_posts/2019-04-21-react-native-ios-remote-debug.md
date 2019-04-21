@@ -109,7 +109,7 @@ cat <<EOF > frpc-rn-me.ini
 server_addr = link****.com
 server_port = 7000
 # auth token
-token = ********
+token = ******** // 访问TOKEN，不要随意告诉别人哦~
 
 [rn-8081]
 type = tcp
