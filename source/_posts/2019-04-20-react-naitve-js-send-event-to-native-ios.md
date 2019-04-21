@@ -124,7 +124,7 @@ class ReactEventHandler: NSObject {
 #import <React/RCTRootView.h>
 ```
 
-然后在Target→Build Settings→Swift Compiler - General→Objective-C Bridging Header，填写上你的`<PROJECT>-Bridging-Header.h`头文件
+然后在Xcode→Project→Target→Build Settings→Swift Compiler - General→Objective-C Bridging Header，填写上你的`<PROJECT>-Bridging-Header.h`头文件
 
 ![](https://media-1256569450.cos.ap-chengdu.myqcloud.com/blog/15557727768229.jpg)
 
