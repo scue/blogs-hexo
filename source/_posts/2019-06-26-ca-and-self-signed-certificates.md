@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "如何设置自己的CA证书（及二级CA证书），以及使用它们来签发证书"
+title: "如何制作CA证书（含二级CA证书），及签发数字证书"
 description: ""
 category: 技术
 tags: [ca, openssl]
@@ -233,9 +233,9 @@ cat example.org.x2.crt ca.crt > /path/to/ssl/example.org.bundle.crt
 # ① 签名（带extenstion、使用安全签名算法sha256）
 openssl x509 -req -in example.org.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out example.org.x4.crt -extfile example.extensions.cnf -sha256
 # ② 验证证书
-openssl verify -CAfile ca.crt example.org.x3.crt
+openssl verify -CAfile ca.crt example.org.x4.crt
 # ③ 查看证书信息
-openssl x509 -in example.org.x3.crt -noout -text
+openssl x509 -in example.org.x4.crt -noout -text
 ```
 
 ## 方式2：通过配置文件签名
